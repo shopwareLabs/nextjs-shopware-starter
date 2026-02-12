@@ -39,9 +39,7 @@ export async function addItem(prevState: unknown, selectedVariantId: string | un
     const apiClient = getApiClient(cartId);
 
     // this part allows us to click multiple times on addToCart and increase the qty with that
-    const itemInCart = cart?.lineItems?.filter((item) => item.id === selectedVariantId) as
-      | Schemas["LineItem"]
-      | undefined;
+    const itemInCart = cart?.lineItems?.find((item) => item.id === selectedVariantId);
     if (itemInCart?.quantity) {
       quantity = itemInCart.quantity + 1;
     }

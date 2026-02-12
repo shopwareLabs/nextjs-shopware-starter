@@ -309,6 +309,8 @@ export async function getProduct(handle: string | []): Promise<Product | undefin
     const seoUrlElement = await getFirstSeoUrlElement(productHandle);
     if (seoUrlElement) {
       productId = seoUrlElement.foreignKey;
+    } else {
+      productId = productHandle; // fallback: try using the handle as a direct ID
     }
   } else {
     productId = productHandle; // without seoUrls the handle is the product id

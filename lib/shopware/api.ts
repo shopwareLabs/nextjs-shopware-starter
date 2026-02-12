@@ -267,7 +267,7 @@ export async function requestCrossSell(
 
 export async function requestContext(cartId?: string) {
   try {
-    return withRetry(() => getApiClient(cartId).invoke("readContext get /context", {}));
+    return await withRetry(() => getApiClient(cartId).invoke("readContext get /context", {}));
   } catch (error) {
     if (error instanceof ApiClientError) {
       console.error(error);
