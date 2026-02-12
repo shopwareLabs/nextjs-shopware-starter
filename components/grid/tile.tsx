@@ -1,6 +1,6 @@
-import clsx from 'clsx';
-import Image from 'next/image';
-import Label from '../label';
+import clsx from "clsx";
+import Image from "next/image";
+import Label from "../label";
 
 export function GridTileImage({
   isInteractive = true,
@@ -14,25 +14,25 @@ export function GridTileImage({
     title: string;
     amount: string;
     currencyCode: string;
-    position?: 'bottom' | 'center';
+    position?: "bottom" | "center";
   };
 } & React.ComponentProps<typeof Image>) {
   return (
     <div
       className={clsx(
-        'group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black',
+        "group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black",
         {
           relative: label,
-          'border-2 border-blue-600': active,
-          'border-neutral-200 dark:border-neutral-800': !active
-        }
+          "border-2 border-blue-600": active,
+          "border-neutral-200 dark:border-neutral-800": !active,
+        },
       )}
     >
       {props.src ? (
         <Image
-          className={clsx('relative h-full w-full object-contain', {
-            'transition duration-300 ease-in-out group-hover:scale-105': isInteractive,
-            'max-h-[4rem] min-h-[4rem]': props.width === 200 && props.height === 200 // this styling is for the thumbnails below gallery on product detail page
+          className={clsx("relative h-full w-full object-contain", {
+            "transition duration-300 ease-in-out group-hover:scale-105": isInteractive,
+            "max-h-[4rem] min-h-[4rem]": props.width === 200 && props.height === 200, // this styling is for the thumbnails below gallery on product detail page
           })}
           {...props}
           alt="Image showing the thumbnail of the product"

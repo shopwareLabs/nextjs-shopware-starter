@@ -1,5 +1,5 @@
-import { Locator, Page } from '@playwright/test';
-import { AbstractPage } from './AbstractPage';
+import { Locator, Page } from "@playwright/test";
+import { AbstractPage } from "./AbstractPage";
 
 export class HomePage extends AbstractPage {
   //readonly page: Page
@@ -11,23 +11,23 @@ export class HomePage extends AbstractPage {
   }
 
   async visitMainPage() {
-    await this.page.goto('/');
+    await this.page.goto("/");
   }
 
   async openProductPage() {
-    this.page.getByRole('link', { name: 'LIGHT CLOTH TAUPE BRIGHT' }).click();
+    this.page.getByRole("link", { name: "LIGHT CLOTH TAUPE BRIGHT" }).click();
   }
 
   async openVariantsCartPage() {
-    await this.page.goto('/product/LAVENDA-Product-Variants/SW20004?size=M&colour=blue');
+    await this.page.goto("/product/LAVENDA-Product-Variants/SW20004?size=M&colour=blue");
   }
 
   async openCateoryPage() {
-    await this.page.getByRole('link', { name: 'Products' }).click();
+    await this.page.getByRole("link", { name: "Products" }).click();
   }
 
   async goToCmsPages() {
-    await this.page.getByRole('link', { name: 'Defective Product' }).click();
-    await this.page.waitForURL('**/Defective-Product');
+    await this.page.getByRole("link", { name: "Defective Product" }).click();
+    await this.page.waitForURL("**/Defective-Product");
   }
 }

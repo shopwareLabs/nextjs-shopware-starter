@@ -19,9 +19,9 @@ export type Schemas = {
   };
   AccountNewsletterRecipient: {
     /** @enum {string} */
-    apiAlias: 'account_newsletter_recipient';
+    apiAlias: "account_newsletter_recipient";
     /** @enum {string} */
-    status: 'undefined' | 'notSet' | 'direct' | 'optIn' | 'optOut';
+    status: "undefined" | "notSet" | "direct" | "optIn" | "optOut";
   };
   AclRole: {
     /** Format: date-time */
@@ -117,17 +117,17 @@ export type Schemas = {
      * The type of aggregation
      * @enum {string}
      */
-    type: 'entity';
+    type: "entity";
   };
   AggregationFilter: {
-    filter: components['schemas']['Filters'][];
+    filter: components["schemas"]["Filters"][];
     /** Give your aggregation an identifier, so you can find it easier */
     name: string;
     /**
      * The type of aggregation
      * @enum {string}
      */
-    type: 'filter';
+    type: "filter";
   };
   AggregationHistogram: {
     /** The field you want to aggregate over. */
@@ -144,13 +144,13 @@ export type Schemas = {
      * The type of aggregation
      * @enum {string}
      */
-    type: 'histogram';
+    type: "histogram";
   };
   AggregationMetrics: {
     field: string;
     name: string;
     /** @enum {string} */
-    type: 'avg' | 'count' | 'max' | 'min' | 'stats' | 'sum';
+    type: "avg" | "count" | "max" | "min" | "stats" | "sum";
   };
   AggregationRange: {
     /** The field you want to aggregate over. */
@@ -178,7 +178,7 @@ export type Schemas = {
      * The type of aggregation
      * @enum {string}
      */
-    type: 'range';
+    type: "range";
   };
   AggregationTerms: {
     /** The field you want to aggregate over. */
@@ -188,20 +188,20 @@ export type Schemas = {
     /** Give your aggregation an identifier, so you can find it easier */
     name: string;
     /** Sorting the aggregation result. */
-    sort?: components['schemas']['Sort'][];
+    sort?: components["schemas"]["Sort"][];
     /**
      * The type of aggregation
      * @enum {string}
      */
-    type: 'terms';
+    type: "terms";
   };
   Aggregations: (
-    | components['schemas']['AggregationMetrics']
-    | (components['schemas']['AggregationEntity'] & components['schemas']['SubAggregations'])
-    | (components['schemas']['AggregationFilter'] & components['schemas']['SubAggregations'])
-    | (components['schemas']['AggregationTerms'] & components['schemas']['SubAggregations'])
-    | (components['schemas']['AggregationHistogram'] & components['schemas']['SubAggregations'])
-    | (components['schemas']['AggregationRange'] & components['schemas']['SubAggregations'])
+    | components["schemas"]["AggregationMetrics"]
+    | (components["schemas"]["AggregationEntity"] & components["schemas"]["SubAggregations"])
+    | (components["schemas"]["AggregationFilter"] & components["schemas"]["SubAggregations"])
+    | (components["schemas"]["AggregationTerms"] & components["schemas"]["SubAggregations"])
+    | (components["schemas"]["AggregationHistogram"] & components["schemas"]["SubAggregations"])
+    | (components["schemas"]["AggregationRange"] & components["schemas"]["SubAggregations"])
   )[];
   App: {
     /** Format: date-time */
@@ -290,7 +290,7 @@ export type Schemas = {
     priority?: number;
   };
   Association: {
-    [key: string]: components['schemas']['Criteria'];
+    [key: string]: components["schemas"]["Criteria"];
   };
   AttendeeProductCollectionLastSeenResponse: {
     collection?: {
@@ -311,7 +311,7 @@ export type Schemas = {
      * The invitation status that client responded to
      * @enum {string}
      */
-    answer?: 'accepted' | 'maybe' | 'declined';
+    answer?: "accepted" | "maybe" | "declined";
     appointment?: {
       /**
        * Format: date-time
@@ -326,7 +326,7 @@ export type Schemas = {
       /** The appointment id */
       id?: string;
       /** The appointment status */
-      status?: ('started' | 'ended') | null;
+      status?: ("started" | "ended") | null;
     };
   };
   B2bBusinessPartner: {
@@ -338,12 +338,12 @@ export type Schemas = {
     updatedAt?: string;
   };
   B2bComponentsApprovalRule: {
-    affectedRole?: components['schemas']['B2bComponentsRole'];
+    affectedRole?: components["schemas"]["B2bComponentsRole"];
     affectedRoleId?: string;
     /** Format: date-time */
     createdAt: string;
     id?: string;
-    reviewerRole?: components['schemas']['B2bComponentsRole'];
+    reviewerRole?: components["schemas"]["B2bComponentsRole"];
     reviewerRoleId?: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -356,36 +356,36 @@ export type Schemas = {
     updatedAt?: string;
   };
   B2bComponentsPendingOrder: {
-    addresses?: components['schemas']['B2bComponentsPendingOrderAddress'][];
+    addresses?: components["schemas"]["B2bComponentsPendingOrderAddress"][];
     /** Format: float */
     amountNet?: number;
     /** Format: float */
     amountTotal?: number;
-    approvalRule?: components['schemas']['B2bComponentsApprovalRule'];
+    approvalRule?: components["schemas"]["B2bComponentsApprovalRule"];
     approvalRuleId?: string;
-    billingAddress?: components['schemas']['B2bComponentsPendingOrderAddress'];
+    billingAddress?: components["schemas"]["B2bComponentsPendingOrderAddress"];
     billingAddressId: string;
-    country?: components['schemas']['Country'];
+    country?: components["schemas"]["Country"];
     countryId: string;
     /** Format: date-time */
     createdAt: string;
-    currency?: components['schemas']['Currency'];
+    currency?: components["schemas"]["Currency"];
     currencyId: string;
-    customer?: components['schemas']['Customer'];
+    customer?: components["schemas"]["Customer"];
     customerId: string;
     customFields?: GenericRecord;
-    decidedBy?: components['schemas']['B2bEmployee'];
+    decidedBy?: components["schemas"]["B2bEmployee"];
     decidedById?: string;
-    employee?: components['schemas']['B2bEmployee'];
+    employee?: components["schemas"]["B2bEmployee"];
     employeeId: string;
     id?: string;
-    language?: components['schemas']['Language'];
+    language?: components["schemas"]["Language"];
     languageId: string;
-    order?: components['schemas']['Order'];
+    order?: components["schemas"]["Order"];
     orderId?: string;
     /** Format: float */
     originalPrice?: number;
-    paymentMethod?: components['schemas']['PaymentMethod'];
+    paymentMethod?: components["schemas"]["PaymentMethod"];
     paymentMethodId: string;
     price?: {
       calculatedTaxes?: GenericRecord;
@@ -402,10 +402,10 @@ export type Schemas = {
     };
     reason?: string;
     salesChannelId: string;
-    shippingMethod?: components['schemas']['ShippingMethod'];
+    shippingMethod?: components["schemas"]["ShippingMethod"];
     shippingMethodId: string;
     stateId: string;
-    stateMachineState?: components['schemas']['StateMachineState'];
+    stateMachineState?: components["schemas"]["StateMachineState"];
     taxStatus?: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -415,9 +415,9 @@ export type Schemas = {
     additionalAddressLine2?: string;
     city: string;
     company?: string;
-    country?: components['schemas']['Country'];
+    country?: components["schemas"]["Country"];
     countryId: string;
-    countryState?: components['schemas']['CountryState'];
+    countryState?: components["schemas"]["CountryState"];
     countryStateId?: string;
     /** Format: date-time */
     createdAt: string;
@@ -426,9 +426,9 @@ export type Schemas = {
     firstName: string;
     id: string;
     lastName: string;
-    pendingOrder?: components['schemas']['B2bComponentsPendingOrder'];
+    pendingOrder?: components["schemas"]["B2bComponentsPendingOrder"];
     phoneNumber?: string;
-    salutation?: components['schemas']['Salutation'];
+    salutation?: components["schemas"]["Salutation"];
     street: string;
     title?: string;
     /** Format: date-time */
@@ -451,21 +451,21 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     createdById?: string;
-    customer?: components['schemas']['Customer'];
+    customer?: components["schemas"]["Customer"];
     customerId: string;
     customFields?: GenericRecord;
-    employee?: components['schemas']['B2bEmployee'];
+    employee?: components["schemas"]["B2bEmployee"];
     employeeId?: string;
     id: string;
-    lineItems?: components['schemas']['B2bComponentsShoppingListLineItem'][];
+    lineItems?: components["schemas"]["B2bComponentsShoppingListLineItem"][];
     name?: string;
-    price?: components['schemas']['Price'][];
+    price?: components["schemas"]["Price"][];
     salesChannelId: string;
     /** Format: date-time */
     updatedAt?: string;
     updatedById?: string;
   };
-  B2bComponentsShoppingListJsonApi: components['schemas']['resource'] & {
+  B2bComponentsShoppingListJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     /** Format: date-time */
     createdAt: string;
@@ -475,7 +475,7 @@ export type Schemas = {
     employeeId?: string;
     id: string;
     name?: string;
-    price?: components['schemas']['Price'][];
+    price?: components["schemas"]["Price"][];
     relationships?: {
       customer?: {
         data?: {
@@ -532,8 +532,8 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     id: string;
-    price?: components['schemas']['Price'][];
-    product?: components['schemas']['Product'];
+    price?: components["schemas"]["Price"][];
+    product?: components["schemas"]["Product"];
     productId?: string;
     productVersionId?: string;
     /** Format: int64 */
@@ -541,11 +541,11 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  B2bComponentsShoppingListLineItemJsonApi: components['schemas']['resource'] & {
+  B2bComponentsShoppingListLineItemJsonApi: components["schemas"]["resource"] & {
     /** Format: date-time */
     createdAt: string;
     id: string;
-    price?: components['schemas']['Price'][];
+    price?: components["schemas"]["Price"][];
     productId?: string;
     productVersionId?: string;
     /** Format: int64 */
@@ -578,10 +578,10 @@ export type Schemas = {
     email: string;
     firstName: string;
     id: string;
-    language?: components['schemas']['Language'];
+    language?: components["schemas"]["Language"];
     languageId: string;
     lastName: string;
-    role?: components['schemas']['B2bComponentsRole'];
+    role?: components["schemas"]["B2bComponentsRole"];
     /** Format: date-time */
     updatedAt?: string;
   };
@@ -606,11 +606,11 @@ export type Schemas = {
   };
   Breadcrumb: {
     /** @enum {string} */
-    apiAlias: 'breadcrumb';
+    apiAlias: "breadcrumb";
     categoryId: string;
     name: string;
     path: string;
-    seoUrls?: components['schemas']['SeoUrl'][];
+    seoUrls?: components["schemas"]["SeoUrl"][];
     translated: {
       categoryId: string;
       customFields?: GenericRecord;
@@ -620,7 +620,7 @@ export type Schemas = {
       keywords?: string;
       linkNewTab?: boolean;
       /** @enum {string} */
-      linkType?: 'external' | 'category' | 'product' | 'landing_page';
+      linkType?: "external" | "category" | "product" | "landing_page";
       metaDescription?: string;
       metaTitle?: string;
       name: string;
@@ -629,33 +629,33 @@ export type Schemas = {
       type: string;
     };
     /** @enum {string} */
-    type: 'page' | 'link' | 'folder';
+    type: "page" | "link" | "folder";
   };
   BreadcrumbCollection: {
     /** @enum {string} */
-    apiAlias: 'breadcrumb_collection';
-    breadcrumbs: components['schemas']['Breadcrumb'][];
+    apiAlias: "breadcrumb_collection";
+    breadcrumbs: components["schemas"]["Breadcrumb"][];
   };
   CalculatedPrice: {
     /** @enum {string} */
-    apiAlias: 'calculated_price';
+    apiAlias: "calculated_price";
     calculatedTaxes: {
       /** @enum {string} */
-      apiAlias: 'cart_tax_calculated';
+      apiAlias: "cart_tax_calculated";
       price: number;
       tax: number;
       taxRate: number;
     }[];
     hasRange: boolean;
-    listPrice: components['schemas']['CartListPrice'] | null;
+    listPrice: components["schemas"]["CartListPrice"] | null;
     netPrice: number;
     positionPrice: number;
     quantity: number;
     rawTotal?: number;
-    referencePrice: components['schemas']['CartPriceReference'] | null;
+    referencePrice: components["schemas"]["CartPriceReference"] | null;
     regulationPrice: {
       /** @enum {string} */
-      apiAlias?: 'cart_regulation_price';
+      apiAlias?: "cart_regulation_price";
       price?: number;
     } | null;
     /** Currently active tax rules and/or rates */
@@ -676,20 +676,20 @@ export type Schemas = {
     campaignCode?: string | null;
     /** A comment that can be added to the cart. */
     customerComment?: string | null;
-    deliveries?: components['schemas']['CartDelivery'][];
+    deliveries?: components["schemas"]["CartDelivery"][];
     /** A list of all cart errors, such as insufficient stocks, invalid addresses or vouchers. */
-    errors?: components['schemas']['CartError'][];
+    errors?: components["schemas"]["CartError"][];
     /** All items within the cart */
-    lineItems?: components['schemas']['LineItem'][];
+    lineItems?: components["schemas"]["LineItem"][];
     modified?: boolean;
     /** Name of the cart - for example `guest-cart` */
     name?: string;
-    price?: components['schemas']['CalculatedPrice'];
+    price?: components["schemas"]["CalculatedPrice"];
     /** Context token identifying the cart and the user session */
     token?: string;
     /** A list of all payment transactions associated with the current cart. */
     transactions?: {
-      amount?: components['schemas']['CalculatedPrice'];
+      amount?: components["schemas"]["CalculatedPrice"];
       paymentMethodId?: string;
     }[];
   };
@@ -701,22 +701,22 @@ export type Schemas = {
       latest?: string;
     };
     location?: {
-      address?: components['schemas']['CustomerAddress'];
+      address?: components["schemas"]["CustomerAddress"];
       /** @enum {string} */
-      apiAlias?: 'cart_delivery_shipping_location';
-      country?: components['schemas']['Country'];
-      state?: components['schemas']['CountryState'];
+      apiAlias?: "cart_delivery_shipping_location";
+      country?: components["schemas"]["Country"];
+      state?: components["schemas"]["CountryState"];
     };
-    positions?: components['schemas']['CartDeliveryPosition'][];
-    shippingCosts?: components['schemas']['CalculatedPrice'];
-    shippingMethod?: components['schemas']['ShippingMethod'];
+    positions?: components["schemas"]["CartDeliveryPosition"][];
+    shippingCosts?: components["schemas"]["CalculatedPrice"];
+    shippingMethod?: components["schemas"]["ShippingMethod"];
   };
   CartDeliveryInformation: {
     /** @enum {string} */
-    apiAlias: 'cart_delivery_information';
+    apiAlias: "cart_delivery_information";
     deliveryTime?: {
       /** @enum {string} */
-      apiAlias?: 'cart_delivery_time';
+      apiAlias?: "cart_delivery_time";
       max?: number;
       min?: number;
       name?: string;
@@ -738,8 +738,8 @@ export type Schemas = {
       latest?: string;
     };
     identifier?: string;
-    lineItem?: components['schemas']['LineItem'];
-    price?: components['schemas']['CalculatedPrice'];
+    lineItem?: components["schemas"]["LineItem"];
+    price?: components["schemas"]["CalculatedPrice"];
   };
   CartError: {
     items?: {
@@ -756,20 +756,20 @@ export type Schemas = {
     };
   };
   CartItems: {
-    items?: components['schemas']['LineItem'][];
+    items?: components["schemas"]["LineItem"][];
   };
   CartListPrice: {
     /** @enum {string} */
-    apiAlias: 'cart_list_price';
+    apiAlias: "cart_list_price";
     discount?: number;
     percentage?: number;
     price?: number;
   };
   CartPriceQuantity: {
     /** @enum {string} */
-    apiAlias: 'cart_price_quantity';
+    apiAlias: "cart_price_quantity";
     isCalculated?: boolean;
-    listPrice?: components['schemas']['CartListPrice'];
+    listPrice?: components["schemas"]["CartListPrice"];
     price?: number;
     quantity?: number;
     regulationPrice?: {
@@ -785,15 +785,15 @@ export type Schemas = {
   };
   CartPriceReference: {
     /** @enum {string} */
-    apiAlias: 'cart_price_reference';
+    apiAlias: "cart_price_reference";
     hasRange: boolean;
-    listPrice: components['schemas']['CartListPrice'] | null;
+    listPrice: components["schemas"]["CartListPrice"] | null;
     price?: number;
     purchaseUnit?: number;
     referenceUnit?: number;
     regulationPrice: {
       /** @enum {string} */
-      apiAlias?: 'cart_regulation_price';
+      apiAlias?: "cart_regulation_price";
       price?: number;
     } | null;
     unitName: string;
@@ -805,12 +805,12 @@ export type Schemas = {
     afterCategoryId?: string;
     afterCategoryVersionId?: string;
     /** @enum {string} */
-    apiAlias: 'category';
+    apiAlias: "category";
     breadcrumb: readonly string[];
     /** Format: int64 */
     childCount: number;
-    children: components['schemas']['Category'][];
-    cmsPage?: components['schemas']['CmsPage'];
+    children: components["schemas"]["Category"][];
+    cmsPage?: components["schemas"]["CmsPage"];
     cmsPageId?: string;
     /** Runtime field, cannot be used as part of the criteria. */
     cmsPageIdSwitched?: boolean;
@@ -829,18 +829,18 @@ export type Schemas = {
     level?: number;
     linkNewTab?: boolean;
     linkType?: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId?: string;
     metaDescription?: string;
     metaTitle?: string;
     name: string;
-    parent?: components['schemas']['Category'];
+    parent?: components["schemas"]["Category"];
     parentId?: string;
     parentVersionId?: string;
     path?: string;
     productAssignmentType: string;
-    seoUrls?: components['schemas']['SeoUrl'][];
-    tags?: components['schemas']['Tag'][];
+    seoUrls?: components["schemas"]["SeoUrl"][];
+    tags?: components["schemas"]["Tag"][];
     translated: {
       afterCategoryId: string;
       afterCategoryVersionId: string;
@@ -875,7 +875,7 @@ export type Schemas = {
      */
     visibleChildCount?: number;
   };
-  CategoryJsonApi: components['schemas']['resource'] & {
+  CategoryJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     afterCategoryId?: string;
     afterCategoryVersionId?: string;
@@ -1034,15 +1034,15 @@ export type Schemas = {
     visibleChildCount?: number;
   };
   ClientPresentationStateResponse: {
-    stateForAll?: components['schemas']['StateForAll'];
-    stateForClients?: components['schemas']['StateForClients'];
-    stateForMe?: components['schemas']['StateForMe'];
+    stateForAll?: components["schemas"]["StateForAll"];
+    stateForClients?: components["schemas"]["StateForClients"];
+    stateForMe?: components["schemas"]["StateForMe"];
   };
   CmsBlock: {
     /** @enum {string} */
-    apiAlias: 'cms_block';
+    apiAlias: "cms_block";
     backgroundColor?: string;
-    backgroundMedia?: components['schemas']['Media'];
+    backgroundMedia?: components["schemas"]["Media"];
     backgroundMediaId?: string;
     backgroundMediaMode?: string;
     cmsSectionVersionId?: string;
@@ -1092,7 +1092,7 @@ export type Schemas = {
     position: number;
     sectionId: string;
     sectionPosition?: string;
-    slots: components['schemas']['CmsSlot'][];
+    slots: components["schemas"]["CmsSlot"][];
     type: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -1105,7 +1105,7 @@ export type Schemas = {
   };
   CmsPage: {
     /** @enum {string} */
-    apiAlias: 'cms_page';
+    apiAlias: "cms_page";
     config?: {
       backgroundColor?: string;
     };
@@ -1132,11 +1132,11 @@ export type Schemas = {
       };
     };
     id: string;
-    landingPages?: components['schemas']['LandingPage'][];
+    landingPages?: components["schemas"]["LandingPage"][];
     name?: string;
-    previewMedia?: components['schemas']['Media'];
+    previewMedia?: components["schemas"]["Media"];
     previewMediaId?: string;
-    sections: components['schemas']['CmsSection'][];
+    sections: components["schemas"]["CmsSection"][];
     translated: {
       cssClass: string;
       entity: string;
@@ -1166,12 +1166,12 @@ export type Schemas = {
   };
   CmsSection: {
     /** @enum {string} */
-    apiAlias: 'cms_section';
+    apiAlias: "cms_section";
     backgroundColor?: string;
-    backgroundMedia?: components['schemas']['Media'];
+    backgroundMedia?: components["schemas"]["Media"];
     backgroundMediaId?: string;
     backgroundMediaMode?: string;
-    blocks: components['schemas']['CmsBlock'][];
+    blocks: components["schemas"]["CmsBlock"][];
     cmsPageVersionId?: string;
     /** Format: date-time */
     createdAt: string;
@@ -1196,7 +1196,7 @@ export type Schemas = {
     };
     id?: string;
     mobileBehavior?: string;
-    page?: components['schemas']['CmsPage'];
+    page?: components["schemas"]["CmsPage"];
     pageId: string;
     /** Format: int64 */
     position: number;
@@ -1222,7 +1222,7 @@ export type Schemas = {
     };
   };
   CmsSlot: {
-    block?: components['schemas']['CmsBlock'];
+    block?: components["schemas"]["CmsBlock"];
     blockId: string;
     cmsBlockVersionId?: string;
     config?: GenericRecord;
@@ -1280,7 +1280,7 @@ export type Schemas = {
     position?: number;
     postalCodeRequired?: boolean;
     shippingAvailable?: boolean;
-    states?: components['schemas']['CountryState'][];
+    states?: components["schemas"]["CountryState"][];
     translated: {
       advancedPostalCodePattern: string;
       defaultPostalCodePattern: string;
@@ -1294,7 +1294,7 @@ export type Schemas = {
     vatIdPattern?: string;
     vatIdRequired?: boolean;
   };
-  CountryJsonApi: components['schemas']['resource'] & {
+  CountryJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     addressFormat: GenericRecord;
     advancedPostalCodePattern?: string;
@@ -1377,7 +1377,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  CountryStateJsonApi: components['schemas']['resource'] & {
+  CountryStateJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     countryId: string;
     /** Format: date-time */
@@ -1402,7 +1402,7 @@ export type Schemas = {
      * @default -1
      */
     lifeTimeInSeconds?: number;
-    name: components['schemas']['InteractionName'];
+    name: components["schemas"]["InteractionName"];
     payload?: GenericRecord;
     /**
      * The time when the interaction was triggered
@@ -1411,54 +1411,54 @@ export type Schemas = {
     triggeredAt?: string;
   };
   Criteria: {
-    aggregations?: components['schemas']['Aggregations'];
+    aggregations?: components["schemas"]["Aggregations"];
     /** Associations to include. For more information, see [Search Queries > Associations](https://shopware.stoplight.io/docs/store-api/cf710bf73d0cd-search-queries#associations) */
-    associations?: components['schemas']['Association'];
+    associations?: components["schemas"]["Association"];
     /** Fields which should be returned in the search result. */
     fields?: string[];
     /** List of filters to restrict the search result. For more information, see [Search Queries > Filter](https://shopware.stoplight.io/docs/store-api/docs/concepts/search-queries.md#filter) */
     filter?: (
-      | components['schemas']['SimpleFilter']
-      | components['schemas']['EqualsFilter']
-      | components['schemas']['MultiNotFilter']
-      | components['schemas']['RangeFilter']
+      | components["schemas"]["SimpleFilter"]
+      | components["schemas"]["EqualsFilter"]
+      | components["schemas"]["MultiNotFilter"]
+      | components["schemas"]["RangeFilter"]
     )[];
     /** Perform groupings over certain fields */
     grouping?: string[];
     /** List of ids to search for */
     ids?: string[];
-    includes?: components['schemas']['Include'];
+    includes?: components["schemas"]["Include"];
     /** Number of items per result page */
     limit?: number;
     p?: number;
     /** Search result page */
     page?: number;
     /** Filters that applied without affecting aggregations. For more information, see [Search Queries > Post Filter](https://shopware.stoplight.io/docs/store-api/docs/concepts/search-queries.md#post-filter) */
-    'post-filter'?: (
-      | components['schemas']['SimpleFilter']
-      | components['schemas']['EqualsFilter']
-      | components['schemas']['MultiNotFilter']
-      | components['schemas']['RangeFilter']
+    "post-filter"?: (
+      | components["schemas"]["SimpleFilter"]
+      | components["schemas"]["EqualsFilter"]
+      | components["schemas"]["MultiNotFilter"]
+      | components["schemas"]["RangeFilter"]
     )[];
     /** List of queries to restrict the search result. For more information, see [Search Queries > Query](https://shopware.stoplight.io/docs/store-api/docs/concepts/search-queries.md#query) */
-    query?: components['schemas']['Query'][];
+    query?: components["schemas"]["Query"][];
     /** Sorting in the search result. */
-    sort?: components['schemas']['Sort'][];
+    sort?: components["schemas"]["Sort"][];
     /** Search term */
     term?: string;
-    'total-count-mode'?: components['schemas']['TotalCountMode'];
+    "total-count-mode"?: components["schemas"]["TotalCountMode"];
   };
   CrossSellingElement: {
     /** @enum {string} */
-    apiAlias: 'cross_selling_element';
-    crossSelling: components['schemas']['ProductCrossSelling'];
-    products: components['schemas']['Product'][];
+    apiAlias: "cross_selling_element";
+    crossSelling: components["schemas"]["ProductCrossSelling"];
+    products: components["schemas"]["Product"][];
     /** Format: uuid */
     streamId?: string;
     /** Format: int32 */
     total: number;
   };
-  CrossSellingElementCollection: components['schemas']['CrossSellingElement'][];
+  CrossSellingElementCollection: components["schemas"]["CrossSellingElement"][];
   Currency: {
     /** Format: date-time */
     createdAt: string;
@@ -1506,7 +1506,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  CurrencyJsonApi: components['schemas']['resource'] & {
+  CurrencyJsonApi: components["schemas"]["resource"] & {
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
@@ -1577,13 +1577,13 @@ export type Schemas = {
   CustomPrice: {
     /** Format: date-time */
     createdAt: string;
-    customer?: components['schemas']['Customer'];
-    customerGroup?: components['schemas']['CustomerGroup'];
+    customer?: components["schemas"]["Customer"];
+    customerGroup?: components["schemas"]["CustomerGroup"];
     customerGroupId?: string;
     customerId?: string;
     id: string;
     price: GenericRecord;
-    product?: components['schemas']['Product'];
+    product?: components["schemas"]["Product"];
     productId: string;
     productVersionId?: string;
     /** Format: date-time */
@@ -1592,12 +1592,12 @@ export type Schemas = {
   Customer: {
     accountType: string;
     active?: boolean;
-    activeBillingAddress: components['schemas']['CustomerAddress'];
-    activeShippingAddress: components['schemas']['CustomerAddress'];
-    addresses?: components['schemas']['CustomerAddress'][];
+    activeBillingAddress: components["schemas"]["CustomerAddress"];
+    activeShippingAddress: components["schemas"]["CustomerAddress"];
+    addresses?: components["schemas"]["CustomerAddress"][];
     affiliateCode?: string;
     /** @enum {string} */
-    apiAlias: 'customer';
+    apiAlias: "customer";
     birthday?: string;
     campaignCode?: string;
     company?: string;
@@ -1606,11 +1606,11 @@ export type Schemas = {
     createdById?: string;
     customerNumber: string;
     customFields?: GenericRecord;
-    defaultBillingAddress?: components['schemas']['CustomerAddress'];
+    defaultBillingAddress?: components["schemas"]["CustomerAddress"];
     defaultBillingAddressId: string;
-    defaultPaymentMethod?: components['schemas']['PaymentMethod'];
+    defaultPaymentMethod?: components["schemas"]["PaymentMethod"];
     defaultPaymentMethodId: string;
-    defaultShippingAddress?: components['schemas']['CustomerAddress'];
+    defaultShippingAddress?: components["schemas"]["CustomerAddress"];
     defaultShippingAddressId: string;
     /** Format: date-time */
     doubleOptInConfirmDate?: string;
@@ -1638,19 +1638,19 @@ export type Schemas = {
     /** Format: date-time */
     firstLogin?: string;
     firstName: string;
-    group?: components['schemas']['CustomerGroup'];
+    group?: components["schemas"]["CustomerGroup"];
     groupId: string;
     guest?: boolean;
     hash?: string;
     id: string;
-    language?: components['schemas']['Language'];
+    language?: components["schemas"]["Language"];
     languageId: string;
     /** Format: date-time */
     lastLogin?: string;
     lastName: string;
     /** Format: date-time */
     lastOrderDate?: string;
-    lastPaymentMethod?: components['schemas']['PaymentMethod'];
+    lastPaymentMethod?: components["schemas"]["PaymentMethod"];
     lastPaymentMethodId?: string;
     /** Format: int64 */
     orderCount?: number;
@@ -1659,10 +1659,10 @@ export type Schemas = {
     /** Format: int64 */
     reviewCount?: number;
     salesChannelId: string;
-    salutation?: components['schemas']['Salutation'];
+    salutation?: components["schemas"]["Salutation"];
     salutationId?: string;
     tagIds?: readonly string[];
-    tags?: components['schemas']['Tag'][];
+    tags?: components["schemas"]["Tag"][];
     title?: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -1674,9 +1674,9 @@ export type Schemas = {
     additionalAddressLine2?: string;
     city: string;
     company?: string;
-    country?: components['schemas']['Country'];
+    country?: components["schemas"]["Country"];
     countryId: string;
-    countryState?: components['schemas']['CountryState'];
+    countryState?: components["schemas"]["CountryState"];
     countryStateId?: string;
     /** Format: date-time */
     createdAt: string;
@@ -1687,7 +1687,7 @@ export type Schemas = {
     id: string;
     lastName: string;
     phoneNumber?: string;
-    salutation?: components['schemas']['Salutation'];
+    salutation?: components["schemas"]["Salutation"];
     salutationId?: string;
     street: string;
     title?: string;
@@ -1700,29 +1700,29 @@ export type Schemas = {
     additionalAddressLine2?: string;
     city: string;
     company?: string;
-    country?: components['schemas']['Country'];
+    country?: components["schemas"]["Country"];
     countryId: string;
-    countryState?: components['schemas']['CountryState'];
+    countryState?: components["schemas"]["CountryState"];
     countryStateId?: string;
     customFields?: GenericRecord;
     department?: string;
     firstName: string;
     lastName: string;
     phoneNumber?: string;
-    salutation?: components['schemas']['Salutation'];
+    salutation?: components["schemas"]["Salutation"];
     salutationId?: string;
     street: string;
     title?: string;
     zipcode?: string;
   };
   CustomerAddressRead: {
-    country: components['schemas']['Country'];
-    countryState?: components['schemas']['CountryState'];
+    country: components["schemas"]["Country"];
+    countryState?: components["schemas"]["CountryState"];
     /** Format: date-time */
     createdAt: string;
     customerId: string;
     id?: string;
-    salutation: components['schemas']['Salutation'];
+    salutation: components["schemas"]["Salutation"];
     /** Format: date-time */
     updatedAt: string | null;
   };
@@ -1757,7 +1757,7 @@ export type Schemas = {
   CustomerSpecificFeatures: {
     /** Format: date-time */
     createdAt: string;
-    customer?: components['schemas']['Customer'];
+    customer?: components["schemas"]["Customer"];
     customerId: string;
     features: GenericRecord;
     id?: string;
@@ -1767,7 +1767,7 @@ export type Schemas = {
   CustomerTag: {
     customerId: string;
     id?: string;
-    tag?: components['schemas']['Tag'];
+    tag?: components["schemas"]["Tag"];
     tagId: string;
   };
   CustomerWishlist: {
@@ -1815,18 +1815,18 @@ export type Schemas = {
     createdAt: string;
     customFields?: GenericRecord;
     deepLinkCode: string;
-    dependentDocuments?: components['schemas']['Document'][];
-    documentMediaFile?: components['schemas']['Media'];
+    dependentDocuments?: components["schemas"]["Document"][];
+    documentMediaFile?: components["schemas"]["Media"];
     documentMediaFileId?: string;
     documentNumber?: string;
-    documentType?: components['schemas']['DocumentType'];
+    documentType?: components["schemas"]["DocumentType"];
     documentTypeId: string;
     fileType: string;
     id: string;
-    order?: components['schemas']['Order'];
+    order?: components["schemas"]["Order"];
     orderId: string;
     orderVersionId?: string;
-    referencedDocument?: components['schemas']['Document'];
+    referencedDocument?: components["schemas"]["Document"];
     referencedDocumentId?: string;
     sent?: boolean;
     static?: boolean;
@@ -1844,7 +1844,7 @@ export type Schemas = {
     filenameSuffix?: string;
     global: boolean;
     id: string;
-    logo?: components['schemas']['Media'];
+    logo?: components["schemas"]["Media"];
     logoId?: string;
     name: string;
     /** Format: date-time */
@@ -1915,7 +1915,7 @@ export type Schemas = {
     updatedAt?: string;
     updatedById?: string;
     videoAudioSettings?: string;
-    videoChat?: components['schemas']['DsrAppointmentVideoChat'];
+    videoChat?: components["schemas"]["DsrAppointmentVideoChat"];
   };
   DsrAppointmentAttendee: {
     /** Format: date-time */
@@ -1959,15 +1959,15 @@ export type Schemas = {
   };
   DsrPresentation: {
     active?: boolean;
-    appointments?: components['schemas']['DsrAppointment'][];
-    cmsPages?: components['schemas']['DsrPresentationCmsPage'][];
+    appointments?: components["schemas"]["DsrAppointment"][];
+    cmsPages?: components["schemas"]["DsrPresentationCmsPage"][];
     /** Format: date-time */
     createdAt: string;
     createdById: string;
     customFields?: GenericRecord;
     id: string;
     name: string;
-    parent?: components['schemas']['DsrPresentation'];
+    parent?: components["schemas"]["DsrPresentation"];
     parentId?: string;
     parentVersionId?: string;
     translated: {
@@ -1984,7 +1984,7 @@ export type Schemas = {
     versionId?: string;
   };
   DsrPresentationCmsPage: {
-    cmsPage?: components['schemas']['CmsPage'];
+    cmsPage?: components["schemas"]["CmsPage"];
     cmsPageId: string;
     cmsPageVersionId?: string;
     /** Format: date-time */
@@ -2014,20 +2014,20 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  DynamicPageOpenedPayload: components['schemas']['AbstractDynamicPageOpenedPayload'];
+  DynamicPageOpenedPayload: components["schemas"]["AbstractDynamicPageOpenedPayload"];
   DynamicProductListingPageOpenedPayload: WithRequired<
     {
       /** Current page position in the pagination */
       page: number;
-    } & components['schemas']['AbstractDynamicPageOpenedPayload'],
-    'page'
+    } & components["schemas"]["AbstractDynamicPageOpenedPayload"],
+    "page"
   >;
   DynamicProductPageOpenedPayload: WithRequired<
     {
       /** the id from the product which is shown on the dynamic page */
       productId: string;
-    } & components['schemas']['AbstractDynamicPageOpenedPayload'],
-    'productId'
+    } & components["schemas"]["AbstractDynamicPageOpenedPayload"],
+    "productId"
   >;
   EmptyPayload: Record<string, never>;
   EntitySearchResult: {
@@ -2044,14 +2044,14 @@ export type Schemas = {
   EqualsFilter: {
     field: string;
     /** @enum {string} */
-    type: 'equals';
+    type: "equals";
     value: string | number | boolean | null;
   };
   Filters: (
-    | components['schemas']['SimpleFilter']
-    | components['schemas']['EqualsFilter']
-    | components['schemas']['MultiNotFilter']
-    | components['schemas']['RangeFilter']
+    | components["schemas"]["SimpleFilter"]
+    | components["schemas"]["EqualsFilter"]
+    | components["schemas"]["MultiNotFilter"]
+    | components["schemas"]["RangeFilter"]
   )[];
   FindProductVariantRouteResponse: {
     foundCombination?: {
@@ -2115,24 +2115,24 @@ export type Schemas = {
     updatedAt?: string;
   };
   InteractionName:
-    | 'product.viewed'
-    | 'dynamicPage.opened'
-    | 'dynamicProductPage.opened'
-    | 'dynamicPage.closed'
-    | 'page.viewed'
-    | 'attendee.product.collection.liked'
-    | 'attendee.product.collection.disliked'
-    | 'attendee.product.collection.removed'
-    | 'remote.checkout.accepted'
-    | 'remote.checkout.declined'
-    | 'keep.alive'
-    | 'quickview.opened'
-    | 'quickview.closed'
-    | 'dynamicProductListingPage.opened'
-    | 'dynamicProductListingPage.loadedMore'
-    | 'remote.checkout.denied'
-    | 'guide.hovered'
-    | 'broadcastMode.toggled';
+    | "product.viewed"
+    | "dynamicPage.opened"
+    | "dynamicProductPage.opened"
+    | "dynamicPage.closed"
+    | "page.viewed"
+    | "attendee.product.collection.liked"
+    | "attendee.product.collection.disliked"
+    | "attendee.product.collection.removed"
+    | "remote.checkout.accepted"
+    | "remote.checkout.declined"
+    | "keep.alive"
+    | "quickview.opened"
+    | "quickview.closed"
+    | "dynamicProductListingPage.opened"
+    | "dynamicProductListingPage.loadedMore"
+    | "remote.checkout.denied"
+    | "guide.hovered"
+    | "broadcastMode.toggled";
   JoinAppointmentResponse: {
     /** The name of the appointment */
     appointmentName?: string;
@@ -2158,7 +2158,7 @@ export type Schemas = {
      * The type of the appointment
      * @enum {string}
      */
-    presentationGuideMode?: 'self' | 'guided';
+    presentationGuideMode?: "self" | "guided";
     /** The id of the current sales channel */
     salesChannelId?: string;
     /** The name of the current sales channel */
@@ -2167,8 +2167,8 @@ export type Schemas = {
   LandingPage: {
     active?: boolean;
     /** @enum {string} */
-    apiAlias: 'landing_page';
-    cmsPage?: components['schemas']['CmsPage'];
+    apiAlias: "landing_page";
+    cmsPage?: components["schemas"]["CmsPage"];
     cmsPageId?: string;
     cmsPageVersionId?: string;
     /** Format: date-time */
@@ -2179,7 +2179,7 @@ export type Schemas = {
     metaDescription?: string;
     metaTitle?: string;
     name: string;
-    seoUrls?: components['schemas']['SeoUrl'][];
+    seoUrls?: components["schemas"]["SeoUrl"][];
     slotConfig?: GenericRecord;
     translated: {
       cmsPageId: string;
@@ -2196,7 +2196,7 @@ export type Schemas = {
     url: string;
     versionId?: string;
   };
-  LandingPageJsonApi: components['schemas']['resource'] & {
+  LandingPageJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     cmsPageId?: string;
     cmsPageVersionId?: string;
@@ -2257,22 +2257,22 @@ export type Schemas = {
     versionId?: string;
   };
   Language: {
-    children?: components['schemas']['Language'][];
+    children?: components["schemas"]["Language"][];
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
     id: string;
-    locale?: components['schemas']['Locale'];
+    locale?: components["schemas"]["Locale"];
     localeId: string;
     name: string;
-    parent?: components['schemas']['Language'];
+    parent?: components["schemas"]["Language"];
     parentId?: string;
-    translationCode?: components['schemas']['Locale'];
+    translationCode?: components["schemas"]["Locale"];
     translationCodeId?: string;
     /** Format: date-time */
     updatedAt?: string;
   };
-  LanguageJsonApi: components['schemas']['resource'] & {
+  LanguageJsonApi: components["schemas"]["resource"] & {
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
@@ -2347,34 +2347,34 @@ export type Schemas = {
     updatedAt?: string;
   };
   LineItem: {
-    children?: components['schemas']['LineItem'][];
-    cover?: components['schemas']['ProductMedia'];
+    children?: components["schemas"]["LineItem"][];
+    cover?: components["schemas"]["ProductMedia"];
     dataContextHash?: string;
     dataTimestamp?: string;
-    deliveryInformation?: components['schemas']['CartDeliveryInformation'];
+    deliveryInformation?: components["schemas"]["CartDeliveryInformation"];
     description?: string;
     good?: boolean;
     id: string;
     label?: string;
     modified?: boolean;
     modifiedByApp?: boolean;
-    payload?: components['schemas']['Product'];
+    payload?: components["schemas"]["Product"];
     price?: {
       /** @enum {string} */
-      apiAlias: 'calculated_price';
+      apiAlias: "calculated_price";
       calculatedTaxes?: {
         /** @enum {string} */
-        apiAlias: 'cart_tax_calculated';
+        apiAlias: "cart_tax_calculated";
         price: number;
         tax: number;
         taxRate: number;
       }[];
-      listPrice?: components['schemas']['CartListPrice'] | null;
+      listPrice?: components["schemas"]["CartListPrice"] | null;
       quantity: number;
-      referencePrice?: components['schemas']['CartPriceReference'] | null;
+      referencePrice?: components["schemas"]["CartPriceReference"] | null;
       regulationPrice?: {
         /** @enum {string} */
-        apiAlias?: 'cart_regulation_price';
+        apiAlias?: "cart_regulation_price";
         price?: number;
       } | null;
       /** Currently active tax rules and/or rates */
@@ -2386,7 +2386,7 @@ export type Schemas = {
       totalPrice: number;
       unitPrice: number;
     };
-    priceDefinition?: components['schemas']['CartPriceQuantity'];
+    priceDefinition?: components["schemas"]["CartPriceQuantity"];
     quantity?: number;
     quantityInformation?: {
       maxPurchase?: number;
@@ -2396,18 +2396,18 @@ export type Schemas = {
     referencedId?: string;
     removable?: boolean;
     stackable?: boolean;
-    states?: ('is-physical' | 'is-download')[];
-    type: components['schemas']['LineItemType'];
+    states?: ("is-physical" | "is-download")[];
+    type: components["schemas"]["LineItemType"];
     uniqueIdentifier?: string;
   };
   LineItemType:
-    | 'product'
-    | 'credit'
-    | 'custom'
-    | 'promotion'
-    | 'discount'
-    | 'container'
-    | 'quantity';
+    | "product"
+    | "credit"
+    | "custom"
+    | "promotion"
+    | "discount"
+    | "container"
+    | "quantity";
   Locale: {
     code: string;
     /** Format: date-time */
@@ -2460,8 +2460,8 @@ export type Schemas = {
     createdAt: string;
     customFields?: GenericRecord;
     id?: string;
-    mailTemplateType?: components['schemas']['MailTemplateType'];
-    media?: components['schemas']['MailTemplateMedia'][];
+    mailTemplateType?: components["schemas"]["MailTemplateType"];
+    media?: components["schemas"]["MailTemplateMedia"][];
     senderName?: string;
     systemDefault?: boolean;
     translated: {
@@ -2476,7 +2476,7 @@ export type Schemas = {
     id: string;
     languageId: string;
     mailTemplateId: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId: string;
     /** Format: int64 */
     position?: number;
@@ -2507,7 +2507,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  MainCategoryJsonApi: components['schemas']['resource'] & {
+  MainCategoryJsonApi: components["schemas"]["resource"] & {
     categoryId: string;
     categoryVersionId?: string;
     /** Format: date-time */
@@ -2522,7 +2522,7 @@ export type Schemas = {
   Media: {
     alt?: string;
     /** @enum {string} */
-    apiAlias: 'media';
+    apiAlias: "media";
     config?: GenericRecord;
     /** Format: date-time */
     createdAt: string;
@@ -2558,7 +2558,7 @@ export type Schemas = {
     mimeType?: string;
     path: string;
     private: boolean;
-    thumbnails?: components['schemas']['MediaThumbnail'][];
+    thumbnails?: components["schemas"]["MediaThumbnail"][];
     title?: string;
     translated: {
       alt: string;
@@ -2581,7 +2581,7 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     id: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     tags?: GenericRecord[];
     /** Format: date-time */
     updatedAt?: string;
@@ -2609,9 +2609,9 @@ export type Schemas = {
   };
   MediaTag: {
     id?: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId: string;
-    tag?: components['schemas']['Tag'];
+    tag?: components["schemas"]["Tag"];
     tagId: string;
   };
   MediaThumbnail: {
@@ -2644,19 +2644,19 @@ export type Schemas = {
   };
   MultiNotFilter: {
     /** @enum {string} */
-    operator: 'AND' | 'and' | 'OR' | 'or';
-    queries: components['schemas']['Filters'];
+    operator: "AND" | "and" | "OR" | "or";
+    queries: components["schemas"]["Filters"];
     /** @enum {string} */
-    type: 'multi' | 'not';
+    type: "multi" | "not";
   };
   NaturalLanguageSearchTermResponse: {
     /** @enum {string} */
-    apiAlias: 'product_natural_language_search_term';
+    apiAlias: "product_natural_language_search_term";
     reason: string;
     term: string;
   }[];
-  NavigationRouteResponse: components['schemas']['Category'][];
-  NavigationType: 'main-navigation' | 'footer-navigation' | 'service-navigation';
+  NavigationRouteResponse: components["schemas"]["Category"][];
+  NavigationType: "main-navigation" | "footer-navigation" | "service-navigation";
   NewsletterRecipient: {
     /** Format: date-time */
     createdAt: string;
@@ -2664,7 +2664,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  NewsletterRecipientJsonApi: components['schemas']['resource'] & {
+  NewsletterRecipientJsonApi: components["schemas"]["resource"] & {
     /** Format: date-time */
     createdAt: string;
     id?: string;
@@ -2707,28 +2707,28 @@ export type Schemas = {
     updatedAt?: string;
   };
   Order: {
-    addresses?: components['schemas']['OrderAddress'][];
+    addresses?: components["schemas"]["OrderAddress"][];
     affiliateCode?: string;
     /** Format: float */
     amountNet?: number;
     /** Format: float */
     amountTotal?: number;
-    billingAddress?: components['schemas']['OrderAddress'];
+    billingAddress?: components["schemas"]["OrderAddress"];
     billingAddressId: string;
     billingAddressVersionId?: string;
     campaignCode?: string;
     /** Format: date-time */
     createdAt: string;
     createdById?: string;
-    currency?: components['schemas']['Currency'];
+    currency?: components["schemas"]["Currency"];
     /** Format: float */
     currencyFactor: number;
     currencyId: string;
     customerComment?: string;
     customFields?: GenericRecord;
     deepLinkCode?: string;
-    deliveries?: components['schemas']['OrderDelivery'][];
-    documents: components['schemas']['Document'][];
+    deliveries?: components["schemas"]["OrderDelivery"][];
+    documents: components["schemas"]["Document"][];
     extensions?: {
       returns?: {
         data?: {
@@ -2762,10 +2762,10 @@ export type Schemas = {
       };
     };
     id: string;
-    language?: components['schemas']['Language'];
+    language?: components["schemas"]["Language"];
     languageId: string;
-    lineItems?: components['schemas']['OrderLineItem'][];
-    orderCustomer?: components['schemas']['OrderCustomer'];
+    lineItems?: components["schemas"]["OrderLineItem"][];
+    orderCustomer?: components["schemas"]["OrderCustomer"];
     orderDate: string;
     /** Format: date-time */
     orderDateTime: string;
@@ -2812,10 +2812,10 @@ export type Schemas = {
     /** Format: float */
     shippingTotal?: number;
     source?: string;
-    stateMachineState: components['schemas']['StateMachineState'];
-    tags?: components['schemas']['Tag'][];
+    stateMachineState: components["schemas"]["StateMachineState"];
+    tags?: components["schemas"]["Tag"][];
     taxStatus?: string;
-    transactions?: components['schemas']['OrderTransaction'][];
+    transactions?: components["schemas"]["OrderTransaction"][];
     /** Format: date-time */
     updatedAt?: string;
     updatedById?: string;
@@ -2826,9 +2826,9 @@ export type Schemas = {
     additionalAddressLine2?: string;
     city: string;
     company?: string;
-    country?: components['schemas']['Country'];
+    country?: components["schemas"]["Country"];
     countryId: string;
-    countryState?: components['schemas']['CountryState'];
+    countryState?: components["schemas"]["CountryState"];
     countryStateId?: string;
     /** Format: date-time */
     createdAt: string;
@@ -2838,7 +2838,7 @@ export type Schemas = {
     id: string;
     lastName: string;
     phoneNumber?: string;
-    salutation?: components['schemas']['Salutation'];
+    salutation?: components["schemas"]["Salutation"];
     street: string;
     title?: string;
     /** Format: date-time */
@@ -2857,7 +2857,7 @@ export type Schemas = {
     firstName: string;
     id: string;
     lastName: string;
-    salutation?: components['schemas']['Salutation'];
+    salutation?: components["schemas"]["Salutation"];
     salutationId?: string;
     title?: string;
     /** Format: date-time */
@@ -2872,7 +2872,7 @@ export type Schemas = {
     id: string;
     orderId: string;
     orderVersionId?: string;
-    positions?: components['schemas']['OrderDeliveryPosition'][];
+    positions?: components["schemas"]["OrderDeliveryPosition"][];
     shippingCosts?: {
       calculatedTaxes?: GenericRecord;
       listPrice?: {
@@ -2900,13 +2900,13 @@ export type Schemas = {
     shippingDateEarliest: string;
     /** Format: date-time */
     shippingDateLatest: string;
-    shippingMethod?: components['schemas']['ShippingMethod'];
+    shippingMethod?: components["schemas"]["ShippingMethod"];
     shippingMethodId: string;
-    shippingOrderAddress?: components['schemas']['OrderAddress'];
+    shippingOrderAddress?: components["schemas"]["OrderAddress"];
     shippingOrderAddressId: string;
     shippingOrderAddressVersionId?: string;
     stateId: string;
-    stateMachineState?: components['schemas']['StateMachineState'];
+    stateMachineState?: components["schemas"]["StateMachineState"];
     trackingCodes: string[];
     /** Format: date-time */
     updatedAt?: string;
@@ -2956,15 +2956,15 @@ export type Schemas = {
   };
   OrderLineItem: {
     /** @enum {string} */
-    apiAlias: 'order_line_item';
-    children: components['schemas']['OrderLineItem'][];
-    cover?: components['schemas']['Media'];
+    apiAlias: "order_line_item";
+    children: components["schemas"]["OrderLineItem"][];
+    cover?: components["schemas"]["Media"];
     coverId?: string;
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
     description?: string;
-    downloads?: components['schemas']['OrderLineItemDownload'][];
+    downloads?: components["schemas"]["OrderLineItemDownload"][];
     extensions?: {
       returns?: {
         data?: {
@@ -3001,10 +3001,10 @@ export type Schemas = {
     id: string;
     identifier: string;
     label: string;
-    orderDeliveryPositions?: components['schemas']['OrderDeliveryPosition'][];
+    orderDeliveryPositions?: components["schemas"]["OrderDeliveryPosition"][];
     orderId: string;
     orderVersionId?: string;
-    parent?: components['schemas']['OrderLineItem'];
+    parent?: components["schemas"]["OrderLineItem"];
     parentId?: string;
     parentVersionId?: string;
     payload?: {
@@ -3018,7 +3018,7 @@ export type Schemas = {
       manufacturerId?: string;
       markAsTopseller?: boolean;
       optionIds?: readonly string[];
-      options?: components['schemas']['PropertyGroupOption'][];
+      options?: components["schemas"]["PropertyGroupOption"][];
       parentId?: string;
       productNumber?: string;
       propertyIds?: readonly string[];
@@ -3033,7 +3033,7 @@ export type Schemas = {
     };
     /** Format: int64 */
     position: number;
-    priceDefinition?: components['schemas']['CartPriceQuantity'];
+    priceDefinition?: components["schemas"]["CartPriceQuantity"];
     productId?: string;
     productVersionId?: string;
     promotionId?: string;
@@ -3074,9 +3074,9 @@ export type Schemas = {
     createdAt: string;
     customFields?: GenericRecord;
     id: string;
-    media: components['schemas']['Media'];
+    media: components["schemas"]["Media"];
     mediaId: string;
-    orderLineItem?: components['schemas']['OrderLineItem'];
+    orderLineItem?: components["schemas"]["OrderLineItem"];
     orderLineItemId: string;
     orderLineItemVersionId?: string;
     /** Format: int64 */
@@ -3101,7 +3101,7 @@ export type Schemas = {
     createdAt: string;
     createdById?: string;
     id: string;
-    lineItems?: components['schemas']['OrderReturnLineItem'][];
+    lineItems?: components["schemas"]["OrderReturnLineItem"][];
     orderId: string;
     orderVersionId?: string;
     price?: {
@@ -3143,7 +3143,7 @@ export type Schemas = {
       /** Format: float */
       unitPrice: number;
     };
-    state?: components['schemas']['StateMachineState'];
+    state?: components["schemas"]["StateMachineState"];
     stateId: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -3161,13 +3161,13 @@ export type Schemas = {
     orderReturnVersionId?: string;
     /** Format: int64 */
     quantity: number;
-    reason?: components['schemas']['OrderReturnLineItemReason'];
+    reason?: components["schemas"]["OrderReturnLineItemReason"];
     reasonId: string;
     /** Format: float */
     refundAmount?: number;
     /** Format: int64 */
     restockQuantity?: number;
-    state?: components['schemas']['StateMachineState'];
+    state?: components["schemas"]["StateMachineState"];
     stateId: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -3187,7 +3187,7 @@ export type Schemas = {
     updatedAt?: string;
   };
   OrderRouteResponse: {
-    orders: components['schemas']['Order'][] & components['schemas']['EntitySearchResult'];
+    orders: components["schemas"]["Order"][] & components["schemas"]["EntitySearchResult"];
     /** The key-value pairs contain the uuid of the order as key and a boolean as value, indicating that the payment method can still be changed. */
     paymentChangeable?: {
       [key: string]: boolean;
@@ -3195,10 +3195,10 @@ export type Schemas = {
   };
   OrderTag: {
     id?: string;
-    order?: components['schemas']['Order'];
+    order?: components["schemas"]["Order"];
     orderId: string;
     orderVersionId?: string;
-    tag?: components['schemas']['Tag'];
+    tag?: components["schemas"]["Tag"];
     tagId: string;
   };
   OrderTransaction: {
@@ -3225,17 +3225,17 @@ export type Schemas = {
       /** Format: float */
       unitPrice: number;
     };
-    captures?: components['schemas']['OrderTransactionCapture'][];
+    captures?: components["schemas"]["OrderTransactionCapture"][];
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
     id: string;
     orderId: string;
     orderVersionId?: string;
-    paymentMethod?: components['schemas']['PaymentMethod'];
+    paymentMethod?: components["schemas"]["PaymentMethod"];
     paymentMethodId: string;
     stateId: string;
-    stateMachineState?: components['schemas']['StateMachineState'];
+    stateMachineState?: components["schemas"]["StateMachineState"];
     /** Format: date-time */
     updatedAt?: string;
     validationData?: GenericRecord;
@@ -3272,10 +3272,10 @@ export type Schemas = {
     id: string;
     orderTransactionId: string;
     orderTransactionVersionId?: string;
-    refunds?: components['schemas']['OrderTransactionCaptureRefund'][];
+    refunds?: components["schemas"]["OrderTransactionCaptureRefund"][];
     stateId: string;
-    stateMachineState?: components['schemas']['StateMachineState'];
-    transaction?: components['schemas']['OrderTransaction'];
+    stateMachineState?: components["schemas"]["StateMachineState"];
+    transaction?: components["schemas"]["OrderTransaction"];
     /** Format: date-time */
     updatedAt?: string;
     versionId?: string;
@@ -3311,11 +3311,11 @@ export type Schemas = {
     customFields?: GenericRecord;
     externalReference?: string;
     id: string;
-    positions?: components['schemas']['OrderTransactionCaptureRefundPosition'][];
+    positions?: components["schemas"]["OrderTransactionCaptureRefundPosition"][];
     reason?: string;
     stateId: string;
-    stateMachineState?: components['schemas']['StateMachineState'];
-    transactionCapture?: components['schemas']['OrderTransactionCapture'];
+    stateMachineState?: components["schemas"]["StateMachineState"];
+    transactionCapture?: components["schemas"]["OrderTransactionCapture"];
     /** Format: date-time */
     updatedAt?: string;
     versionId?: string;
@@ -3349,10 +3349,10 @@ export type Schemas = {
     customFields?: GenericRecord;
     externalReference?: string;
     id: string;
-    orderLineItem?: components['schemas']['OrderLineItem'];
+    orderLineItem?: components["schemas"]["OrderLineItem"];
     orderLineItemId: string;
     orderLineItemVersionId?: string;
-    orderTransactionCaptureRefund?: components['schemas']['OrderTransactionCaptureRefund'];
+    orderTransactionCaptureRefund?: components["schemas"]["OrderTransactionCaptureRefund"];
     /** Format: int64 */
     quantity?: number;
     reason?: string;
@@ -3386,7 +3386,7 @@ export type Schemas = {
     description?: string;
     distinguishableName?: string;
     id: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId?: string;
     name: string;
     /** Format: int64 */
@@ -3413,7 +3413,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  PaymentMethodJsonApi: components['schemas']['resource'] & {
+  PaymentMethodJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     afterOrderEnabled?: boolean;
     /** Runtime field, cannot be used as part of the criteria. */
@@ -3506,7 +3506,7 @@ export type Schemas = {
     updatedAt?: string;
   };
   PresentationCmsPage: {
-    cmsPage?: components['schemas']['CmsPage'];
+    cmsPage?: components["schemas"]["CmsPage"];
     /** The CMS page id the presentation using */
     cmsPageId?: string;
     /** The CMS page version id the presentation using */
@@ -3543,18 +3543,18 @@ export type Schemas = {
   PresentationSlideData: OneOf<
     [
       {
-        configurator?: components['schemas']['PropertyGroup'][];
-        product?: components['schemas']['Product'];
+        configurator?: components["schemas"]["PropertyGroup"][];
+        product?: components["schemas"]["Product"];
       },
       {
-        category?: components['schemas']['Category'];
+        category?: components["schemas"]["Category"];
       },
-      null
+      null,
     ]
   >;
   PresentationStructure: {
     cmsPageResults?: {
-      cmsPage?: components['schemas']['CmsPage'];
+      cmsPage?: components["schemas"]["CmsPage"];
       /** The presentation id */
       resourceIdentifier?: string;
       /**
@@ -3575,7 +3575,7 @@ export type Schemas = {
       /** If the slide is an instant listing */
       isInstantListing?: boolean;
       /** @default [] */
-      notes?: components['schemas']['CmsSlot'][];
+      notes?: components["schemas"]["CmsSlot"][];
       /** The number of picked products of the instant listing */
       pickedProductsCount?: number;
       /** The section id */
@@ -3605,18 +3605,18 @@ export type Schemas = {
   Product: {
     active?: boolean;
     /** @enum {string} */
-    apiAlias: 'product';
+    apiAlias: "product";
     available?: boolean;
     /** Format: int64 */
     availableStock?: number;
     calculatedCheapestPrice?: WithRequired<
-      components['schemas']['CalculatedPrice'] & {
+      components["schemas"]["CalculatedPrice"] & {
         /** @enum {string} */
-        apiAlias?: 'calculated_cheapest_price';
+        apiAlias?: "calculated_cheapest_price";
         hasRange?: boolean;
-        listPrice?: components['schemas']['CartListPrice'] | null;
+        listPrice?: components["schemas"]["CartListPrice"] | null;
         quantity?: number;
-        referencePrice?: components['schemas']['CartPriceReference'] | null;
+        referencePrice?: components["schemas"]["CartPriceReference"] | null;
         regulationPrice?: {
           price: number;
         } | null;
@@ -3624,40 +3624,40 @@ export type Schemas = {
         unitPrice?: number;
         variantId?: string | null;
       },
-      'apiAlias'
+      "apiAlias"
     >;
     /**
      * Format: int64
      * Runtime field, cannot be used as part of the criteria.
      */
     calculatedMaxPurchase?: number;
-    calculatedPrice: components['schemas']['CalculatedPrice'];
-    calculatedPrices: components['schemas']['CalculatedPrice'][];
-    canonicalProduct?: components['schemas']['Product'];
+    calculatedPrice: components["schemas"]["CalculatedPrice"];
+    calculatedPrices: components["schemas"]["CalculatedPrice"][];
+    canonicalProduct?: components["schemas"]["Product"];
     canonicalProductId?: string;
     canonicalProductVersionId?: string;
-    categories?: components['schemas']['Category'][];
-    categoriesRo?: components['schemas']['Category'][];
+    categories?: components["schemas"]["Category"][];
+    categoriesRo?: components["schemas"]["Category"][];
     categoryIds?: readonly string[];
     categoryTree?: readonly string[];
     /** Format: int64 */
     childCount?: number;
-    children?: components['schemas']['Product'][];
-    cmsPage?: components['schemas']['CmsPage'];
+    children?: components["schemas"]["Product"][];
+    cmsPage?: components["schemas"]["CmsPage"];
     cmsPageId?: string;
     cmsPageVersionId?: string;
-    configuratorSettings?: components['schemas']['ProductConfiguratorSetting'][];
-    cover?: components['schemas']['ProductMedia'];
+    configuratorSettings?: components["schemas"]["ProductConfiguratorSetting"][];
+    cover?: components["schemas"]["ProductMedia"];
     coverId?: string;
     /** Format: date-time */
     createdAt: string;
-    crossSellings?: components['schemas']['ProductCrossSelling'][];
+    crossSellings?: components["schemas"]["ProductCrossSelling"][];
     customFields?: GenericRecord;
-    deliveryTime?: components['schemas']['DeliveryTime'];
+    deliveryTime?: components["schemas"]["DeliveryTime"];
     deliveryTimeId?: string;
     description?: string;
     displayGroup?: string;
-    downloads?: components['schemas']['ProductDownload'][];
+    downloads?: components["schemas"]["ProductDownload"][];
     ean?: string;
     extensions?: {
       attendeeProductCollections?: {
@@ -3715,31 +3715,31 @@ export type Schemas = {
     keywords?: string;
     /** Format: float */
     length?: number;
-    mainCategories?: components['schemas']['MainCategory'][];
-    manufacturer?: components['schemas']['ProductManufacturer'];
+    mainCategories?: components["schemas"]["MainCategory"][];
+    manufacturer?: components["schemas"]["ProductManufacturer"];
     manufacturerId?: string;
     manufacturerNumber?: string;
     markAsTopseller?: boolean;
     /** Format: int64 */
     maxPurchase?: number;
-    media?: components['schemas']['ProductMedia'][];
+    media?: components["schemas"]["ProductMedia"][];
     metaDescription?: string;
     metaTitle?: string;
     /** Format: int64 */
     minPurchase?: number;
     name: string;
     optionIds?: readonly string[];
-    options?: components['schemas']['PropertyGroupOption'][];
+    options?: components["schemas"]["PropertyGroupOption"][];
     packUnit?: string;
     packUnitPlural?: string;
-    parent?: components['schemas']['Product'];
+    parent?: components["schemas"]["Product"];
     parentId?: string;
     parentVersionId?: string;
     productManufacturerVersionId?: string;
     productMediaVersionId?: string;
     productNumber: string;
-    productReviews?: components['schemas']['ProductReview'][];
-    properties?: components['schemas']['PropertyGroupOption'][];
+    productReviews?: components["schemas"]["ProductReview"][];
+    properties?: components["schemas"]["PropertyGroupOption"][];
     propertyIds?: readonly string[];
     /** Format: int64 */
     purchaseSteps?: number;
@@ -3755,18 +3755,18 @@ export type Schemas = {
     restockTime?: number;
     /** Format: int64 */
     sales?: number;
-    seoCategory: components['schemas']['Category'];
-    seoUrls?: components['schemas']['SeoUrl'][];
+    seoCategory: components["schemas"]["Category"];
+    seoUrls?: components["schemas"]["SeoUrl"][];
     shippingFree?: boolean;
     sortedProperties?: GenericRecord;
     states?: readonly string[];
     /** Format: int64 */
     stock: number;
     streamIds?: readonly string[];
-    streams?: components['schemas']['ProductStream'][];
+    streams?: components["schemas"]["ProductStream"][];
     tagIds?: readonly string[];
-    tags?: components['schemas']['Tag'][];
-    tax?: components['schemas']['Tax'];
+    tags?: components["schemas"]["Tag"][];
+    tax?: components["schemas"]["Tax"];
     taxId: string;
     translated: {
       canonicalProductId: string;
@@ -3796,7 +3796,7 @@ export type Schemas = {
       unitId: string;
       versionId: string;
     };
-    unit?: components['schemas']['Unit'];
+    unit?: components["schemas"]["Unit"];
     unitId?: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -3814,9 +3814,9 @@ export type Schemas = {
     createdAt: string;
     customFields?: GenericRecord;
     id: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId?: string;
-    option?: components['schemas']['PropertyGroupOption'];
+    option?: components["schemas"]["PropertyGroupOption"];
     optionId: string;
     /** Format: int64 */
     position?: number;
@@ -3857,19 +3857,19 @@ export type Schemas = {
   };
   ProductDetailResponse: {
     /** List of property groups with their corresponding options and information on how to display them. */
-    configurator?: components['schemas']['PropertyGroup'][];
-    product: components['schemas']['Product'];
+    configurator?: components["schemas"]["PropertyGroup"][];
+    product: components["schemas"]["Product"];
   };
   ProductDownload: {
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
     id: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId: string;
     /** Format: int64 */
     position?: number;
-    product?: components['schemas']['Product'];
+    product?: components["schemas"]["Product"];
     productId: string;
     productVersionId?: string;
     /** Format: date-time */
@@ -3890,7 +3890,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  ProductJsonApi: components['schemas']['resource'] & {
+  ProductJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     available?: boolean;
     /** Format: int64 */
@@ -4405,7 +4405,7 @@ export type Schemas = {
     keyword: string;
     languageId: string;
   };
-  ProductListingCriteria: components['schemas']['Criteria'] & {
+  ProductListingCriteria: components["schemas"]["Criteria"] & {
     /** Number of items per result page. If not set, the limit will be set according to the default products per page, defined in the system settings. */
     limit?: number;
     /** Filter by manufacturers. List of manufacturer identifiers separated by a `|`. */
@@ -4414,17 +4414,17 @@ export type Schemas = {
      * Enables/disabled filtering by manufacturer. If set to false, the `manufacturer` filter will be ignored. Also the `aggregations[manufacturer]` key will be removed from the response.
      * @default true
      */
-    'manufacturer-filter'?: boolean;
+    "manufacturer-filter"?: boolean;
     /**
      * Filters by a maximum product price. Has to be higher than the `min-price` filter.
      * @default 0
      */
-    'max-price'?: number;
+    "max-price"?: number;
     /**
      * Filters by a minimum product price. Has to be lower than the `max-price` filter.
      * @default 0
      */
-    'min-price'?: number;
+    "min-price"?: number;
     /** Specifies the sorting of the products by `availableSortings`. If not set, the default sorting will be set according to the shop settings. The available sorting options are sent within the response under the `availableSortings` key. In order to sort by a field, consider using the `sort` parameter from the listing criteria. Do not use both parameters together, as it might lead to unexpected results. */
     order?: string;
     /**
@@ -4436,49 +4436,49 @@ export type Schemas = {
      * Enables/disabled filtering by price. If set to false, the `min-price` and `max-price` filter will be ignored. Also the `aggregations[price]` key will be removed from the response.
      * @default true
      */
-    'price-filter'?: boolean;
+    "price-filter"?: boolean;
     /** Filters products by their properties. List of property identifiers separated by a `|`. */
     properties?: string;
     /**
      * Enables/disabled filtering by properties products. If set to false, the `properties` filter will be ignored. Also the `aggregations[properties]` key will be removed from the response.
      * @default true
      */
-    'property-filter'?: boolean;
+    "property-filter"?: boolean;
     /** A whitelist of property identifiers which can be used for filtering. List of property identifiers separated by a `|`. The `property-filter` must be `true`, otherwise the whitelist has no effect. */
-    'property-whitelist'?: string;
+    "property-whitelist"?: string;
     /** Filter products with a minimum average rating. */
     rating?: number;
     /**
      * Enables/disabled filtering by rating. If set to false, the `rating` filter will be ignored. Also the `aggregations[rating]` key will be removed from the response.
      * @default true
      */
-    'rating-filter'?: boolean;
+    "rating-filter"?: boolean;
     /** By sending the parameter `reduce-aggregations` , the post-filters that were applied by the customer, are also applied to the aggregations. This has the consequence that only values are returned in the aggregations that would lead to further filter results. This parameter is a flag, the value has no effect. */
-    'reduce-aggregations'?: string | null;
+    "reduce-aggregations"?: string | null;
     /**
      * Filters products that are marked as shipping-free.
      * @default false
      */
-    'shipping-free'?: boolean;
+    "shipping-free"?: boolean;
     /**
      * Enables/disabled filtering by shipping-free products. If set to false, the `shipping-free` filter will be ignored. Also the `aggregations[shipping-free]` key will be removed from the response.
      * @default true
      */
-    'shipping-free-filter'?: boolean;
+    "shipping-free-filter"?: boolean;
   };
   ProductListingFlags: {
     /** Resets all aggregations in the criteria. This parameter is a flag, the value has no effect. */
-    'no-aggregations'?: string | null;
+    "no-aggregations"?: string | null;
     /** If this flag is set, no products are fetched. Sorting and associations are also ignored. This parameter is a flag, the value has no effect. */
-    'only-aggregations'?: string | null;
+    "only-aggregations"?: string | null;
   };
-  ProductListingResult: components['schemas']['EntitySearchResult'] & {
+  ProductListingResult: components["schemas"]["EntitySearchResult"] & {
     /** @enum {string} */
-    apiAlias: 'product_listing';
+    apiAlias: "product_listing";
     /** Contains the available sorting. These can be used to show a sorting select-box in the product listing. */
     availableSortings: {
       /** @enum {string} */
-      apiAlias: 'product_sorting';
+      apiAlias: "product_sorting";
       key: string;
       label: string;
       priority: number;
@@ -4501,11 +4501,11 @@ export type Schemas = {
       rating: number | null;
       search?: string;
       /** @default false */
-      'shipping-free': boolean;
+      "shipping-free": boolean;
     };
-    elements: components['schemas']['Product'][];
+    elements: components["schemas"]["Product"][];
     /** @enum {string} */
-    entity?: 'product';
+    entity?: "product";
     sorting?: string;
   };
   ProductManufacturer: {
@@ -4515,7 +4515,7 @@ export type Schemas = {
     description?: string;
     id: string;
     link?: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId?: string;
     name: string;
     translated: {
@@ -4534,7 +4534,7 @@ export type Schemas = {
     createdAt: string;
     customFields?: GenericRecord;
     id: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId: string;
     metaData?: {
       height?: number;
@@ -4544,7 +4544,7 @@ export type Schemas = {
     position?: number;
     productId: string;
     productVersionId?: string;
-    thumbnails?: components['schemas']['MediaThumbnail'];
+    thumbnails?: components["schemas"]["MediaThumbnail"];
     /** Format: date-time */
     updatedAt?: string;
     url?: string;
@@ -4583,9 +4583,9 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     id: string;
-    product?: components['schemas']['Product'];
+    product?: components["schemas"]["Product"];
     productId: string;
-    salesChannel?: components['schemas']['SalesChannel'];
+    salesChannel?: components["schemas"]["SalesChannel"];
     salesChannelId: string;
     summary?: string;
     translated: {
@@ -4720,7 +4720,7 @@ export type Schemas = {
     filterable?: boolean;
     id: string;
     name: string;
-    options?: components['schemas']['PropertyGroupOption'][];
+    options?: components["schemas"]["PropertyGroupOption"][];
     /** Format: int64 */
     position?: number;
     sortingType: string;
@@ -4739,10 +4739,10 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
-    group: components['schemas']['PropertyGroup'];
+    group: components["schemas"]["PropertyGroup"];
     groupId: string;
     id: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId?: string;
     name: string;
     option: string;
@@ -4760,10 +4760,10 @@ export type Schemas = {
   };
   Query: {
     query?:
-      | components['schemas']['SimpleFilter']
-      | components['schemas']['EqualsFilter']
-      | components['schemas']['MultiNotFilter']
-      | components['schemas']['RangeFilter'];
+      | components["schemas"]["SimpleFilter"]
+      | components["schemas"]["EqualsFilter"]
+      | components["schemas"]["MultiNotFilter"]
+      | components["schemas"]["RangeFilter"];
     score?: number;
     [key: string]: unknown;
   };
@@ -4772,27 +4772,27 @@ export type Schemas = {
     amountNet?: number;
     /** Format: float */
     amountTotal?: number;
-    comments?: components['schemas']['QuoteComment'][];
+    comments?: components["schemas"]["QuoteComment"][];
     /** Format: date-time */
     createdAt: string;
     createdById?: string;
-    currency?: components['schemas']['Currency'];
+    currency?: components["schemas"]["Currency"];
     currencyId: string;
     customerId: string;
     customFields?: GenericRecord;
-    deliveries?: components['schemas']['QuoteDelivery'][];
+    deliveries?: components["schemas"]["QuoteDelivery"][];
     discount?: {
       type?: string;
       /** Format: float */
       value?: number;
     };
-    documents?: components['schemas']['QuoteDocument'][];
+    documents?: components["schemas"]["QuoteDocument"][];
     /** Format: date-time */
     expirationDate?: string;
     id: string;
-    language?: components['schemas']['Language'];
+    language?: components["schemas"]["Language"];
     languageId: string;
-    lineItems?: components['schemas']['QuoteLineItem'][];
+    lineItems?: components["schemas"]["QuoteLineItem"][];
     orderId?: string;
     orderVersionId?: string;
     price?: {
@@ -4836,13 +4836,13 @@ export type Schemas = {
       unitPrice: number;
     };
     stateId: string;
-    stateMachineState?: components['schemas']['StateMachineState'];
+    stateMachineState?: components["schemas"]["StateMachineState"];
     /** Format: float */
     subtotalNet?: number;
     taxStatus?: string;
     /** Format: float */
     totalDiscount?: number;
-    transactions?: components['schemas']['QuoteTransaction'][];
+    transactions?: components["schemas"]["QuoteTransaction"][];
     /** Format: date-time */
     updatedAt?: string;
     updatedById?: string;
@@ -4854,7 +4854,7 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     createdById?: string;
-    customer?: components['schemas']['Customer'];
+    customer?: components["schemas"]["Customer"];
     customerId?: string;
     id: string;
     quoteId: string;
@@ -4862,7 +4862,7 @@ export type Schemas = {
     /** Format: date-time */
     seenAt?: string;
     stateId?: string;
-    stateMachineState?: components['schemas']['StateMachineState'];
+    stateMachineState?: components["schemas"]["StateMachineState"];
     /** Format: date-time */
     updatedAt?: string;
     versionId?: string;
@@ -4872,7 +4872,7 @@ export type Schemas = {
     createdAt: string;
     customFields?: GenericRecord;
     id: string;
-    positions?: components['schemas']['QuoteDeliveryPosition'][];
+    positions?: components["schemas"]["QuoteDeliveryPosition"][];
     quoteId: string;
     quoteVersionId?: string;
     shippingCosts?: {
@@ -4902,7 +4902,7 @@ export type Schemas = {
     shippingDateEarliest: string;
     /** Format: date-time */
     shippingDateLatest: string;
-    shippingMethod?: components['schemas']['ShippingMethod'];
+    shippingMethod?: components["schemas"]["ShippingMethod"];
     shippingMethodId: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -4957,14 +4957,14 @@ export type Schemas = {
     createdAt: string;
     customFields?: GenericRecord;
     deepLinkCode: string;
-    documentMediaFile?: components['schemas']['Media'];
+    documentMediaFile?: components["schemas"]["Media"];
     documentMediaFileId?: string;
     documentNumber?: string;
-    documentType?: components['schemas']['DocumentType'];
+    documentType?: components["schemas"]["DocumentType"];
     documentTypeId: string;
     fileType: string;
     id: string;
-    quote?: components['schemas']['Quote'];
+    quote?: components["schemas"]["Quote"];
     quoteId: string;
     quoteVersionId?: string;
     sent?: boolean;
@@ -4983,8 +4983,8 @@ export type Schemas = {
     updatedAt?: string;
   };
   QuoteLineItem: {
-    children: components['schemas']['QuoteLineItem'][];
-    cover?: components['schemas']['Media'];
+    children: components["schemas"]["QuoteLineItem"][];
+    cover?: components["schemas"]["Media"];
     coverId?: string;
     /** Format: date-time */
     createdAt: string;
@@ -4999,7 +4999,7 @@ export type Schemas = {
     id: string;
     identifier: string;
     label: string;
-    parent?: components['schemas']['QuoteLineItem'];
+    parent?: components["schemas"]["QuoteLineItem"];
     parentId?: string;
     parentVersionId?: string;
     payload?: GenericRecord;
@@ -5007,9 +5007,9 @@ export type Schemas = {
     position: number;
     priceDefinition?: GenericRecord;
     productId?: string;
-    productPrice?: components['schemas']['Price'][];
+    productPrice?: components["schemas"]["Price"][];
     productVersionId?: string;
-    purchasePrice?: components['schemas']['Price'][];
+    purchasePrice?: components["schemas"]["Price"][];
     /** Format: int64 */
     quantity: number;
     quoteId: string;
@@ -5055,7 +5055,7 @@ export type Schemas = {
     createdAt: string;
     customFields?: GenericRecord;
     id: string;
-    paymentMethod?: components['schemas']['PaymentMethod'];
+    paymentMethod?: components["schemas"]["PaymentMethod"];
     paymentMethodId: string;
     quoteId: string;
     quoteVersionId?: string;
@@ -5072,7 +5072,7 @@ export type Schemas = {
       lte?: number;
     };
     /** @enum {string} */
-    type: 'range';
+    type: "range";
   };
   Rule: {
     /** Format: date-time */
@@ -5139,38 +5139,38 @@ export type Schemas = {
   SalesChannel: {
     active?: boolean;
     configuration?: GenericRecord;
-    country?: components['schemas']['Country'];
+    country?: components["schemas"]["Country"];
     countryId: string;
     /** Format: date-time */
     createdAt: string;
-    currency?: components['schemas']['Currency'];
+    currency?: components["schemas"]["Currency"];
     currencyId: string;
     customerGroupId: string;
     customFields?: GenericRecord;
-    domains?: components['schemas']['SalesChannelDomain'][];
-    footerCategory?: components['schemas']['Category'];
+    domains?: components["schemas"]["SalesChannelDomain"][];
+    footerCategory?: components["schemas"]["Category"];
     footerCategoryId?: string;
     footerCategoryVersionId?: string;
     hreflangActive?: boolean;
-    hreflangDefaultDomain?: components['schemas']['SalesChannelDomain'];
+    hreflangDefaultDomain?: components["schemas"]["SalesChannelDomain"];
     hreflangDefaultDomainId?: string;
     id: string;
-    language?: components['schemas']['Language'];
+    language?: components["schemas"]["Language"];
     languageId: string;
     mailHeaderFooterId?: string;
     maintenance?: boolean;
     name: string;
-    navigationCategory?: components['schemas']['Category'];
+    navigationCategory?: components["schemas"]["Category"];
     /** Format: int64 */
     navigationCategoryDepth?: number;
     navigationCategoryId: string;
     navigationCategoryVersionId?: string;
-    paymentMethod?: components['schemas']['PaymentMethod'];
+    paymentMethod?: components["schemas"]["PaymentMethod"];
     paymentMethodId: string;
-    serviceCategory?: components['schemas']['Category'];
+    serviceCategory?: components["schemas"]["Category"];
     serviceCategoryId?: string;
     serviceCategoryVersionId?: string;
-    shippingMethod?: components['schemas']['ShippingMethod'];
+    shippingMethod?: components["schemas"]["ShippingMethod"];
     shippingMethodId: string;
     shortName?: string;
     taxCalculationType?: string;
@@ -5217,19 +5217,19 @@ export type Schemas = {
       useCache?: boolean;
       versionId?: string;
     };
-    currency?: components['schemas']['Currency'];
+    currency?: components["schemas"]["Currency"];
     /** Customer group of the current user */
     currentCustomerGroup?: {
       displayGross?: boolean;
       name?: string;
     };
-    customer?: components['schemas']['Customer'];
+    customer?: components["schemas"]["Customer"];
     /** Fallback group if the default customer group is not applicable */
     fallbackCustomerGroup?: {
       displayGross?: boolean;
       name?: string;
     };
-    paymentMethod?: components['schemas']['PaymentMethod'];
+    paymentMethod?: components["schemas"]["PaymentMethod"];
     /** Information about the current sales channel */
     salesChannel?: {
       accessKey?: string;
@@ -5256,12 +5256,12 @@ export type Schemas = {
       typeId?: string;
     };
     shippingLocation?: {
-      address?: components['schemas']['CustomerAddress'];
+      address?: components["schemas"]["CustomerAddress"];
       /** @enum {string} */
-      apiAlias?: 'cart_delivery_shipping_location';
-      country?: components['schemas']['Country'];
+      apiAlias?: "cart_delivery_shipping_location";
+      country?: components["schemas"]["Country"];
     };
-    shippingMethod?: components['schemas']['ShippingMethod'];
+    shippingMethod?: components["schemas"]["ShippingMethod"];
     /** Currently active tax rules and/or rates */
     taxRules?: {
       name?: string;
@@ -5274,14 +5274,14 @@ export type Schemas = {
   SalesChannelDomain: {
     /** Format: date-time */
     createdAt: string;
-    currency?: components['schemas']['Currency'];
+    currency?: components["schemas"]["Currency"];
     currencyId: string;
     customFields?: GenericRecord;
     hreflangUseOnlyLocale?: boolean;
     id: string;
-    language?: components['schemas']['Language'];
+    language?: components["schemas"]["Language"];
     languageId: string;
-    salesChannelDefaultHreflang?: components['schemas']['SalesChannel'];
+    salesChannelDefaultHreflang?: components["schemas"]["SalesChannel"];
     salesChannelId: string;
     snippetSetId: string;
     /** Format: date-time */
@@ -5311,7 +5311,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  SalutationJsonApi: components['schemas']['resource'] & {
+  SalutationJsonApi: components["schemas"]["resource"] & {
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
@@ -5343,7 +5343,7 @@ export type Schemas = {
   };
   SearchByImageSearchTermResponse: {
     /** @enum {string} */
-    apiAlias: 'product_image_upload_search_term';
+    apiAlias: "product_image_upload_search_term";
     extensions?: GenericRecord[];
     term: string;
   }[];
@@ -5361,7 +5361,7 @@ export type Schemas = {
     languageId: string;
     pathInfo: string;
     /** @enum {string} */
-    routeName: 'frontend.navigation.page' | 'frontend.landing.page' | 'frontend.detail.page';
+    routeName: "frontend.navigation.page" | "frontend.landing.page" | "frontend.detail.page";
     salesChannelId?: string;
     seoPathInfo: string;
     /** Format: date-time */
@@ -5369,7 +5369,7 @@ export type Schemas = {
     /** Runtime field, cannot be used as part of the criteria. */
     url?: string;
   };
-  SeoUrlJsonApi: components['schemas']['resource'] & {
+  SeoUrlJsonApi: components["schemas"]["resource"] & {
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
@@ -5402,22 +5402,22 @@ export type Schemas = {
   };
   ShippingMethod: {
     active?: boolean;
-    availabilityRule?: components['schemas']['Rule'];
+    availabilityRule?: components["schemas"]["Rule"];
     /** Format: date-time */
     createdAt: string;
     customFields?: GenericRecord;
-    deliveryTime?: components['schemas']['DeliveryTime'];
+    deliveryTime?: components["schemas"]["DeliveryTime"];
     deliveryTimeId: string;
     description?: string;
     id: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId?: string;
     name: string;
     /** Format: int64 */
     position?: number;
-    prices?: components['schemas']['ShippingMethodPrice'][];
-    tags?: components['schemas']['Tag'][];
-    tax?: components['schemas']['Tax'];
+    prices?: components["schemas"]["ShippingMethodPrice"][];
+    tags?: components["schemas"]["Tag"][];
+    tax?: components["schemas"]["Tax"];
     taxType: string;
     technicalName?: string;
     trackingUrl?: string;
@@ -5433,7 +5433,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  ShippingMethodJsonApi: components['schemas']['resource'] & {
+  ShippingMethodJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     /** Format: date-time */
     createdAt: string;
@@ -5677,7 +5677,7 @@ export type Schemas = {
     calculationRuleId?: string;
     /** Format: date-time */
     createdAt: string;
-    currencyPrice?: components['schemas']['Price'][];
+    currencyPrice?: components["schemas"]["Price"][];
     customFields?: GenericRecord;
     id: string;
     /** Format: float */
@@ -5692,7 +5692,7 @@ export type Schemas = {
   SimpleFilter: {
     field: string;
     /** @enum {string} */
-    type: 'contains' | 'equalsAny' | 'prefix' | 'suffix';
+    type: "contains" | "equalsAny" | "prefix" | "suffix";
     value: string;
   };
   Sitemap: {
@@ -5718,7 +5718,7 @@ export type Schemas = {
     id?: string;
     iso: string;
     name: string;
-    snippets?: components['schemas']['Snippet'][];
+    snippets?: components["schemas"]["Snippet"][];
     /** Format: date-time */
     updatedAt?: string;
   };
@@ -5726,7 +5726,7 @@ export type Schemas = {
     field: string;
     naturalSorting?: boolean;
     /** @enum {string} */
-    order: 'ASC' | 'DESC';
+    order: "ASC" | "DESC";
     type?: string;
   };
   SpatialRenderConfigSize: {
@@ -5768,7 +5768,7 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     id?: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     /** Format: date-time */
     updatedAt?: string;
   };
@@ -5785,11 +5785,11 @@ export type Schemas = {
     /** @default false */
     allowUserActionsForGuide?: boolean;
     /** @enum {string} */
-    appointmentMode?: 'guided' | 'self';
-    attendeeRestrictionType?: ('open' | 'customer' | 'rules') | null;
+    appointmentMode?: "guided" | "self";
+    attendeeRestrictionType?: ("open" | "customer" | "rules") | null;
     /** @default false */
     broadcastMode?: boolean;
-    currentDynamicPage?: components['schemas']['DynamicPageOpenedPayload'];
+    currentDynamicPage?: components["schemas"]["DynamicPageOpenedPayload"];
     currentGuideProductId?: string | null;
     currentPageId?: string | null;
     currentSectionId?: string | null;
@@ -5813,7 +5813,7 @@ export type Schemas = {
      * @default none
      * @enum {string}
      */
-    videoAudioSettings?: 'both' | 'none' | 'audio-only';
+    videoAudioSettings?: "both" | "none" | "audio-only";
     /** @default */
     videoRoomUrl?: string;
   };
@@ -5835,17 +5835,17 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     id?: string;
-    states?: components['schemas']['StateMachineState'][];
-    transitions?: components['schemas']['StateMachineTransition'][];
+    states?: components["schemas"]["StateMachineState"][];
+    transitions?: components["schemas"]["StateMachineTransition"][];
     /** Format: date-time */
     updatedAt?: string;
   };
   StateMachineHistory: {
     /** Format: date-time */
     createdAt: string;
-    fromStateMachineState?: components['schemas']['StateMachineState'];
+    fromStateMachineState?: components["schemas"]["StateMachineState"];
     id?: string;
-    toStateMachineState?: components['schemas']['StateMachineState'];
+    toStateMachineState?: components["schemas"]["StateMachineState"];
     /** Format: date-time */
     updatedAt?: string;
   };
@@ -5872,64 +5872,64 @@ export type Schemas = {
   };
   SubAggregations: {
     aggregation?:
-      | components['schemas']['AggregationMetrics']
-      | components['schemas']['AggregationEntity']
-      | components['schemas']['AggregationFilter']
-      | components['schemas']['AggregationTerms']
-      | components['schemas']['AggregationHistogram']
-      | components['schemas']['AggregationRange'];
+      | components["schemas"]["AggregationMetrics"]
+      | components["schemas"]["AggregationEntity"]
+      | components["schemas"]["AggregationFilter"]
+      | components["schemas"]["AggregationTerms"]
+      | components["schemas"]["AggregationHistogram"]
+      | components["schemas"]["AggregationRange"];
   };
   Subscription: {
-    addresses?: components['schemas']['SubscriptionAddress'][];
-    billingAddress?: components['schemas']['SubscriptionAddress'];
+    addresses?: components["schemas"]["SubscriptionAddress"][];
+    billingAddress?: components["schemas"]["SubscriptionAddress"];
     billingAddressId: string;
     convertedOrder: GenericRecord;
     /** Format: date-time */
     createdAt: string;
     cronInterval: string;
-    currency?: components['schemas']['Currency'];
+    currency?: components["schemas"]["Currency"];
     currencyId: string;
     customFields?: GenericRecord;
     dateInterval: string;
     id: string;
     /** Format: int64 */
     initialExecutionCount: number;
-    language?: components['schemas']['Language'];
+    language?: components["schemas"]["Language"];
     languageId: string;
     /** Format: date-time */
     nextSchedule: string;
-    orders?: components['schemas']['Order'][];
-    paymentMethod?: components['schemas']['PaymentMethod'];
+    orders?: components["schemas"]["Order"][];
+    paymentMethod?: components["schemas"]["PaymentMethod"];
     paymentMethodId: string;
     /** Format: int64 */
     remainingExecutionCount: number;
     salesChannelId: string;
-    shippingAddress?: components['schemas']['SubscriptionAddress'];
+    shippingAddress?: components["schemas"]["SubscriptionAddress"];
     shippingAddressId: string;
-    shippingMethod?: components['schemas']['ShippingMethod'];
+    shippingMethod?: components["schemas"]["ShippingMethod"];
     shippingMethodId: string;
-    stateMachineState?: components['schemas']['StateMachineState'];
-    subscriptionCustomer?: components['schemas']['SubscriptionCustomer'];
-    subscriptionInterval?: components['schemas']['SubscriptionInterval'];
+    stateMachineState?: components["schemas"]["StateMachineState"];
+    subscriptionCustomer?: components["schemas"]["SubscriptionCustomer"];
+    subscriptionInterval?: components["schemas"]["SubscriptionInterval"];
     subscriptionIntervalId?: string;
     subscriptionIntervalName: string;
     subscriptionNumber: string;
-    subscriptionPlan?: components['schemas']['SubscriptionPlan'];
+    subscriptionPlan?: components["schemas"]["SubscriptionPlan"];
     subscriptionPlanId?: string;
     subscriptionPlanName: string;
-    tags?: components['schemas']['Tag'][];
+    tags?: components["schemas"]["Tag"][];
     /** Format: date-time */
     updatedAt?: string;
   };
   SubscriptionAddress: {
     additionalAddressLine1?: string;
     additionalAddressLine2?: string;
-    billingSubscription?: components['schemas']['Subscription'];
+    billingSubscription?: components["schemas"]["Subscription"];
     city: string;
     company?: string;
-    country?: components['schemas']['Country'];
+    country?: components["schemas"]["Country"];
     countryId: string;
-    countryState?: components['schemas']['CountryState'];
+    countryState?: components["schemas"]["CountryState"];
     countryStateId?: string;
     /** Format: date-time */
     createdAt: string;
@@ -5939,11 +5939,11 @@ export type Schemas = {
     id: string;
     lastName: string;
     phoneNumber?: string;
-    salutation?: components['schemas']['Salutation'];
+    salutation?: components["schemas"]["Salutation"];
     salutationId?: string;
-    shippingSubscription?: components['schemas']['Subscription'];
+    shippingSubscription?: components["schemas"]["Subscription"];
     street: string;
-    subscription?: components['schemas']['Subscription'];
+    subscription?: components["schemas"]["Subscription"];
     subscriptionId: string;
     title?: string;
     /** Format: date-time */
@@ -5962,7 +5962,7 @@ export type Schemas = {
     firstName: string;
     id: string;
     lastName: string;
-    salutation?: components['schemas']['Salutation'];
+    salutation?: components["schemas"]["Salutation"];
     salutationId: string;
     title?: string;
     /** Format: date-time */
@@ -5978,7 +5978,7 @@ export type Schemas = {
     dateInterval: string;
     id: string;
     name: string;
-    subscriptions?: components['schemas']['Subscription'][];
+    subscriptions?: components["schemas"]["Subscription"][];
     translated: {
       availabilityRuleId: string;
       cronInterval: string;
@@ -5997,13 +5997,13 @@ export type Schemas = {
     description?: string;
     /** Format: float */
     discountPercentage?: number;
-    discountPrice?: components['schemas']['Price'][];
+    discountPrice?: components["schemas"]["Price"][];
     id: string;
     label?: string;
     /** Format: int64 */
     minimumExecutionCount?: number;
     name: string;
-    subscriptions?: components['schemas']['Subscription'][];
+    subscriptions?: components["schemas"]["Subscription"][];
     translated: {
       availabilityRuleId: string;
       description: string;
@@ -6015,12 +6015,12 @@ export type Schemas = {
   };
   SubscriptionPlanIntervalMapping: {
     id?: string;
-    subscriptionInterval?: components['schemas']['SubscriptionInterval'];
+    subscriptionInterval?: components["schemas"]["SubscriptionInterval"];
     subscriptionIntervalId: string;
-    subscriptionPlan?: components['schemas']['SubscriptionPlan'];
+    subscriptionPlan?: components["schemas"]["SubscriptionPlan"];
     subscriptionPlanId: string;
   };
-  SubscriptionPlanJsonApi: components['schemas']['resource'] & {
+  SubscriptionPlanJsonApi: components["schemas"]["resource"] & {
     active: boolean;
     activeStorefrontLabel: boolean;
     availabilityRuleId?: string;
@@ -6029,7 +6029,7 @@ export type Schemas = {
     description?: string;
     /** Format: float */
     discountPercentage?: number;
-    discountPrice?: components['schemas']['Price'][];
+    discountPrice?: components["schemas"]["Price"][];
     id: string;
     label?: string;
     /** Format: int64 */
@@ -6063,24 +6063,24 @@ export type Schemas = {
   };
   SubscriptionPlanProductMapping: {
     id?: string;
-    product?: components['schemas']['Product'];
+    product?: components["schemas"]["Product"];
     productId: string;
     productVersionId?: string;
-    subscriptionPlan?: components['schemas']['SubscriptionPlan'];
+    subscriptionPlan?: components["schemas"]["SubscriptionPlan"];
     subscriptionPlanId: string;
   };
   SubscriptionTagMapping: {
     id?: string;
-    subscription?: components['schemas']['Subscription'];
+    subscription?: components["schemas"]["Subscription"];
     subscriptionId: string;
-    tag?: components['schemas']['Tag'];
+    tag?: components["schemas"]["Tag"];
     tagId: string;
   };
   SuccessResponse: {
     success?: boolean;
   };
   SwagCmsExtensionsBlockRule: {
-    cmsBlock?: components['schemas']['CmsBlock'];
+    cmsBlock?: components["schemas"]["CmsBlock"];
     cmsBlockId: string;
     cmsBlockVersionId?: string;
     /** Format: date-time */
@@ -6089,7 +6089,7 @@ export type Schemas = {
     inverted?: boolean;
     /** Format: date-time */
     updatedAt?: string;
-    visibilityRule?: components['schemas']['Rule'];
+    visibilityRule?: components["schemas"]["Rule"];
     visibilityRuleId?: string;
   };
   SwagCmsExtensionsForm: {
@@ -6115,7 +6115,7 @@ export type Schemas = {
   };
   SwagCmsExtensionsQuickview: {
     active?: boolean;
-    cmsBlock?: components['schemas']['CmsBlock'];
+    cmsBlock?: components["schemas"]["CmsBlock"];
     cmsBlockId?: string;
     cmsBlockVersionId?: string;
     /** Format: date-time */
@@ -6126,7 +6126,7 @@ export type Schemas = {
   };
   SwagCmsExtensionsScrollNavigation: {
     active?: boolean;
-    cmsSection?: components['schemas']['CmsSection'];
+    cmsSection?: components["schemas"]["CmsSection"];
     cmsSectionId?: string;
     cmsSectionVersionId?: string;
     /** Format: date-time */
@@ -6144,7 +6144,7 @@ export type Schemas = {
   SwagCmsExtensionsScrollNavigationPageSettings: {
     active: boolean;
     bouncy: boolean;
-    cmsPage?: components['schemas']['CmsPage'];
+    cmsPage?: components["schemas"]["CmsPage"];
     cmsPageId?: string;
     cmsPageVersionId?: string;
     /** Format: date-time */
@@ -6161,22 +6161,22 @@ export type Schemas = {
   };
   SwagCustomizedProductsTemplate: {
     active?: boolean;
-    configurations?: components['schemas']['SwagCustomizedProductsTemplateConfiguration'][];
+    configurations?: components["schemas"]["SwagCustomizedProductsTemplateConfiguration"][];
     confirmInput?: boolean;
     /** Format: date-time */
     createdAt: string;
     decisionTree?: GenericRecord;
     description?: string;
     displayName: string;
-    exclusions?: components['schemas']['SwagCustomizedProductsTemplateExclusion'][];
+    exclusions?: components["schemas"]["SwagCustomizedProductsTemplateExclusion"][];
     id: string;
     internalName: string;
-    media?: components['schemas']['Media'];
+    media?: components["schemas"]["Media"];
     mediaId?: string;
-    options?: components['schemas']['SwagCustomizedProductsTemplateOption'][];
+    options?: components["schemas"]["SwagCustomizedProductsTemplateOption"][];
     optionsAutoCollapse?: boolean;
     parentVersionId?: string;
-    products?: components['schemas']['Product'][];
+    products?: components["schemas"]["Product"][];
     stepByStep?: boolean;
     translated: {
       description: string;
@@ -6196,15 +6196,15 @@ export type Schemas = {
     createdAt: string;
     hash: string;
     id: string;
-    template?: components['schemas']['SwagCustomizedProductsTemplate'];
-    templateConfigurationShares?: components['schemas']['SwagCustomizedProductsTemplateConfigurationShare'][];
+    template?: components["schemas"]["SwagCustomizedProductsTemplate"];
+    templateConfigurationShares?: components["schemas"]["SwagCustomizedProductsTemplateConfigurationShare"][];
     templateId: string;
     templateVersionId?: string;
     /** Format: date-time */
     updatedAt?: string;
     versionId?: string;
   };
-  SwagCustomizedProductsTemplateConfigurationJsonApi: components['schemas']['resource'] & {
+  SwagCustomizedProductsTemplateConfigurationJsonApi: components["schemas"]["resource"] & {
     configuration: GenericRecord;
     /** Format: date-time */
     createdAt: string;
@@ -6256,12 +6256,12 @@ export type Schemas = {
     updatedAt?: string;
   };
   SwagCustomizedProductsTemplateExclusion: {
-    conditions?: components['schemas']['SwagCustomizedProductsTemplateExclusionCondition'][];
+    conditions?: components["schemas"]["SwagCustomizedProductsTemplateExclusionCondition"][];
     /** Format: date-time */
     createdAt: string;
     id: string;
     name: string;
-    template?: components['schemas']['SwagCustomizedProductsTemplate'];
+    template?: components["schemas"]["SwagCustomizedProductsTemplate"];
     templateId: string;
     templateVersionId?: string;
     /** Format: date-time */
@@ -6272,14 +6272,14 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     id: string;
-    templateExclusion?: components['schemas']['SwagCustomizedProductsTemplateExclusion'];
+    templateExclusion?: components["schemas"]["SwagCustomizedProductsTemplateExclusion"];
     templateExclusionId: string;
-    templateExclusionOperator?: components['schemas']['SwagCustomizedProductsTemplateExclusionOperator'];
+    templateExclusionOperator?: components["schemas"]["SwagCustomizedProductsTemplateExclusionOperator"];
     templateExclusionOperatorId: string;
     templateExclusionVersionId?: string;
-    templateOption?: components['schemas']['SwagCustomizedProductsTemplateOption'];
+    templateOption?: components["schemas"]["SwagCustomizedProductsTemplateOption"];
     templateOptionId: string;
-    templateOptionValues?: components['schemas']['SwagCustomizedProductsTemplateOptionValue'][];
+    templateOptionValues?: components["schemas"]["SwagCustomizedProductsTemplateOptionValue"][];
     templateOptionVersionId?: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -6291,7 +6291,7 @@ export type Schemas = {
     id: string;
     label: string;
     operator: string;
-    templateExclusionConditions?: components['schemas']['SwagCustomizedProductsTemplateExclusionCondition'][];
+    templateExclusionConditions?: components["schemas"]["SwagCustomizedProductsTemplateExclusionCondition"][];
     templateOptionType: string;
     translated: {
       label: string;
@@ -6301,7 +6301,7 @@ export type Schemas = {
     /** Format: date-time */
     updatedAt?: string;
   };
-  SwagCustomizedProductsTemplateJsonApi: components['schemas']['resource'] & {
+  SwagCustomizedProductsTemplateJsonApi: components["schemas"]["resource"] & {
     active?: boolean;
     confirmInput?: boolean;
     /** Format: date-time */
@@ -6419,14 +6419,14 @@ export type Schemas = {
     placeholder?: string;
     /** Format: int64 */
     position?: number;
-    price?: components['schemas']['Price'][];
-    prices?: components['schemas']['SwagCustomizedProductsTemplateOptionPrice'][];
+    price?: components["schemas"]["Price"][];
+    prices?: components["schemas"]["SwagCustomizedProductsTemplateOptionPrice"][];
     relativeSurcharge?: boolean;
     required?: boolean;
-    tax?: components['schemas']['Tax'];
+    tax?: components["schemas"]["Tax"];
     taxId?: string;
-    template?: components['schemas']['SwagCustomizedProductsTemplate'];
-    templateExclusionConditions?: components['schemas']['SwagCustomizedProductsTemplateExclusionCondition'][];
+    template?: components["schemas"]["SwagCustomizedProductsTemplate"];
+    templateExclusionConditions?: components["schemas"]["SwagCustomizedProductsTemplateExclusionCondition"][];
     templateId: string;
     templateVersionId?: string;
     translated: {
@@ -6443,9 +6443,9 @@ export type Schemas = {
     typeProperties?: GenericRecord;
     /** Format: date-time */
     updatedAt?: string;
-    values?: components['schemas']['SwagCustomizedProductsTemplateOptionValue'][];
+    values?: components["schemas"]["SwagCustomizedProductsTemplateOptionValue"][];
   };
-  SwagCustomizedProductsTemplateOptionJsonApi: components['schemas']['resource'] & {
+  SwagCustomizedProductsTemplateOptionJsonApi: components["schemas"]["resource"] & {
     advancedSurcharge?: boolean;
     calculatedPrice?: GenericRecord;
     /** Format: date-time */
@@ -6460,7 +6460,7 @@ export type Schemas = {
     placeholder?: string;
     /** Format: int64 */
     position?: number;
-    price?: components['schemas']['Price'][];
+    price?: components["schemas"]["Price"][];
     relationships?: {
       prices?: {
         data?: {
@@ -6564,10 +6564,10 @@ export type Schemas = {
     id: string;
     /** Format: float */
     percentageSurcharge?: number;
-    price?: components['schemas']['Price'][];
-    rule?: components['schemas']['Rule'];
+    price?: components["schemas"]["Price"][];
+    rule?: components["schemas"]["Rule"];
     ruleId?: string;
-    templateOption?: components['schemas']['SwagCustomizedProductsTemplateOption'];
+    templateOption?: components["schemas"]["SwagCustomizedProductsTemplateOption"];
     templateOptionId: string;
     templateOptionVersionId?: string;
     /** Format: date-time */
@@ -6587,13 +6587,13 @@ export type Schemas = {
     percentageSurcharge?: number;
     /** Format: int64 */
     position: number;
-    price?: components['schemas']['Price'][];
-    prices?: components['schemas']['SwagCustomizedProductsTemplateOptionValuePrice'][];
+    price?: components["schemas"]["Price"][];
+    prices?: components["schemas"]["SwagCustomizedProductsTemplateOptionValuePrice"][];
     relativeSurcharge?: boolean;
-    tax?: components['schemas']['Tax'];
+    tax?: components["schemas"]["Tax"];
     taxId?: string;
-    templateExclusionConditions?: components['schemas']['SwagCustomizedProductsTemplateExclusionCondition'][];
-    templateOption?: components['schemas']['SwagCustomizedProductsTemplateOption'];
+    templateExclusionConditions?: components["schemas"]["SwagCustomizedProductsTemplateExclusionCondition"][];
+    templateOption?: components["schemas"]["SwagCustomizedProductsTemplateOption"];
     templateOptionId: string;
     templateOptionVersionId?: string;
     translated: {
@@ -6609,7 +6609,7 @@ export type Schemas = {
     value?: GenericRecord;
     versionId?: string;
   };
-  SwagCustomizedProductsTemplateOptionValueJsonApi: components['schemas']['resource'] & {
+  SwagCustomizedProductsTemplateOptionValueJsonApi: components["schemas"]["resource"] & {
     advancedSurcharge?: boolean;
     /** Format: date-time */
     createdAt: string;
@@ -6622,7 +6622,7 @@ export type Schemas = {
     percentageSurcharge?: number;
     /** Format: int64 */
     position: number;
-    price?: components['schemas']['Price'][];
+    price?: components["schemas"]["Price"][];
     relationships?: {
       prices?: {
         data?: {
@@ -6708,10 +6708,10 @@ export type Schemas = {
     id: string;
     /** Format: float */
     percentageSurcharge?: number;
-    price?: components['schemas']['Price'][];
-    rule?: components['schemas']['Rule'];
+    price?: components["schemas"]["Price"][];
+    rule?: components["schemas"]["Rule"];
     ruleId?: string;
-    templateOptionValue?: components['schemas']['SwagCustomizedProductsTemplateOptionValue'];
+    templateOptionValue?: components["schemas"]["SwagCustomizedProductsTemplateOptionValue"];
     templateOptionValueId: string;
     templateOptionValueVersionId?: string;
     /** Format: date-time */
@@ -6729,18 +6729,18 @@ export type Schemas = {
   };
   SwagDynamicAccessLandingPageRule: {
     id?: string;
-    landingPage?: components['schemas']['LandingPage'];
+    landingPage?: components["schemas"]["LandingPage"];
     landingPageId: string;
     landingPageVersionId?: string;
-    rule?: components['schemas']['Rule'];
+    rule?: components["schemas"]["Rule"];
     ruleId: string;
   };
   SwagDynamicAccessProductRule: {
     id?: string;
-    product?: components['schemas']['Product'];
+    product?: components["schemas"]["Product"];
     productId: string;
     productVersionId?: string;
-    rule?: components['schemas']['Rule'];
+    rule?: components["schemas"]["Rule"];
     ruleId: string;
   };
   SwagLanguagePackLanguage: {
@@ -6830,12 +6830,12 @@ export type Schemas = {
   SwagPaypalVaultTokenMapping: {
     /** Format: date-time */
     createdAt: string;
-    customer?: components['schemas']['Customer'];
+    customer?: components["schemas"]["Customer"];
     customerId: string;
     id?: string;
-    paymentMethod?: components['schemas']['PaymentMethod'];
+    paymentMethod?: components["schemas"]["PaymentMethod"];
     paymentMethodId: string;
-    token?: components['schemas']['SwagPaypalVaultToken'];
+    token?: components["schemas"]["SwagPaypalVaultToken"];
     tokenId: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -6876,7 +6876,7 @@ export type Schemas = {
     /** Format: date-time */
     createdAt: string;
     id: string;
-    salesChannel?: components['schemas']['SalesChannel'];
+    salesChannel?: components["schemas"]["SalesChannel"];
     salesChannelId?: string;
     /** Format: date-time */
     updatedAt?: string;
@@ -6950,7 +6950,7 @@ export type Schemas = {
     helpTexts?: GenericRecord;
     id: string;
     labels?: GenericRecord;
-    media?: components['schemas']['Media'][];
+    media?: components["schemas"]["Media"][];
     name: string;
     parentThemeId?: string;
     previewMediaId?: string;
@@ -6970,7 +6970,7 @@ export type Schemas = {
     /** Status if the mode is toggled to active or inactive */
     active: boolean;
   };
-  TotalCountMode: 'none' | 'exact' | 'next-pages';
+  TotalCountMode: "none" | "exact" | "next-pages";
   Unit: {
     /** Format: date-time */
     createdAt: string;
@@ -7052,7 +7052,7 @@ export type Schemas = {
     updatedAt?: string;
   };
   WishlistLoadRouteResponse: {
-    products?: components['schemas']['ProductListingResult'];
+    products?: components["schemas"]["ProductListingResult"];
     wishlist?: {
       customerId?: string;
       salesChannelId?: string;
@@ -7061,7 +7061,7 @@ export type Schemas = {
   attributes: {
     [key: string]: unknown;
   };
-  data: components['schemas']['resource'] | components['schemas']['resource'][];
+  data: components["schemas"]["resource"] | components["schemas"]["resource"][];
   error: {
     /** An application-specific error code, expressed as a string value. */
     code?: string;
@@ -7071,8 +7071,8 @@ export type Schemas = {
     detail?: string;
     /** A unique identifier for this particular occurrence of the problem. */
     id?: string;
-    links?: components['schemas']['links'];
-    meta?: components['schemas']['meta'];
+    links?: components["schemas"]["links"];
+    meta?: components["schemas"]["meta"];
     source?: {
       /** A string indicating which query parameter caused the error. */
       parameter?: string;
@@ -7085,17 +7085,17 @@ export type Schemas = {
     title?: string;
   };
   failure: {
-    errors: components['schemas']['error'][];
-    links?: components['schemas']['links'];
-    meta?: components['schemas']['meta'];
+    errors: components["schemas"]["error"][];
+    links?: components["schemas"]["links"];
+    meta?: components["schemas"]["meta"];
   };
   info: {
-    jsonapi?: components['schemas']['jsonapi'];
-    links?: components['schemas']['links'];
-    meta: components['schemas']['meta'];
+    jsonapi?: components["schemas"]["jsonapi"];
+    links?: components["schemas"]["links"];
+    meta: components["schemas"]["meta"];
   };
   jsonapi: {
-    meta?: components['schemas']['meta'];
+    meta?: components["schemas"]["meta"];
     version?: string;
   };
   link: OneOf<
@@ -7107,17 +7107,17 @@ export type Schemas = {
          * A string containing the link's URL.
          */
         href: string;
-        meta?: components['schemas']['meta'];
-      }
+        meta?: components["schemas"]["meta"];
+      },
     ]
   >;
   linkage: {
     id: string;
-    meta?: components['schemas']['meta'];
+    meta?: components["schemas"]["meta"];
     type: string;
   };
   links: {
-    [key: string]: components['schemas']['link'];
+    [key: string]: components["schemas"]["link"];
   };
   meta: {
     [key: string]: unknown;
@@ -7145,37 +7145,37 @@ export type Schemas = {
     prev?: string;
   };
   relationshipLinks: {
-    related?: components['schemas']['link'];
-    self?: GenericRecord[] & components['schemas']['link'];
+    related?: components["schemas"]["link"];
+    self?: GenericRecord[] & components["schemas"]["link"];
     [key: string]: unknown;
   };
-  relationshipToMany: components['schemas']['linkage'][];
-  relationshipToOne: components['schemas']['linkage'];
+  relationshipToMany: components["schemas"]["linkage"][];
+  relationshipToOne: components["schemas"]["linkage"];
   relationships: unknown;
   resource: {
-    attributes?: components['schemas']['attributes'];
+    attributes?: components["schemas"]["attributes"];
     id: string;
-    links?: components['schemas']['links'];
-    meta?: components['schemas']['meta'];
-    relationships?: components['schemas']['relationships'];
+    links?: components["schemas"]["links"];
+    meta?: components["schemas"]["meta"];
+    relationships?: components["schemas"]["relationships"];
     type: string;
   };
   success: {
-    data: components['schemas']['data'];
+    data: components["schemas"]["data"];
     /** To reduce the number of HTTP requests, servers **MAY** allow responses that include related resources along with the requested primary resources. Such responses are called "compound documents". */
-    included?: components['schemas']['resource'][];
+    included?: components["schemas"]["resource"][];
     /** Link members related to the primary data. */
-    links?: components['schemas']['links'] & components['schemas']['pagination'];
-    meta?: components['schemas']['meta'];
+    links?: components["schemas"]["links"] & components["schemas"]["pagination"];
+    meta?: components["schemas"]["meta"];
   };
 };
 export type operations = {
-  'api-info get /_info/openapi3.json': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "api-info get /_info/openapi3.json": {
+    contentType?: "application/json";
+    accept?: "application/json";
     query?: {
       /** Type of the api */
-      type?: 'jsonapi' | 'json';
+      type?: "jsonapi" | "json";
     };
     response: {
       components?: {
@@ -7236,9 +7236,9 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'getRoutes get /_info/routes': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "getRoutes get /_info/routes": {
+    contentType?: "application/json";
+    accept?: "application/json";
     response: {
       endpoints: {
         methods: string[];
@@ -7247,17 +7247,17 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'createCustomerAddress post /account/address': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body: components['schemas']['CustomerAddress'];
-    response: components['schemas']['CustomerAddress'] &
-      components['schemas']['CustomerAddressRead'];
+  "createCustomerAddress post /account/address": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body: components["schemas"]["CustomerAddress"];
+    response: components["schemas"]["CustomerAddress"] &
+      components["schemas"]["CustomerAddressRead"];
     responseCode: 200;
   };
-  'deleteCustomerAddress delete /account/address/{addressId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "deleteCustomerAddress delete /account/address/{addressId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** ID of the address to be deleted. */
       addressId: string;
@@ -7265,31 +7265,21 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'updateCustomerAddress patch /account/address/{addressId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateCustomerAddress patch /account/address/{addressId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Address ID */
       addressId: string;
     };
-    body: components['schemas']['CustomerAddressBody'];
-    response: components['schemas']['CustomerAddress'] &
-      components['schemas']['CustomerAddressRead'];
+    body: components["schemas"]["CustomerAddressBody"];
+    response: components["schemas"]["CustomerAddress"] &
+      components["schemas"]["CustomerAddressRead"];
     responseCode: 200;
   };
-  'defaultBillingAddress patch /account/address/default-billing/{addressId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    pathParams: {
-      /** Address ID */
-      addressId: string;
-    };
-    response: never;
-    responseCode: 200;
-  };
-  'defaultShippingAddress patch /account/address/default-shipping/{addressId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "defaultBillingAddress patch /account/address/default-billing/{addressId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Address ID */
       addressId: string;
@@ -7297,9 +7287,19 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'changeEmail post /account/change-email': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "defaultShippingAddress patch /account/address/default-shipping/{addressId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    pathParams: {
+      /** Address ID */
+      addressId: string;
+    };
+    response: never;
+    responseCode: 200;
+  };
+  "changeEmail post /account/change-email": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** New email address. Has to be unique amongst all customers */
       email: string;
@@ -7308,22 +7308,22 @@ export type operations = {
       /** Customer's current password */
       password: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'changeLanguage post /account/change-language': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "changeLanguage post /account/change-language": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** New languageId */
       language?: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'changePassword post /account/change-password': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "changePassword post /account/change-password": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** New Password for the customer */
       newPassword: string;
@@ -7332,22 +7332,22 @@ export type operations = {
       /** Current password of the customer */
       password: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'changePaymentMethod post /account/change-payment-method/{paymentMethodId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "changePaymentMethod post /account/change-payment-method/{paymentMethodId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the desired default payment method */
       paymentMethodId: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'changeProfile post /account/change-profile': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "changeProfile post /account/change-profile": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Birthday day */
       birthdayDay?: number;
@@ -7366,48 +7366,48 @@ export type operations = {
       /** (Academic) title of the customer */
       title?: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'readCustomer post /account/customer': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'];
-    response: components['schemas']['Customer'];
+  "readCustomer post /account/customer": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"];
+    response: components["schemas"]["Customer"];
     responseCode: 200;
   };
-  'deleteCustomer delete /account/customer': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "deleteCustomer delete /account/customer": {
+    contentType?: "application/json";
+    accept?: "application/json";
     response: never;
     responseCode: 204;
   };
-  'getCustomerRecoveryIsExpired post /account/customer-recovery-is-expired': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "getCustomerRecoveryIsExpired post /account/customer-recovery-is-expired": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Parameter from the link in the confirmation mail sent in Step 1 */
       hash: string;
     };
     response: {
       /** @enum {string} */
-      apiAlias?: 'array_struct';
+      apiAlias?: "array_struct";
       data?: {
         isExpired: boolean;
       }[];
     };
     responseCode: 200;
   };
-  'listAddress post /account/list-address': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'];
-    response: components['schemas']['CustomerAddress'][];
+  "listAddress post /account/list-address": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"];
+    response: components["schemas"]["CustomerAddress"][];
     responseCode: 200;
   };
-  'loginCustomer post /account/login': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "loginCustomer post /account/login": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Password */
       password: string;
@@ -7420,9 +7420,9 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'imitateCustomerLogin post /account/login/imitate-customer': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "imitateCustomerLogin post /account/login/imitate-customer": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** ID of the customer */
       customerId: string;
@@ -7437,37 +7437,37 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'logoutCustomer post /account/logout': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "logoutCustomer post /account/logout": {
+    contentType?: "application/json";
+    accept?: "application/json";
     response: {
       /** Define the URL which browser will be redirected to */
       redirectUrl?: string;
     };
     responseCode: 200;
   };
-  'readNewsletterRecipient post /account/newsletter-recipient': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'];
-    response: components['schemas']['AccountNewsletterRecipient'];
+  "readNewsletterRecipient post /account/newsletter-recipient": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"];
+    response: components["schemas"]["AccountNewsletterRecipient"];
     responseCode: 200;
   };
-  'sendRecoveryMail post /account/recovery-password': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "sendRecoveryMail post /account/recovery-password": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** E-Mail address to identify the customer */
       email: string;
       /** URL of the storefront to use for the generated reset link. It has to be a domain that is configured in the sales channel domain settings. */
       storefrontUrl: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'recoveryPassword post /account/recovery-password-confirm': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "recoveryPassword post /account/recovery-password-confirm": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Parameter from the link in the confirmation mail sent in Step 1 */
       hash: string;
@@ -7476,12 +7476,12 @@ export type operations = {
       /** Confirmation of the new password */
       newPasswordConfirm: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'register post /account/register': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "register post /account/register": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Flag indicating accepted data protection */
       acceptedDataProtection: boolean;
@@ -7492,7 +7492,7 @@ export type operations = {
       accountType?: string;
       /** Field can be used to store an affiliate tracking code */
       affiliateCode?: string;
-      billingAddress: components['schemas']['CustomerAddress'];
+      billingAddress: components["schemas"]["CustomerAddress"];
       /** Birthday day */
       birthdayDay?: number;
       /** Birthday month */
@@ -7516,18 +7516,18 @@ export type operations = {
       password: string;
       /** Id of the salutation for the customer account. Fetch options using `salutation` endpoint. */
       salutationId: string;
-      shippingAddress?: components['schemas']['CustomerAddress'];
+      shippingAddress?: components["schemas"]["CustomerAddress"];
       /** URL of the storefront for that registration. Used in confirmation emails. Has to be one of the configured domains of the sales channel. */
       storefrontUrl: string;
       /** (Academic) title of the customer */
       title?: string;
     };
-    response: components['schemas']['Customer'];
+    response: components["schemas"]["Customer"];
     responseCode: 200;
   };
-  'registerConfirm post /account/register-confirm': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "registerConfirm post /account/register-confirm": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Email hash from the email received */
       em: string;
@@ -7537,9 +7537,9 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'createShoppingList post /account/shopping-list': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "createShoppingList post /account/shopping-list": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       lineItems?: {
         [key: string]: {
@@ -7555,9 +7555,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'removeShoppingLists delete /account/shopping-list': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "removeShoppingLists delete /account/shopping-list": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Shopping list ids */
       ids: string[];
@@ -7565,19 +7565,19 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'readShoppingList post /account/shopping-list/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readShoppingList post /account/shopping-list/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the shopping list to be fetched */
       id: string;
     };
-    response: components['schemas']['B2bComponentsShoppingList'];
+    response: components["schemas"]["B2bComponentsShoppingList"];
     responseCode: 200;
   };
-  'updateShoppingList patch /account/shopping-list/{id}/change-name': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateShoppingList patch /account/shopping-list/{id}/change-name": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the shopping list to be fetched */
       id: string;
@@ -7589,9 +7589,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'duplicateShoppingList post /account/shopping-list/{id}/duplicate': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "duplicateShoppingList post /account/shopping-list/{id}/duplicate": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the shopping list to be fetched */
       id: string;
@@ -7606,9 +7606,9 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'summaryShoppingList get /account/shopping-list/{id}/summary': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "summaryShoppingList get /account/shopping-list/{id}/summary": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the shopping list to be fetched */
       id: string;
@@ -7636,9 +7636,9 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'addLineItems post /account/shopping-list/line-item/{id}/add': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "addLineItems post /account/shopping-list/line-item/{id}/add": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the shopping list to be fetched */
       id: string;
@@ -7656,9 +7656,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'updateLineItems patch /account/shopping-list/line-item/{id}/change-quantity': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateLineItems patch /account/shopping-list/line-item/{id}/change-quantity": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the shopping list line item to be fetched */
       id: string;
@@ -7670,9 +7670,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'removeLineItems delete /account/shopping-list/line-item/remove': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "removeLineItems delete /account/shopping-list/line-item/remove": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Line items ids */
       ids: string[];
@@ -7680,18 +7680,18 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'readShoppingLists post /account/shopping-lists': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'];
+  "readShoppingLists post /account/shopping-lists": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['B2bComponentsShoppingList'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["B2bComponentsShoppingList"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'generateJWTAppSystemAppServer post /app-system/{name}/generate-token': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "generateJWTAppSystemAppServer post /app-system/{name}/generate-token": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Name of the app */
       name: string;
@@ -7705,9 +7705,9 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'readApprovalRules get /approval-rule': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readApprovalRules get /approval-rule": {
+    contentType?: "application/json";
+    accept?: "application/json";
     query?: {
       /** Page number */
       p?: number;
@@ -7715,38 +7715,38 @@ export type operations = {
       limit?: number;
     };
     response: {
-      elements?: components['schemas']['ApprovalRule'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["ApprovalRule"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'listApprovalRules post /approval-rule': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "listApprovalRules post /approval-rule": {
+    contentType?: "application/json";
+    accept?: "application/json";
     query?: {
       /** Page number */
       p?: number;
       /** Number of items per page */
       limit?: number;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['ApprovalRule'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["ApprovalRule"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readApprovalRule get /approval-rule/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readApprovalRule get /approval-rule/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the approval rule to be fetched */
       id: string;
     };
-    response: components['schemas']['ApprovalRule'];
+    response: components["schemas"]["ApprovalRule"];
     responseCode: 200;
   };
-  'updateApprovalRule patch /approval-rule/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateApprovalRule patch /approval-rule/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the approval rule to be updated */
       id: string;
@@ -7772,12 +7772,12 @@ export type operations = {
       /** Priority of the approval rule */
       priority?: number;
     };
-    response: components['schemas']['ApprovalRule'];
+    response: components["schemas"]["ApprovalRule"];
     responseCode: 200;
   };
-  'createApprovalRule post /approval-rule/create': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "createApprovalRule post /approval-rule/create": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body?: {
       /** Active status of the approval rule */
       active?: boolean;
@@ -7799,15 +7799,15 @@ export type operations = {
       /** Priority of the approval rule */
       priority?: number;
     };
-    response: components['schemas']['ApprovalRule'];
+    response: components["schemas"]["ApprovalRule"];
     responseCode: 200;
   };
-  'readBreadcrumb get /breadcrumb/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readBreadcrumb get /breadcrumb/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     query?: {
       /** Type: category or product (optional - default: product) */
-      type?: 'product' | 'category';
+      type?: "product" | "category";
       /** UUID for referrer category only used for product breadcrumb */
       referrerCategoryId?: string;
     };
@@ -7815,30 +7815,30 @@ export type operations = {
       /** UUID for product or category */
       id: string;
     };
-    response: components['schemas']['BreadcrumbCollection'];
+    response: components["schemas"]["BreadcrumbCollection"];
     responseCode: 200;
   };
-  'readCategoryList post /category': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readCategoryList post /category": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['Category'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["Category"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readCategory post /category/{navigationId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readCategory post /category/{navigationId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to try and resolve SEO URLs for the given navigation item */
-      'sw-include-seo-urls'?: boolean;
+      "sw-include-seo-urls"?: boolean;
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     query?: {
       /** Resolves only the given slot identifiers. The identifiers have to be seperated by a '|' character */
@@ -7848,79 +7848,79 @@ export type operations = {
       /** Identifier of the category to be fetched */
       navigationId: string;
     };
-    body: components['schemas']['Criteria'] & components['schemas']['ProductListingCriteria'];
-    response: components['schemas']['Category'];
+    body: components["schemas"]["Criteria"] & components["schemas"]["ProductListingCriteria"];
+    response: components["schemas"]["Category"];
     responseCode: 200;
   };
-  'readCart get /checkout/cart': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readCart get /checkout/cart": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    response: components['schemas']['Cart'];
+    response: components["schemas"]["Cart"];
     responseCode: 200;
   };
-  'deleteCart delete /checkout/cart': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    response: components['schemas']['SuccessResponse'];
+  "deleteCart delete /checkout/cart": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 204;
   };
-  'addLineItem post /checkout/cart/line-item': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "addLineItem post /checkout/cart/line-item": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body: components['schemas']['CartItems'];
-    response: components['schemas']['Cart'];
+    body: components["schemas"]["CartItems"];
+    response: components["schemas"]["Cart"];
     responseCode: 200;
   };
-  'removeLineItemDeprecated delete /checkout/cart/line-item': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "removeLineItemDeprecated delete /checkout/cart/line-item": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     query: {
       /** A list of product identifiers. */
       ids: string[];
     };
-    response: components['schemas']['Cart'];
+    response: components["schemas"]["Cart"];
     responseCode: 200;
   };
-  'updateLineItem patch /checkout/cart/line-item': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateLineItem patch /checkout/cart/line-item": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body: components['schemas']['CartItems'];
-    response: components['schemas']['Cart'];
+    body: components["schemas"]["CartItems"];
+    response: components["schemas"]["Cart"];
     responseCode: 200;
   };
-  'removeLineItem post /checkout/cart/line-item/delete': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "removeLineItem post /checkout/cart/line-item/delete": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     body: {
       /** A list of product identifiers. */
       ids: [string, ...string[]];
     };
-    response: components['schemas']['Cart'];
+    response: components["schemas"]["Cart"];
     responseCode: 200;
   };
-  'checkoutGateway get /checkout/gateway': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "checkoutGateway get /checkout/gateway": {
+    contentType?: "application/json";
+    accept?: "application/json";
     response: {
       errors?: {
         /** If the error is blocking */
@@ -7933,26 +7933,26 @@ export type operations = {
       paymentMethods?: {
         /** aggregation result */
         aggregations?: GenericRecord;
-        elements?: components['schemas']['PaymentMethod'][];
+        elements?: components["schemas"]["PaymentMethod"][];
         /** Total amount */
         total?: number;
       };
       shippingMethods?: {
         /** aggregation result */
         aggregations?: GenericRecord;
-        elements?: components['schemas']['ShippingMethod'][];
+        elements?: components["schemas"]["ShippingMethod"][];
         /** Total amount */
         total?: number;
       };
     };
     responseCode: 200;
   };
-  'createOrder post /checkout/order': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "createOrder post /checkout/order": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     body: {
       /** The affiliate code can be used to track which referrer the customer came through. An example could be `Price-comparison-company-XY`. */
@@ -7962,15 +7962,15 @@ export type operations = {
       /** Adds a comment from the customer to the order. */
       customerComment?: string;
     };
-    response: components['schemas']['Order'];
+    response: components["schemas"]["Order"];
     responseCode: 200;
   };
-  'readCms post /cms/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readCms post /cms/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       /** Identifier of the CMS page to be resolved */
@@ -7979,16 +7979,16 @@ export type operations = {
     body: {
       /** Resolves only the given slot identifiers. The identifiers have to be seperated by a `|` character. */
       slots?: string;
-    } & components['schemas']['ProductListingCriteria'];
-    response: components['schemas']['CmsPage'];
+    } & components["schemas"]["ProductListingCriteria"];
+    response: components["schemas"]["CmsPage"];
     responseCode: 200;
   };
-  'sendContactMail post /contact-form': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "sendContactMail post /contact-form": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     body: {
       /** Type of the content management page */
@@ -8020,15 +8020,15 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'readContext get /context': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    response: components['schemas']['SalesChannelContext'];
+  "readContext get /context": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    response: components["schemas"]["SalesChannelContext"];
     responseCode: 200;
   };
-  'updateContext patch /context': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateContext patch /context": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Billing Address */
       billingAddressId?: string;
@@ -8053,121 +8053,121 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'readCountry post /country': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readCountry post /country": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['Country'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["Country"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readCountryState post /country-state/{countryId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readCountryState post /country-state/{countryId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       countryId: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['CountryState'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["CountryState"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readCurrency post /currency': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readCurrency post /currency": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['Currency'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["Currency"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'getCustomerGroupRegistrationInfo get /customer-group-registration/config/{customerGroupId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "getCustomerGroupRegistrationInfo get /customer-group-registration/config/{customerGroupId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       /** Customer group id */
       customerGroupId: string;
     };
-    response: components['schemas']['CustomerGroup'];
+    response: components["schemas"]["CustomerGroup"];
     responseCode: 200;
   };
-  'readCustomerWishlist post /customer/wishlist': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readCustomerWishlist post /customer/wishlist": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body?: components['schemas']['Criteria'];
-    response: components['schemas']['WishlistLoadRouteResponse'];
+    body?: components["schemas"]["Criteria"];
+    response: components["schemas"]["WishlistLoadRouteResponse"];
     responseCode: 200;
   };
-  'addProductOnWishlist post /customer/wishlist/add/{productId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "addProductOnWishlist post /customer/wishlist/add/{productId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the product to be added. */
       productId: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'deleteProductOnWishlist delete /customer/wishlist/delete/{productId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "deleteProductOnWishlist delete /customer/wishlist/delete/{productId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** The identifier of the product to be removed from the wishlist. */
       productId: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'mergeProductOnWishlist post /customer/wishlist/merge': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "mergeProductOnWishlist post /customer/wishlist/merge": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** List product id */
       productIds?: string[];
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'download post /document/download/{documentId}/{deepLinkCode}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "download post /document/download/{documentId}/{deepLinkCode}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       documentId: string;
       deepLinkCode: string;
     };
-    body?: components['schemas']['Criteria'];
-    response: components['schemas']['Document'];
+    body?: components["schemas"]["Criteria"];
+    response: components["schemas"]["Document"];
     responseCode: 200;
   };
-  'attendeeRespondInvitation patch /dsr/appointment/{appointmentId}/attendee/respond-invitation': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "attendeeRespondInvitation patch /dsr/appointment/{appointmentId}/attendee/respond-invitation": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** The appointment id you respond to */
       appointmentId: string;
@@ -8177,16 +8177,16 @@ export type operations = {
        * The status you respond to
        * @enum {string}
        */
-      invitationStatus?: 'accepted' | 'maybe' | 'declined';
+      invitationStatus?: "accepted" | "maybe" | "declined";
       /** The token will be attached to the invitation response link in the invitation mail */
       token: string;
     };
-    response: components['schemas']['AttendeeRespondInvitationResponse'];
+    response: components["schemas"]["AttendeeRespondInvitationResponse"];
     responseCode: 200;
   };
-  'getCalendarFile post /dsr/appointment/{appointmentId}/download-ics': {
-    contentType?: 'application/json';
-    accept: 'text/calendar';
+  "getCalendarFile post /dsr/appointment/{appointmentId}/download-ics": {
+    contentType?: "application/json";
+    accept: "text/calendar";
     pathParams: {
       /** The appointment id you want to get the calendar file */
       appointmentId: string;
@@ -8198,20 +8198,20 @@ export type operations = {
     response: unknown;
     responseCode: 200;
   };
-  'joinAppointmentAsClient post /dsr/appointment/{presentationPath}/join-as-client': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "joinAppointmentAsClient post /dsr/appointment/{presentationPath}/join-as-client": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Presentation path */
       presentationPath: string;
     };
-    response: components['schemas']['JoinAppointmentResponse'];
+    response: components["schemas"]["JoinAppointmentResponse"];
     responseCode: 200;
   };
-  'updateAttendee patch /dsr/appointment/attendee': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body: components['schemas']['UpdateAttendeeRequestBody'];
+  "updateAttendee patch /dsr/appointment/attendee": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body: components["schemas"]["UpdateAttendeeRequestBody"];
     response: {
       /**
        * The api alias of the API
@@ -8223,81 +8223,81 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'getAttendeeProductCollection get /dsr/appointment/collection/{alias}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "getAttendeeProductCollection get /dsr/appointment/collection/{alias}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** The alias of collection you want to get */
-      alias: 'liked' | 'disliked';
+      alias: "liked" | "disliked";
     };
-    response: components['schemas']['AttendeeProductCollectionResponse'];
+    response: components["schemas"]["AttendeeProductCollectionResponse"];
     responseCode: 200;
   };
-  'attendeeProductCollectionAddProduct post /dsr/appointment/collection/{alias}/{productId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "attendeeProductCollectionAddProduct post /dsr/appointment/collection/{alias}/{productId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** The alias of collection you want to add */
-      alias: 'liked' | 'disliked';
+      alias: "liked" | "disliked";
       /** The product id you want to add */
       productId: string;
     };
     response: never;
     responseCode: 204;
   };
-  'attendeeProductCollectionRemoveProduct delete /dsr/appointment/collection/{alias}/{productId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "attendeeProductCollectionRemoveProduct delete /dsr/appointment/collection/{alias}/{productId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** The alias of collection you want to remove */
-      alias: 'liked' | 'disliked';
+      alias: "liked" | "disliked";
       /** The product id you want to remove */
       productId: string;
     };
     response: never;
     responseCode: 204;
   };
-  'getLastSeenProducts get /dsr/appointment/collection/last-seen': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    response: components['schemas']['AttendeeProductCollectionLastSeenResponse'];
+  "getLastSeenProducts get /dsr/appointment/collection/last-seen": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    response: components["schemas"]["AttendeeProductCollectionLastSeenResponse"];
     responseCode: 200;
   };
-  'getPresentationStructure get /dsr/appointment/presentation': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    response: components['schemas']['PresentationStructure'];
+  "getPresentationStructure get /dsr/appointment/presentation": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    response: components["schemas"]["PresentationStructure"];
     responseCode: 200;
   };
-  'getSlideData get /dsr/appointment/presentation/{presentationCmsPageId}/slide/{sectionId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "getSlideData get /dsr/appointment/presentation/{presentationCmsPageId}/slide/{sectionId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Presentation CMS page id for which the data is requested */
       presentationCmsPageId: string;
       /** CMS section id for which the data is requested */
       sectionId: string;
     };
-    response: components['schemas']['PresentationSlideData'];
+    response: components["schemas"]["PresentationSlideData"];
     responseCode: 200;
   };
-  'getClientPresentationState get /dsr/appointment/presentation/state': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    response: components['schemas']['ClientPresentationStateResponse'];
+  "getClientPresentationState get /dsr/appointment/presentation/state": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    response: components["schemas"]["ClientPresentationStateResponse"];
     responseCode: 200;
   };
-  'addInteraction post /dsr/interaction': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body: components['schemas']['CreateInteractionRequestBody'];
+  "addInteraction post /dsr/interaction": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body: components["schemas"]["CreateInteractionRequestBody"];
     response: never;
     responseCode: 200;
   };
-  'dsrProductListing post /dsr/product-listing': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'] & {
+  "dsrProductListing post /dsr/product-listing": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"] & {
       /**
        * Load interaction (like & dislike) to product of attendee. It will be added into product extensions named interaction
        * @default false
@@ -8320,13 +8320,13 @@ export type operations = {
       useIdSorting?: boolean;
     };
     response: {
-      elements?: components['schemas']['Product'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["Product"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'resolveQuickviewPage get /dsr/quickview/{productId}/{cmsPageLayoutId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "resolveQuickviewPage get /dsr/quickview/{productId}/{cmsPageLayoutId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** The product id */
       productId: string;
@@ -8334,34 +8334,34 @@ export type operations = {
       cmsPageLayoutId: string;
     };
     response: {
-      cmsPage?: components['schemas']['CmsPage'];
-      configurator?: components['schemas']['PropertyGroup'][];
-      product?: components['schemas']['Product'];
+      cmsPage?: components["schemas"]["CmsPage"];
+      configurator?: components["schemas"]["PropertyGroup"][];
+      product?: components["schemas"]["Product"];
     };
     responseCode: 200;
   };
-  'readEmployees post /employee': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'];
+  "readEmployees post /employee": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['B2bEmployee'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["B2bEmployee"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readEmployee post /employee/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readEmployee post /employee/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the employee to be fetched */
       id: string;
     };
-    response: components['schemas']['B2bEmployee'];
+    response: components["schemas"]["B2bEmployee"];
     responseCode: 200;
   };
-  'deleteEmployee delete /employee/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "deleteEmployee delete /employee/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the employee to be deleted */
       id: string;
@@ -8369,9 +8369,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'updateEmployee patch /employee/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateEmployee patch /employee/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the employee to be updated */
       id: string;
@@ -8386,12 +8386,12 @@ export type operations = {
       /** New id of the role of the employee */
       roleId?: string;
     };
-    response: components['schemas']['B2bEmployee'];
+    response: components["schemas"]["B2bEmployee"];
     responseCode: 200;
   };
-  'createEmployee post /employee/create': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "createEmployee post /employee/create": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Email of the new employee */
       email: string;
@@ -8402,12 +8402,12 @@ export type operations = {
       /** Id of the role of the new employee */
       roleId?: string;
     };
-    response: components['schemas']['B2bEmployee'];
+    response: components["schemas"]["B2bEmployee"];
     responseCode: 200;
   };
-  'reinviteEmployee post /employee/reinvite/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "reinviteEmployee post /employee/reinvite/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the employee to be reinvited */
       id: string;
@@ -8416,12 +8416,12 @@ export type operations = {
       /** URL of the storefront domain */
       storefrontUrl?: string;
     };
-    response: components['schemas']['B2bEmployee'];
+    response: components["schemas"]["B2bEmployee"];
     responseCode: 200;
   };
-  'handlePaymentMethod post /handle-payment': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "handlePaymentMethod post /handle-payment": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** URL to which the client should be redirected after erroneous payment */
       errorUrl?: string;
@@ -8435,64 +8435,64 @@ export type operations = {
     };
     responseCode: 200;
   };
-  'readLandingPage post /landing-page/{landingPageId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readLandingPage post /landing-page/{landingPageId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       /** Identifier of the landing page. */
       landingPageId: string;
     };
-    body: components['schemas']['Criteria'] &
+    body: components["schemas"]["Criteria"] &
       ({
         /** Resolves only the given slot identifiers. The identifiers have to be seperated by a `|` character. */
         slots?: string;
-      } & components['schemas']['ProductListingCriteria']);
-    response: components['schemas']['LandingPage'];
+      } & components["schemas"]["ProductListingCriteria"]);
+    response: components["schemas"]["LandingPage"];
     responseCode: 200;
   };
-  'readLanguages post /language': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readLanguages post /language": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements: components['schemas']['Language'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements: components["schemas"]["Language"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readMedia post /media': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readMedia post /media": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Identifier (UUID) of the media entity to be fetched. */
       ids: string[];
     };
-    response: components['schemas']['Media'][];
+    response: components["schemas"]["Media"][];
     responseCode: 200;
   };
-  'readNavigation post /navigation/{activeId}/{rootId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readNavigation post /navigation/{activeId}/{rootId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to try and resolve SEO URLs for the given navigation item */
-      'sw-include-seo-urls'?: boolean;
+      "sw-include-seo-urls"?: boolean;
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       /** Identifier of the active category in the navigation tree (if not used, just set to the same as rootId). */
-      activeId: string | components['schemas']['NavigationType'];
+      activeId: string | components["schemas"]["NavigationType"];
       /** Identifier of the root category for your desired navigation tree. You can use it to fetch sub-trees of your navigation tree. */
-      rootId: string | components['schemas']['NavigationType'];
+      rootId: string | components["schemas"]["NavigationType"];
     };
-    body: components['schemas']['Criteria'] & {
+    body: components["schemas"]["Criteria"] & {
       /** Return the categories as a tree or as a flat list. */
       buildTree?: GenericRecord[];
       /**
@@ -8501,12 +8501,12 @@ export type operations = {
        */
       depth?: number;
     };
-    response: components['schemas']['NavigationRouteResponse'];
+    response: components["schemas"]["NavigationRouteResponse"];
     responseCode: 200;
   };
-  'confirmNewsletter post /newsletter/confirm': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "confirmNewsletter post /newsletter/confirm": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Email hash parameter from the link in the confirmation mail */
       em: string;
@@ -8516,9 +8516,9 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'subscribeToNewsletter post /newsletter/subscribe': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "subscribeToNewsletter post /newsletter/subscribe": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** City */
       city?: string;
@@ -8548,9 +8548,9 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'unsubscribeToNewsletter post /newsletter/unsubscribe': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "unsubscribeToNewsletter post /newsletter/unsubscribe": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Email address that should be removed from the mailing lists. */
       email: string;
@@ -8558,26 +8558,26 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'readOrder post /order': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readOrder post /order": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body: components['schemas']['Criteria'] & {
+    body: components["schemas"]["Criteria"] & {
       /** Check if the payment method of the order is still changeable. */
       checkPromotion?: boolean;
     };
-    response: components['schemas']['OrderRouteResponse'];
+    response: components["schemas"]["OrderRouteResponse"];
     responseCode: 200;
   };
-  'orderDownloadFile get /order/download/{orderId}/{downloadId}': {
-    contentType?: 'application/json';
-    accept: 'application/octet-stream';
+  "orderDownloadFile get /order/download/{orderId}/{downloadId}": {
+    contentType?: "application/json";
+    accept: "application/octet-stream";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       orderId: string;
@@ -8586,12 +8586,12 @@ export type operations = {
     response: Blob;
     responseCode: 200;
   };
-  'orderSetPayment post /order/payment': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "orderSetPayment post /order/payment": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     body: {
       /** The identifier of the order. */
@@ -8599,56 +8599,56 @@ export type operations = {
       /** The identifier of the paymentMethod to be set */
       paymentMethodId: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
   };
-  'cancelOrder post /order/state/cancel': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "cancelOrder post /order/state/cancel": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     body: {
       /** The identifier of the order to be canceled. */
       orderId: string;
     };
-    response: components['schemas']['StateMachineState'];
+    response: components["schemas"]["StateMachineState"];
     responseCode: 200;
   };
-  'readPaymentMethod post /payment-method': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readPaymentMethod post /payment-method": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body: components['schemas']['Criteria'] & {
+    body: components["schemas"]["Criteria"] & {
       /** List only available */
       onlyAvailable?: boolean;
     };
     response: {
       /** aggregation result */
       aggregations?: GenericRecord;
-      elements?: components['schemas']['PaymentMethod'][];
+      elements?: components["schemas"]["PaymentMethod"][];
       /** Total amount */
       total?: number;
     };
     responseCode: 200;
   };
-  'fetchPendingOrder post /pending-order/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "fetchPendingOrder post /pending-order/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the pending order to be fetched */
       id: string;
     };
-    response: components['schemas']['PendingOrder'];
+    response: components["schemas"]["PendingOrder"];
     responseCode: 200;
   };
-  'approvePendingOrder post /pending-order/{id}/approve': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "approvePendingOrder post /pending-order/{id}/approve": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the pending order to be approved */
       id: string;
@@ -8660,9 +8660,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'createOrderFromPendingOrder post /pending-order/{id}/checkout/order': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "createOrderFromPendingOrder post /pending-order/{id}/checkout/order": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the pending order to be used to create a order */
       id: string;
@@ -8671,12 +8671,12 @@ export type operations = {
       /** Message content */
       customerComment?: string;
     };
-    response: components['schemas']['Order'];
+    response: components["schemas"]["Order"];
     responseCode: 200;
   };
-  'declinePendingOrder post /pending-order/{id}/decline': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "declinePendingOrder post /pending-order/{id}/decline": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the pending order to be declined */
       id: string;
@@ -8688,32 +8688,32 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'requestOrderApproval post /pending-order/request': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "requestOrderApproval post /pending-order/request": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body?: {
       /** Message content */
       comment?: string;
     };
-    response: components['schemas']['PendingOrder'];
+    response: components["schemas"]["PendingOrder"];
     responseCode: 200;
   };
-  'readProduct post /product': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readProduct post /product": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['Product'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["Product"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readProductExport get /product-export/{accessKey}/{fileName}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readProductExport get /product-export/{accessKey}/{fileName}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Access Key */
       accessKey: string;
@@ -8723,64 +8723,64 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'readProductListing post /product-listing/{categoryId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readProductListing post /product-listing/{categoryId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Determines if the response must contain a SeoUrl entity for a product entity */
-      'sw-include-seo-urls'?: boolean;
+      "sw-include-seo-urls"?: boolean;
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       /** Identifier of a category. */
       categoryId: string;
     };
-    body: components['schemas']['ProductListingCriteria'] &
-      components['schemas']['ProductListingFlags'];
-    response: components['schemas']['ProductListingResult'];
+    body: components["schemas"]["ProductListingCriteria"] &
+      components["schemas"]["ProductListingFlags"];
+    response: components["schemas"]["ProductListingResult"];
     responseCode: 200;
   };
-  'readProductDetail post /product/{productId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readProductDetail post /product/{productId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
       /** Instructs Shopware to try and resolve SEO URLs for the given navigation item */
-      'sw-include-seo-urls'?: boolean;
+      "sw-include-seo-urls"?: boolean;
     };
     pathParams: {
       /** Product ID */
       productId: string;
     };
-    body?: components['schemas']['Criteria'];
-    response: components['schemas']['ProductDetailResponse'];
+    body?: components["schemas"]["Criteria"];
+    response: components["schemas"]["ProductDetailResponse"];
     responseCode: 200;
   };
-  'readProductCrossSellings post /product/{productId}/cross-selling': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readProductCrossSellings post /product/{productId}/cross-selling": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
       /** Instructs Shopware to try and resolve SEO URLs for the given navigation item */
-      'sw-include-seo-urls'?: boolean;
+      "sw-include-seo-urls"?: boolean;
     };
     pathParams: {
       /** Product ID */
       productId: string;
     };
-    body: components['schemas']['Criteria'];
-    response: components['schemas']['CrossSellingElementCollection'];
+    body: components["schemas"]["Criteria"];
+    response: components["schemas"]["CrossSellingElementCollection"];
     responseCode: 200;
   };
-  'searchProductVariantIds post /product/{productId}/find-variant': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "searchProductVariantIds post /product/{productId}/find-variant": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       /** Product ID */
@@ -8792,15 +8792,15 @@ export type operations = {
       /** The id of the option group that has been switched. */
       switchedGroup?: string;
     };
-    response: components['schemas']['FindProductVariantRouteResponse'];
+    response: components["schemas"]["FindProductVariantRouteResponse"];
     responseCode: 200;
   };
-  'saveProductReview post /product/{productId}/review': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "saveProductReview post /product/{productId}/review": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       /** Identifier of the product which is reviewed. */
@@ -8824,26 +8824,26 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'readProductReviews post /product/{productId}/reviews': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readProductReviews post /product/{productId}/reviews": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     pathParams: {
       /** Identifier of the product. */
       productId: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['ProductReview'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["ProductReview"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'searchByImageSearchTerm post /product/image-upload-search/search-term': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "searchByImageSearchTerm post /product/image-upload-search/search-term": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /**
        * Format: binary
@@ -8851,12 +8851,12 @@ export type operations = {
        */
       file?: Blob;
     };
-    response: components['schemas']['SearchByImageSearchTermResponse'];
+    response: components["schemas"]["SearchByImageSearchTermResponse"];
     responseCode: 200;
   };
-  'naturalLanguageSearchTerm post /product/natural-language/search-term': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "naturalLanguageSearchTerm post /product/natural-language/search-term": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /**
        * Natural language query
@@ -8864,12 +8864,12 @@ export type operations = {
        */
       query?: string;
     };
-    response: components['schemas']['NaturalLanguageSearchTermResponse'];
+    response: components["schemas"]["NaturalLanguageSearchTermResponse"];
     responseCode: 200;
   };
-  'switchPaymentOrShippingMethod post /quote/{id}/configure': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "switchPaymentOrShippingMethod post /quote/{id}/configure": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the quote to be reinvited */
       id: string;
@@ -8883,9 +8883,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'declineQuote post /quote/{id}/decline': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "declineQuote post /quote/{id}/decline": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the quote to be reinvited */
       id: string;
@@ -8897,9 +8897,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'requestChangeQuote post /quote/{id}/request-change': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "requestChangeQuote post /quote/{id}/request-change": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the quote to be reinvited */
       id: string;
@@ -8911,19 +8911,19 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'readQuote post /quote/detail/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readQuote post /quote/detail/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the quote to be fetched */
       id: string;
     };
-    response: components['schemas']['Quote'];
+    response: components["schemas"]["Quote"];
     responseCode: 200;
   };
-  'downloadQuoteDocument post /quote/document/download/{documentId}/{deepLinkCode}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "downloadQuoteDocument post /quote/document/download/{documentId}/{deepLinkCode}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the quote document to be reinvited */
       documentId: string;
@@ -8933,9 +8933,9 @@ export type operations = {
     response: never;
     responseCode: 200;
   };
-  'createOrderFromQuote post /quote/order/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "createOrderFromQuote post /quote/order/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the quote to be reinvited */
       id: string;
@@ -8944,59 +8944,59 @@ export type operations = {
       /** Message content */
       customerComment?: string;
     };
-    response: components['schemas']['Order'];
+    response: components["schemas"]["Order"];
     responseCode: 200;
   };
-  'requestQuote post /quote/request': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "requestQuote post /quote/request": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body?: {
       /** Message content */
       comment?: string;
     };
-    response: components['schemas']['Quote'];
+    response: components["schemas"]["Quote"];
     responseCode: 200;
   };
-  'readQuotes post /quotes': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'];
+  "readQuotes post /quotes": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['Quote'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["Quote"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readRoles get /role': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'];
+  "readRoles get /role": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['B2bComponentsRole'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["B2bComponentsRole"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readRolesPOST post /role': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
-    body?: components['schemas']['Criteria'];
+  "readRolesPOST post /role": {
+    contentType?: "application/json";
+    accept?: "application/json";
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['B2bComponentsRole'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["B2bComponentsRole"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readRole get /role/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readRole get /role/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the role to be fetched */
       id: string;
     };
-    response: components['schemas']['B2bComponentsRole'];
+    response: components["schemas"]["B2bComponentsRole"];
     responseCode: 200;
   };
-  'deleteRole delete /role/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "deleteRole delete /role/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the role to be fetched */
       id: string;
@@ -9004,9 +9004,9 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'updateRole patch /role/{id}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateRole patch /role/{id}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the role to be updated */
       id: string;
@@ -9019,12 +9019,12 @@ export type operations = {
       /** New permissions of the role */
       permissions?: string[];
     };
-    response: components['schemas']['B2bComponentsRole'];
+    response: components["schemas"]["B2bComponentsRole"];
     responseCode: 200;
   };
-  'createRole post /role/create': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "createRole post /role/create": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Ability to set the new role as default */
       isDefaultRole?: boolean;
@@ -9033,12 +9033,12 @@ export type operations = {
       /** Permissions of the new role */
       permissions?: string[];
     };
-    response: components['schemas']['B2bComponentsRole'];
+    response: components["schemas"]["B2bComponentsRole"];
     responseCode: 200;
   };
-  'updateDefaultRoleId post /role/default': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "updateDefaultRoleId post /role/default": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Id of the roleId to be set as default */
       id?: string;
@@ -9046,35 +9046,35 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'readPermissions get /role/permissions': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readPermissions get /role/permissions": {
+    contentType?: "application/json";
+    accept?: "application/json";
     response: {
       elements?: {
         permissionDependencies?: string[];
         permissionGroupName?: string;
         permissionName?: string;
       }[];
-    } & components['schemas']['EntitySearchResult'];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readSalutation post /salutation': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readSalutation post /salutation": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements?: components['schemas']['Salutation'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements?: components["schemas"]["Salutation"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'getScriptStoreApiRoute get /script/{hook}':
+  "getScriptStoreApiRoute get /script/{hook}":
     | {
-        contentType?: 'application/json';
-        accept?: 'application/json';
+        contentType?: "application/json";
+        accept?: "application/json";
         pathParams: {
           /** Dynamic hook which used to build the hook name */
           hook: string;
@@ -9085,8 +9085,8 @@ export type operations = {
         responseCode: 200;
       }
     | {
-        contentType?: 'application/json';
-        accept: 'application/vnd.api+json';
+        contentType?: "application/json";
+        accept: "application/vnd.api+json";
         pathParams: {
           /** Dynamic hook which used to build the hook name */
           hook: string;
@@ -9097,8 +9097,8 @@ export type operations = {
         responseCode: 200;
       }
     | {
-        contentType?: 'application/json';
-        accept?: 'application/json';
+        contentType?: "application/json";
+        accept?: "application/json";
         pathParams: {
           /** Dynamic hook which used to build the hook name */
           hook: string;
@@ -9106,10 +9106,10 @@ export type operations = {
         response: never;
         responseCode: 204;
       };
-  'postScriptStoreApiRoute post /script/{hook}':
+  "postScriptStoreApiRoute post /script/{hook}":
     | {
-        contentType?: 'application/json';
-        accept?: 'application/json';
+        contentType?: "application/json";
+        accept?: "application/json";
         pathParams: {
           /** Dynamic hook which used to build the hook name */
           hook: string;
@@ -9120,8 +9120,8 @@ export type operations = {
         responseCode: 200;
       }
     | {
-        contentType?: 'application/json';
-        accept: 'application/vnd.api+json';
+        contentType?: "application/json";
+        accept: "application/vnd.api+json";
         pathParams: {
           /** Dynamic hook which used to build the hook name */
           hook: string;
@@ -9132,8 +9132,8 @@ export type operations = {
         responseCode: 200;
       }
     | {
-        contentType?: 'application/json';
-        accept?: 'application/json';
+        contentType?: "application/json";
+        accept?: "application/json";
         pathParams: {
           /** Dynamic hook which used to build the hook name */
           hook: string;
@@ -9141,74 +9141,74 @@ export type operations = {
         response: never;
         responseCode: 204;
       };
-  'searchPage post /search': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "searchPage post /search": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
       /** Instructs Shopware to try and resolve SEO URLs for the given navigation item */
-      'sw-include-seo-urls'?: boolean;
+      "sw-include-seo-urls"?: boolean;
     };
     body: {
       /** Using the search parameter, the server performs a text search on all records based on their data model and weighting as defined in the entity definition using the SearchRanking flag. */
       search: string;
-    } & components['schemas']['ProductListingCriteria'] &
-      components['schemas']['ProductListingFlags'];
-    response: components['schemas']['ProductListingResult'];
+    } & components["schemas"]["ProductListingCriteria"] &
+      components["schemas"]["ProductListingFlags"];
+    response: components["schemas"]["ProductListingResult"];
     responseCode: 200;
   };
-  'searchSuggest post /search-suggest': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "searchSuggest post /search-suggest": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     body: {
       /** Using the search parameter, the server performs a text search on all records based on their data model and weighting as defined in the entity definition using the SearchRanking flag. */
       search: string;
-    } & components['schemas']['ProductListingFlags'];
-    response: components['schemas']['ProductListingResult'];
+    } & components["schemas"]["ProductListingFlags"];
+    response: components["schemas"]["ProductListingResult"];
     responseCode: 200;
   };
-  'readSeoUrl post /seo-url': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readSeoUrl post /seo-url": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
-      elements: components['schemas']['SeoUrl'][];
-    } & components['schemas']['EntitySearchResult'];
+      elements: components["schemas"]["SeoUrl"][];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'readShippingMethod post /shipping-method': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readShippingMethod post /shipping-method": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
     query?: {
       /** List only available shipping methods. This filters shipping methods methods which can not be used in the actual context because of their availability rule. */
       onlyAvailable?: boolean;
     };
-    body?: components['schemas']['Criteria'];
+    body?: components["schemas"]["Criteria"];
     response: {
       /** aggregation result */
       aggregations?: GenericRecord;
-      elements?: components['schemas']['ShippingMethod'][];
+      elements?: components["schemas"]["ShippingMethod"][];
       /** Total amount */
       total?: number;
-    } & components['schemas']['EntitySearchResult'];
+    } & components["schemas"]["EntitySearchResult"];
     responseCode: 200;
   };
-  'addShoppingListsToCart post /shopping-lists/add-to-cart': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "addShoppingListsToCart post /shopping-lists/add-to-cart": {
+    contentType?: "application/json";
+    accept?: "application/json";
     body: {
       /** Shopping list ids */
       ids: string[];
@@ -9216,34 +9216,34 @@ export type operations = {
     response: never;
     responseCode: 204;
   };
-  'readSitemap get /sitemap': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "readSitemap get /sitemap": {
+    contentType?: "application/json";
+    accept?: "application/json";
     headers?: {
       /** Instructs Shopware to return the response in the given language. */
-      'sw-language-id'?: string;
+      "sw-language-id"?: string;
     };
-    response: components['schemas']['Sitemap'][];
+    response: components["schemas"]["Sitemap"][];
     responseCode: 200;
   };
-  'auth post /sso/auth/{providerId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "auth post /sso/auth/{providerId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the SSO provider used to authenticate */
       providerId: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 204;
   };
-  'redirect post /sso/redirect/{providerId}': {
-    contentType?: 'application/json';
-    accept?: 'application/json';
+  "redirect post /sso/redirect/{providerId}": {
+    contentType?: "application/json";
+    accept?: "application/json";
     pathParams: {
       /** Identifier of the SSO provider used to authenticate */
       providerId: string;
     };
-    response: components['schemas']['SuccessResponse'];
+    response: components["schemas"]["SuccessResponse"];
     responseCode: 204;
   };
 };

@@ -1,7 +1,7 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
-import dotenv from 'dotenv';
-import { findUpSync } from 'find-up';
+import type { PlaywrightTestConfig } from "@playwright/test";
+import { devices } from "@playwright/test";
+import dotenv from "dotenv";
+import { findUpSync } from "find-up";
 
 // export const findEnv = () => findUpSync(process.env.ENV_FILE || ".env");
 
@@ -11,19 +11,19 @@ import { findUpSync } from 'find-up';
  */
 
 // dotenv.config({ path: findEnv() });
-dotenv.config({ path: findUpSync(process.env.ENV_FILE || '.env') });
+dotenv.config({ path: findUpSync(process.env.ENV_FILE || ".env") });
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 
 const baseURL =
-  process.env.BASE_E2E_URL || 'https://shopware-vercel-commerce-shopware-frontends.vercel.app/';
+  process.env.BASE_E2E_URL || "https://shopware-vercel-commerce-shopware-frontends.vercel.app/";
 
-console.log('Running tests for: ', baseURL);
+console.log("Running tests for: ", baseURL);
 
 const config: PlaywrightTestConfig = {
-  testDir: './tests',
-  outputDir: './reports',
+  testDir: "./tests",
+  outputDir: "./reports",
   /* Maximum time one test can run for. */
   timeout: 90 * 1000,
   expect: {
@@ -31,7 +31,7 @@ const config: PlaywrightTestConfig = {
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: process.env.CI ? 30000 : 5000
+    timeout: process.env.CI ? 30000 : 5000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -42,7 +42,7 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
@@ -51,27 +51,27 @@ const config: PlaywrightTestConfig = {
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'retain-on-failure',
-    testIdAttribute: 'data-testid',
-    baseURL
+    trace: "retain-on-failure",
+    testIdAttribute: "data-testid",
+    baseURL,
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: "chromium",
       use: {
-        ...devices['Desktop Chrome']
-      }
+        ...devices["Desktop Chrome"],
+      },
     },
 
     {
-      name: 'firefox',
+      name: "firefox",
       use: {
-        ...devices['Desktop Firefox']
-      }
-    }
-  ]
+        ...devices["Desktop Firefox"],
+      },
+    },
+  ],
 };
 
 export default config;

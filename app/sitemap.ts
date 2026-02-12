@@ -17,12 +17,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date().toISOString(),
   }));
 
-  const mainNavigationPromise = getMenu({ type: "main-navigation" }).then(
-    (mainNavigation) =>
-      mainNavigation.map((mainNavigationItem) => ({
-        url: `${baseUrl}${mainNavigationItem.path}`,
-        lastModified: new Date().toISOString(),
-      })),
+  const mainNavigationPromise = getMenu({ type: "main-navigation" }).then((mainNavigation) =>
+    mainNavigation.map((mainNavigationItem) => ({
+      url: `${baseUrl}${mainNavigationItem.path}`,
+      lastModified: new Date().toISOString(),
+    })),
   );
 
   const footerNaivgationPromise = getMenu({
@@ -46,11 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     fetchedRoutes = (
-      await Promise.all([
-        productsPromise,
-        mainNavigationPromise,
-        footerNaivgationPromise,
-      ])
+      await Promise.all([productsPromise, mainNavigationPromise, footerNaivgationPromise])
     ).flat();
   } catch (error) {
     throw JSON.stringify(error, null, 2);

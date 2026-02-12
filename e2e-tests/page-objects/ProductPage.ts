@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { expect, Locator, Page } from "@playwright/test";
 
 export class ProductPage {
   readonly page: Page;
@@ -15,13 +15,13 @@ export class ProductPage {
 
   async addToCart() {
     await expect(async () => {
-      await this.page.getByLabel('Add to cart').waitFor();
-      await this.page.getByLabel('Add to cart').dispatchEvent('click');
-      await expect(this.page.locator('div').filter({ hasText: /^My Cart$/ })).toBeVisible();
+      await this.page.getByLabel("Add to cart").waitFor();
+      await this.page.getByLabel("Add to cart").dispatchEvent("click");
+      await expect(this.page.locator("div").filter({ hasText: /^My Cart$/ })).toBeVisible();
     }).toPass({
       // Probe, wait 1s, probe, wait 2s, probe, wait 10s, probe, wait 10s, probe, .... Defaults to [100, 250, 500, 1000].
       intervals: [1_000, 2_000, 10_000],
-      timeout: 20_000
+      timeout: 20_000,
     });
   }
 
@@ -41,7 +41,7 @@ export class ProductPage {
     }).toPass({
       // Probe, wait 1s, probe, wait 2s, probe, wait 10s, probe, wait 10s, probe, .... Defaults to [100, 250, 500, 1000].
       intervals: [2_000, 5_000, 15_000],
-      timeout: 20_000
+      timeout: 20_000,
     });
   }
 }

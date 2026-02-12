@@ -44,18 +44,13 @@ export default function Pagination({
   };
 
   return (
-    <nav
-      className="mx-auto inline h-10 text-base sm:flex list-none"
-      aria-label="Pagination"
-    >
+    <nav className="mx-auto inline h-10 text-base sm:flex list-none" aria-label="Pagination">
       {currentPage > 0 && (
         <li
           key={`${currentPage}-prev`}
           onClick={() => handlePageClick(currentPage - 1)}
           onKeyUp={(e) => e.key === "Enter" && handlePageClick(currentPage - 1)}
-          onKeyDown={(e) =>
-            e.key === "Enter" && handlePageClick(currentPage - 1)
-          }
+          onKeyDown={(e) => e.key === "Enter" && handlePageClick(currentPage - 1)}
           className="m-2 cursor-pointer rounded-lg border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700 sm:m-0 sm:mx-2 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         >
           <span
@@ -92,9 +87,7 @@ export default function Pagination({
         <li
           onClick={() => handlePageClick(currentPage + 1)}
           onKeyUp={(e) => e.key === "Enter" && handlePageClick(currentPage + 1)}
-          onKeyDown={(e) =>
-            e.key === "Enter" && handlePageClick(currentPage + 1)
-          }
+          onKeyDown={(e) => e.key === "Enter" && handlePageClick(currentPage + 1)}
           className="m-2 cursor-pointer rounded-lg border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700 sm:m-0 sm:mx-2 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         >
           <span

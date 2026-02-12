@@ -2,12 +2,7 @@
 
 import type { Schemas } from "#shopware";
 import { transformCart } from "lib/shopware/transform";
-import type {
-  Cart,
-  CartItem,
-  Product,
-  ProductVariant,
-} from "lib/shopware/types";
+import type { Cart, CartItem, Product, ProductVariant } from "lib/shopware/types";
 
 import type React from "react";
 import { createContext, use, useContext, useMemo, useOptimistic } from "react";
@@ -34,21 +29,14 @@ function calculateItemCost(quantity: number, price: string): string {
   return (Number(price) * quantity).toString();
 }
 
-function updateCartItem(
-  item: CartItem,
-  updateType: UpdateType,
-): CartItem | null {
+function updateCartItem(item: CartItem, updateType: UpdateType): CartItem | null {
   if (updateType === "delete") return null;
 
-  const newQuantity =
-    updateType === "plus" ? item.quantity + 1 : item.quantity - 1;
+  const newQuantity = updateType === "plus" ? item.quantity + 1 : item.quantity - 1;
   if (newQuantity === 0) return null;
 
   const singleItemAmount = Number(item.cost.totalAmount.amount) / item.quantity;
-  const newTotalAmount = calculateItemCost(
-    newQuantity,
-    singleItemAmount.toString(),
-  );
+  const newTotalAmount = calculateItemCost(newQuantity, singleItemAmount.toString());
 
   return {
     ...item,
@@ -70,8 +58,7 @@ function createOrUpdateCartItem(
 ): CartItem {
   const productPrice = variant.price?.amount
     ? variant.price.amount
-    : product.priceRange.minVariantPrice.amount ===
-        product.priceRange.maxVariantPrice.amount
+    : product.priceRange.minVariantPrice.amount === product.priceRange.maxVariantPrice.amount
       ? product.priceRange.minVariantPrice.amount
       : "0";
   const quantity = existingItem ? existingItem.quantity + 1 : 1;
@@ -103,14 +90,9 @@ function createOrUpdateCartItem(
   };
 }
 
-function updateCartTotals(
-  lines: CartItem[],
-): Pick<Cart, "totalQuantity" | "cost"> {
+function updateCartTotals(lines: CartItem[]): Pick<Cart, "totalQuantity" | "cost"> {
   const totalQuantity = lines.reduce((sum, item) => sum + item.quantity, 0);
-  const totalAmount = lines.reduce(
-    (sum, item) => sum + Number(item.cost.totalAmount.amount),
-    0,
-  );
+  const totalAmount = lines.reduce((sum, item) => sum + Number(item.cost.totalAmount.amount), 0);
   const currencyCode = lines[0]?.cost.totalAmount.currencyCode ?? "USD";
 
   return {
@@ -145,9 +127,7 @@ function cartReducer(state: Cart | undefined, action: CartAction): Cart {
       const { merchandiseId, updateType } = action.payload;
       const updatedLines = currentCart.lines
         .map((item) =>
-          item.merchandise.id === merchandiseId
-            ? updateCartItem(item, updateType)
-            : item,
+          item.merchandise.id === merchandiseId ? updateCartItem(item, updateType) : item,
         )
         .filter(Boolean) as CartItem[];
 
@@ -171,19 +151,11 @@ function cartReducer(state: Cart | undefined, action: CartAction): Cart {
     }
     case "ADD_ITEM": {
       const { variant, product } = action.payload;
-      const existingItem = currentCart.lines.find(
-        (item) => item.merchandise.id === variant.id,
-      );
-      const updatedItem = createOrUpdateCartItem(
-        existingItem,
-        variant,
-        product,
-      );
+      const existingItem = currentCart.lines.find((item) => item.merchandise.id === variant.id);
+      const updatedItem = createOrUpdateCartItem(existingItem, variant, product);
 
       const updatedLines = existingItem
-        ? currentCart.lines.map((item) =>
-            item.merchandise.id === variant.id ? updatedItem : item,
-          )
+        ? currentCart.lines.map((item) => (item.merchandise.id === variant.id ? updatedItem : item))
         : [...currentCart.lines, updatedItem];
 
       return {
@@ -204,13 +176,9 @@ export function CartProvider({
   children: React.ReactNode;
   cartPromise: Promise<Schemas["Cart"] | undefined>;
 }) {
-  const initialCart = transformCart(
-    use<Schemas["Cart"] | undefined>(cartPromise),
-  );
+  const initialCart = transformCart(use<Schemas["Cart"] | undefined>(cartPromise));
   return (
-    <CartContext.Provider value={{ cartPromise: initialCart }}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={{ cartPromise: initialCart }}>{children}</CartContext.Provider>
   );
 }
 
@@ -221,10 +189,7 @@ export function useCart() {
   }
 
   const initialCart = use(context.cartPromise);
-  const [optimisticCart, updateOptimisticCart] = useOptimistic(
-    initialCart,
-    cartReducer,
-  );
+  const [optimisticCart, updateOptimisticCart] = useOptimistic(initialCart, cartReducer);
 
   const updateCartItem = (merchandiseId: string, updateType: UpdateType) => {
     updateOptimisticCart({

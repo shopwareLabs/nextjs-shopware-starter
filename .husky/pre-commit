@@ -1,2 +1,2 @@
-pnpm run lint
-npx lint-staged
+npx pnpm lint
+npx pnpm format:check

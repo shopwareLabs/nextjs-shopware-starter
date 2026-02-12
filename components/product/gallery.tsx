@@ -6,18 +6,13 @@ import { useProduct, useUpdateURL } from "components/product/product-context";
 import Image from "next/image";
 import { startTransition } from "react";
 
-export function Gallery({
-  images,
-}: {
-  images: { src: string; altText: string }[];
-}) {
+export function Gallery({ images }: { images: { src: string; altText: string }[] }) {
   const { state, updateImage } = useProduct();
   const updateURL = useUpdateURL();
   const imageIndex = state.image ? Number.parseInt(state.image) : 0;
 
   const nextImageIndex = imageIndex + 1 < images.length ? imageIndex + 1 : 0;
-  const previousImageIndex =
-    imageIndex === 0 ? images.length - 1 : imageIndex - 1;
+  const previousImageIndex = imageIndex === 0 ? images.length - 1 : imageIndex - 1;
 
   const formAction = (img: string) => {
     startTransition(async () => {

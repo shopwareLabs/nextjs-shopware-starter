@@ -19,9 +19,7 @@ export async function generateMetadata({
   const { collection: collectionParamName } = await params;
 
   // see https://github.com/facebook/react/issues/25994
-  const collectionName = decodeURIComponent(
-    transformHandle(collectionParamName ?? ""),
-  );
+  const collectionName = decodeURIComponent(transformHandle(collectionParamName ?? ""));
   if (collectionName.includes(".js.map")) {
     return {};
   }
@@ -33,9 +31,7 @@ export async function generateMetadata({
   return {
     title: collection.seo?.title || collection.title,
     description:
-      collection.seo?.description ||
-      collection.description ||
-      `${collection.title} products`,
+      collection.seo?.description || collection.description || `${collection.title} products`,
     openGraph: collection.featuredImage
       ? {
           images: [
@@ -57,8 +53,7 @@ export default async function CategoryPage({
 }) {
   const { collection } = await params;
   const { sort, page } = (await searchParams) as { [key: string]: string };
-  const { sortKey, reverse } =
-    sorting.find((item) => item.slug === sort) || defaultSort;
+  const { sortKey, reverse } = sorting.find((item) => item.slug === sort) || defaultSort;
 
   // see https://github.com/facebook/react/issues/25994
   const collectionName = decodeURIComponent(transformHandle(collection ?? ""));

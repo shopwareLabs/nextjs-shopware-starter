@@ -21,11 +21,7 @@ function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <button
-        disabled
-        className={clsx(buttonClasses, disabledClasses)}
-        type="submit"
-      >
+      <button disabled className={clsx(buttonClasses, disabledClasses)} type="submit">
         Out Of Stock
       </button>
     );
@@ -70,16 +66,13 @@ export function AddToCart({ product }: { product: Product }) {
   const [message, formAction] = useActionState(addItem, null);
 
   const variant = variants.find((variant: ProductVariant) =>
-    variant.selectedOptions.every(
-      (option) => option.value === state[option.name.toLowerCase()],
-    ),
+    variant.selectedOptions.every((option) => option.value === state[option.name.toLowerCase()]),
   );
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : product.id;
   const selectedVariantId = variant?.id || defaultVariantId;
   const addItemAction = formAction.bind(null, selectedVariantId);
   const finalVariant =
-    variants.find((variant) => variant.id === selectedVariantId) ??
-    ({} as ProductVariant);
+    variants.find((variant) => variant.id === selectedVariantId) ?? ({} as ProductVariant);
 
   if (!finalVariant) {
     throw new Error("Selected variant or simple not found");
@@ -92,10 +85,7 @@ export function AddToCart({ product }: { product: Product }) {
         addItemAction();
       }}
     >
-      <SubmitButton
-        availableForSale={availableForSale}
-        selectedVariantId={selectedVariantId}
-      />
+      <SubmitButton availableForSale={availableForSale} selectedVariantId={selectedVariantId} />
       <output aria-live="polite" className="sr-only">
         {message}
       </output>

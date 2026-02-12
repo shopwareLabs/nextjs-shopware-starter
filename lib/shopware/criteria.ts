@@ -1,9 +1,6 @@
 import type { Schemas } from "#shopware";
 
-export function getDefaultProductsCriteria(
-  page = 1,
-  limit = 15,
-): Schemas["Criteria"] {
+export function getDefaultProductsCriteria(page = 1, limit = 15): Schemas["Criteria"] {
   return {
     p: page,
     limit: limit,
@@ -78,10 +75,7 @@ function getDefaultProductAssociations(): Schemas["Criteria"]["associations"] {
   };
 }
 
-export function getDefaultCategoryCriteria(
-  page = 1,
-  limit = 1,
-): Schemas["Criteria"] {
+export function getDefaultCategoryCriteria(page = 1, limit = 1): Schemas["Criteria"] {
   return {
     page: page,
     limit: limit,
@@ -203,10 +197,7 @@ export function getDefaultSubCategoriesCriteria(
   };
 }
 
-export function getDefaultCrossSellingCriteria(
-  page = 1,
-  limit = 1,
-): Schemas["Criteria"] {
+export function getDefaultCrossSellingCriteria(page = 1, limit = 1): Schemas["Criteria"] {
   return {
     page: page,
     limit: limit,
@@ -225,11 +216,7 @@ export function getDefaultCrossSellingCriteria(
   };
 }
 
-export function getSeoUrlCriteria(
-  handle: string,
-  page = 1,
-  limit = 1,
-): Schemas["Criteria"] {
+export function getSeoUrlCriteria(handle: string, page = 1, limit = 1): Schemas["Criteria"] {
   return {
     page: page,
     limit: limit,
@@ -254,10 +241,7 @@ export function getSeoUrlCriteria(
   };
 }
 
-export function getSortingCriteria(
-  sortKey?: string,
-  reverse?: boolean,
-): Schemas["Criteria"] {
+export function getSortingCriteria(sortKey?: string, reverse?: boolean): Schemas["Criteria"] {
   switch (true) {
     case sortKey === "CREATED_AT" && reverse === true:
       return {

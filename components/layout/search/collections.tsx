@@ -12,8 +12,7 @@ async function CollectionList(params: { collection: string }) {
   const collections = await getSubCollections(collectionName);
   if (collections) {
     const list = transformCollectionToList(collections);
-    if (list.length > 0)
-      return <FilterList list={list} title="Sub-Collections" />;
+    if (list.length > 0) return <FilterList list={list} title="Sub-Collections" />;
   }
 }
 

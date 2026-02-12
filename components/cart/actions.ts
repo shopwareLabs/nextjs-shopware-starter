@@ -8,9 +8,7 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-async function fetchCart(
-  cartId?: string,
-): Promise<Schemas["Cart"] | undefined> {
+async function fetchCart(cartId?: string): Promise<Schemas["Cart"] | undefined> {
   try {
     const apiClient = getApiClient(cartId);
     const cart = await apiClient.invoke("readCart get /checkout/cart", {});
@@ -25,10 +23,7 @@ async function fetchCart(
   }
 }
 
-export async function addItem(
-  prevState: unknown,
-  selectedVariantId: string | undefined,
-) {
+export async function addItem(prevState: unknown, selectedVariantId: string | undefined) {
   const cart = await getCart();
   if (!cart) {
     return "Could not get cart";
@@ -44,28 +39,25 @@ export async function addItem(
     const apiClient = getApiClient(cartId);
 
     // this part allows us to click multiple times on addToCart and increase the qty with that
-    const itemInCart = cart?.lineItems?.filter(
-      (item) => item.id === selectedVariantId,
-    ) as Schemas["LineItem"] | undefined;
+    const itemInCart = cart?.lineItems?.filter((item) => item.id === selectedVariantId) as
+      | Schemas["LineItem"]
+      | undefined;
     if (itemInCart?.quantity) {
       quantity = itemInCart.quantity + 1;
     }
 
-    const response = await apiClient.invoke(
-      "addLineItem post /checkout/cart/line-item",
-      {
-        body: {
-          items: [
-            {
-              id: selectedVariantId,
-              quantity: quantity,
-              referencedId: selectedVariantId,
-              type: "product",
-            },
-          ],
-        },
+    const response = await apiClient.invoke("addLineItem post /checkout/cart/line-item", {
+      body: {
+        items: [
+          {
+            id: selectedVariantId,
+            quantity: quantity,
+            referencedId: selectedVariantId,
+            type: "product",
+          },
+        ],
       },
-    );
+    });
 
     const errorMessage = alertErrorMessages(response.data);
     if (errorMessage !== "") {
@@ -83,19 +75,14 @@ export async function addItem(
   }
 }
 
-export async function getCart(
-  currentCartId?: string,
-): Promise<Schemas["Cart"] | undefined> {
-  const cartId =
-    currentCartId || (await cookies()).get("sw-context-token")?.value;
+export async function getCart(currentCartId?: string): Promise<Schemas["Cart"] | undefined> {
+  const cartId = currentCartId || (await cookies()).get("sw-context-token")?.value;
 
   const cart = await fetchCart(cartId);
   return cart;
 }
 
-async function updateCartCookie(
-  cart: Schemas["Cart"],
-): Promise<string | undefined> {
+async function updateCartCookie(cart: Schemas["Cart"]): Promise<string | undefined> {
   const cartId = (await cookies()).get("sw-context-token")?.value;
 
   // cartId is set, but not valid anymore, update the cookie
@@ -109,9 +96,7 @@ async function updateCartCookie(
 function alertErrorMessages(response: Schemas["Cart"]): string {
   let errorMessages = "";
   if (response.errors) {
-    for (const value of Object.values(
-      response.errors as Schemas["CartError"],
-    )) {
+    for (const value of Object.values(response.errors as Schemas["CartError"])) {
       const messageKey: string | undefined = value.messageKey;
       if (value.message && messageKey) {
         errorMessages += value.message;
@@ -170,14 +155,11 @@ export async function removeItem(prevState: unknown, lineId?: string) {
 
   try {
     const apiClient = getApiClient(cartId);
-    await apiClient.invoke(
-      "removeLineItem post /checkout/cart/line-item/delete",
-      {
-        body: {
-          ids: [lineId],
-        },
+    await apiClient.invoke("removeLineItem post /checkout/cart/line-item/delete", {
+      body: {
+        ids: [lineId],
       },
-    );
+    });
     revalidateTag(TAGS.cart);
   } catch (error) {
     if (error instanceof ApiClientError) {
