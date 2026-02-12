@@ -262,7 +262,7 @@ function transformOptions(parent: Schemas["Product"]): ProductOption[] {
         if (option?.group) {
           groupId[option.group.name] = option.groupId;
           group[option.group.name] = group[option.group.name]
-            ? [...new Set([...(group[option.group.name] as []), ...[option.name]])]
+            ? [...new Set([...(group[option.group.name] as []), option.name])]
             : [option.name];
         }
       });
@@ -398,8 +398,8 @@ function transformLineItem(resLineItem: Schemas["LineItem"]): CartItem {
         featuredImage: {
           url: resLineItem.cover?.url ?? "",
           altText: resLineItem.cover?.media?.translated?.alt ?? resLineItem.cover?.media?.alt ?? "",
-          width: Number(resLineItem.cover?.metaData?.width) ?? 0,
-          height: Number(resLineItem.cover?.metaData?.height) ?? 0,
+          width: Number(resLineItem.cover?.metaData?.width) || 0,
+          height: Number(resLineItem.cover?.metaData?.height) || 0,
         },
         options: [],
         variants: [],

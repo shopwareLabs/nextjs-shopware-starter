@@ -1,3 +1,4 @@
+import { TAGS } from "lib/constants";
 import { isSeoUrls } from "lib/shopware/helpers";
 import { NextResponse } from "next/server";
 import {
@@ -35,12 +36,17 @@ import {
 
 import { Schemas } from "#shopware";
 import { ApiClientError } from "@shopware/api-client";
+import { cacheLife, cacheTag } from "next/cache";
 import type { Menu, Page, Product } from "./types";
 
 export async function getMenu(params?: {
   type?: Schemas["NavigationType"];
   depth?: number;
 }): Promise<Menu[]> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
   const type = params?.type || "main-navigation";
   const depth = params?.depth || 1;
   const res = await requestNavigation(type, depth);
@@ -49,6 +55,10 @@ export async function getMenu(params?: {
 }
 
 export async function getPage(handle: string | []): Promise<Page | undefined> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
   let seoUrlElement;
   let pageIdOrHandle = decodeURIComponent(transformHandle(handle)).replace("cms/", "");
   if (pageIdOrHandle === "") {
@@ -94,6 +104,10 @@ export async function getFirstProduct(productId: string): Promise<Schemas["Produ
 
 // ToDo: should be more dynamic (depending on handle), should work with server and not client see generateStaticParams from next.js
 export async function getSubCollections(collection: string) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
   const collectionName = decodeURIComponent(transformHandle(collection ?? ""));
   let criteria = getDefaultSubCategoriesCriteria(collectionName);
 
@@ -125,6 +139,10 @@ export async function getSearchCollectionProducts(params?: {
   categoryId?: string;
   defaultSearchCriteria?: Partial<Schemas["Criteria"]>;
 }) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.products);
+
   const searchQuery = params?.query ?? "";
   const criteria = getDefaultSearchProductsCriteria(searchQuery);
   const sorting = getSortingCriteria(params?.sortKey, params?.reverse);
@@ -173,6 +191,10 @@ export async function getCollectionProducts(params?: {
   categoryId?: string;
   defaultSearchCriteria?: Schemas["Criteria"];
 }): Promise<{ products: Product[]; total: number; limit: number }> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections, TAGS.products);
+
   let products;
   let category = params?.categoryId;
   const collectionName = decodeURIComponent(transformHandle(params?.collection ?? ""));
@@ -219,12 +241,20 @@ export async function getCategory(
   categoryId: string,
   cms: boolean = false,
 ): Promise<Schemas["Category"] | undefined> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
   const criteria = cms ? getDefaultCategoryWithCmsCriteria() : getDefaultCategoryCriteria();
   return await requestCategory(categoryId, criteria);
 }
 
 // This function is only used for generateMetadata at app/search/(collection)/[...collection]/page.tsx
 export async function getCollection(handle: string | []) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
   let path;
   let seoUrlElement;
   let categoryIdOrHandle = decodeURIComponent(transformHandle(handle));
@@ -250,6 +280,10 @@ export async function getCollection(handle: string | []) {
 }
 
 export async function getProductSeoUrls() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.products);
+
   const productSeoUrls: { path: string; updatedAt: string }[] = [];
   const seoUrls = await requestSeoUrls("frontend.detail.page");
 
@@ -263,16 +297,21 @@ export async function getProductSeoUrls() {
 }
 
 export async function getProduct(handle: string | []): Promise<Product | undefined> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.products);
+
   let productSW: Schemas["Product"] | undefined;
   let productId: string | undefined;
   const productHandle = decodeURIComponent(transformHandle(handle));
-  productId = productHandle; // if we do not use seoUrls the handle should be the product id
 
   if (isSeoUrls()) {
     const seoUrlElement = await getFirstSeoUrlElement(productHandle);
     if (seoUrlElement) {
       productId = seoUrlElement.foreignKey;
     }
+  } else {
+    productId = productHandle; // without seoUrls the handle is the product id
   }
 
   if (!productId) {
@@ -290,6 +329,10 @@ export async function getProduct(handle: string | []): Promise<Product | undefin
 }
 
 export async function getProductRecommendations(productId: string): Promise<Product[]> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.products);
+
   const products = {} as unknown as Schemas["ProductListingResult"];
 
   const res = await requestCrossSell(productId, getDefaultCrossSellingCriteria());

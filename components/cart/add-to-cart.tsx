@@ -3,8 +3,8 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { addItem } from "components/cart/actions";
-import { useProduct } from "components/product/product-context";
 import type { Product, ProductVariant } from "lib/shopware/types";
+import { useSearchParams } from "next/navigation";
 import { useActionState } from "react";
 import { useCart } from "./cart-context";
 
@@ -62,11 +62,13 @@ function SubmitButton({
 export function AddToCart({ product }: { product: Product }) {
   const { variants, availableForSale } = product;
   const { addCartItem } = useCart();
-  const { state } = useProduct();
+  const searchParams = useSearchParams();
   const [message, formAction] = useActionState(addItem, null);
 
   const variant = variants.find((variant: ProductVariant) =>
-    variant.selectedOptions.every((option) => option.value === state[option.name.toLowerCase()]),
+    variant.selectedOptions.every(
+      (option) => option.value === searchParams.get(option.name.toLowerCase()),
+    ),
   );
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : product.id;
   const selectedVariantId = variant?.id || defaultVariantId;

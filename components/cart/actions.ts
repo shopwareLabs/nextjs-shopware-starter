@@ -4,7 +4,7 @@ import type { Schemas } from "#shopware";
 import { ApiClientError } from "@shopware/api-client";
 import { TAGS } from "lib/constants";
 import { getApiClient } from "lib/shopware/api";
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -61,10 +61,10 @@ export async function addItem(prevState: unknown, selectedVariantId: string | un
 
     const errorMessage = alertErrorMessages(response.data);
     if (errorMessage !== "") {
-      revalidateTag(TAGS.cart);
+      updateTag(TAGS.cart);
       return errorMessage;
     }
-    revalidateTag(TAGS.cart);
+    updateTag(TAGS.cart);
   } catch (error) {
     if (error instanceof ApiClientError) {
       console.error(error);
@@ -126,12 +126,12 @@ export async function updateItemQuantity(
   try {
     if (quantity === 0) {
       await removeItem(null, lineId);
-      revalidateTag(TAGS.cart);
+      updateTag(TAGS.cart);
       return;
     }
 
     await updateLineItem(lineId, variantId, quantity);
-    revalidateTag(TAGS.cart);
+    updateTag(TAGS.cart);
   } catch (error) {
     if (error instanceof ApiClientError) {
       console.error(error);
@@ -160,7 +160,7 @@ export async function removeItem(prevState: unknown, lineId?: string) {
         ids: [lineId],
       },
     });
-    revalidateTag(TAGS.cart);
+    updateTag(TAGS.cart);
   } catch (error) {
     if (error instanceof ApiClientError) {
       console.error(error);

@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { GridTileImage } from "components/grid/tile";
 import Footer from "components/layout/footer";
 import { Gallery } from "components/product/gallery";
-import { ProductProvider } from "components/product/product-context";
 import { ProductDescription } from "components/product/product-description";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
 import { getProduct, getProductRecommendations } from "lib/shopware";
@@ -74,7 +73,7 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
   };
 
   return (
-    <ProductProvider>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -107,7 +106,7 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
         <RelatedProducts id={product.id} />
       </div>
       <Footer />
-    </ProductProvider>
+    </>
   );
 }
 

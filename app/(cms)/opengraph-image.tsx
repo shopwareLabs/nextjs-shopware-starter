@@ -1,7 +1,7 @@
 import OpengraphImage from "components/opengraph-image";
 import { getPage } from "lib/shopware";
 
-export const runtime = "edge";
+export const dynamic = "force-dynamic";
 
 export default async function Image({ params }: { params?: { page?: string } }) {
   const pageParamName = params?.page || "";

@@ -39,12 +39,20 @@ export function getDefaultSearchProductsCriteria(
     term: query,
     associations: {
       options: {},
-      media: {},
+      media: {
+        associations: {
+          media: {},
+        },
+      },
       seoUrls: {},
       children: {
         associations: {
           options: {},
-          media: {},
+          media: {
+            associations: {
+              media: {},
+            },
+          },
           seoUrls: {},
         },
       },
@@ -59,7 +67,11 @@ function getDefaultProductAssociations(): Schemas["Criteria"]["associations"] {
         group: {},
       },
     },
-    media: {},
+    media: {
+      associations: {
+        media: {},
+      },
+    },
     seoUrls: {},
     children: {
       associations: {
@@ -68,7 +80,11 @@ function getDefaultProductAssociations(): Schemas["Criteria"]["associations"] {
             group: {},
           },
         },
-        media: {},
+        media: {
+          associations: {
+            media: {},
+          },
+        },
         seoUrls: {},
       },
     },
@@ -203,7 +219,11 @@ export function getDefaultCrossSellingCriteria(page = 1, limit = 1): Schemas["Cr
     limit: limit,
     associations: {
       options: {},
-      media: {},
+      media: {
+        associations: {
+          media: {},
+        },
+      },
       seoUrls: {},
     },
     filter: [

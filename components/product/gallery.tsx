@@ -2,22 +2,24 @@
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { GridTileImage } from "components/grid/tile";
-import { useProduct, useUpdateURL } from "components/product/product-context";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 import { startTransition } from "react";
 
-export function Gallery({ images }: { images: { src: string; altText: string }[] }) {
-  const { state, updateImage } = useProduct();
-  const updateURL = useUpdateURL();
-  const imageIndex = state.image ? Number.parseInt(state.image) : 0;
+export function Gallery({ images: rawImages }: { images: { src: string; altText: string }[] }) {
+  const images = rawImages.filter((img) => img.src);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const imageIndex = searchParams.has("image") ? Number.parseInt(searchParams.get("image")!) : 0;
 
   const nextImageIndex = imageIndex + 1 < images.length ? imageIndex + 1 : 0;
   const previousImageIndex = imageIndex === 0 ? images.length - 1 : imageIndex - 1;
 
   const formAction = (img: string) => {
-    startTransition(async () => {
-      const newState = updateImage(img);
-      updateURL(newState);
+    startTransition(() => {
+      const newParams = new URLSearchParams(window.location.search);
+      newParams.set("image", img);
+      router.push(`?${newParams.toString()}`, { scroll: false });
     });
   };
 
@@ -72,7 +74,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
             const isActive = index === imageIndex;
 
             return (
-              <li key={image.src} className="h-20 w-20">
+              <li key={image.src || index} className="h-20 w-20">
                 <button
                   type="button"
                   onClick={() => {

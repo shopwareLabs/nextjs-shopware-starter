@@ -14,14 +14,37 @@ export function getApiClient(cartId?: string) {
   return createAPIClient<operations>(apiClientParams);
 }
 
+/**
+ * Retry wrapper with exponential backoff for rate-limited (429) requests.
+ * Retries up to `maxRetries` times with increasing delays (500ms, 1s, 2s, ...).
+ */
+async function withRetry<T>(fn: () => Promise<T>, maxRetries = 5): Promise<T> {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (error instanceof ApiClientError && error.status === 429 && attempt < maxRetries) {
+        const retryAfter = error.headers?.get?.("retry-after");
+        const delay = retryAfter ? Number(retryAfter) * 1000 : Math.pow(2, attempt) * 1000;
+        console.warn(
+          `[Shopware API] Rate limited (429). Retrying in ${delay}ms... (attempt ${attempt + 1}/${maxRetries})`,
+        );
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        continue;
+      }
+      throw error;
+    }
+  }
+  throw new Error("withRetry: max retries reached");
+}
+
 export async function requestNavigation(
   type: Schemas["NavigationType"],
   depth: number,
 ): Promise<Schemas["Category"][] | undefined> {
   try {
-    const response = await getApiClient().invoke(
-      "readNavigation post /navigation/{activeId}/{rootId}",
-      {
+    const response = await withRetry(() =>
+      getApiClient().invoke("readNavigation post /navigation/{activeId}/{rootId}", {
         pathParams: {
           activeId: type,
           rootId: type,
@@ -32,7 +55,7 @@ export async function requestNavigation(
         body: {
           depth: depth,
         },
-      },
+      }),
     );
 
     return response.data;
@@ -51,12 +74,14 @@ export async function requestCategory(
   criteria?: Schemas["Criteria"],
 ): Promise<Schemas["Category"] | undefined> {
   try {
-    const response = await getApiClient().invoke("readCategory post /category/{navigationId}", {
-      pathParams: {
-        navigationId: categoryId,
-      },
-      body: { ...criteria },
-    });
+    const response = await withRetry(() =>
+      getApiClient().invoke("readCategory post /category/{navigationId}", {
+        pathParams: {
+          navigationId: categoryId,
+        },
+        body: { ...criteria },
+      }),
+    );
 
     return response.data;
   } catch (error) {
@@ -75,9 +100,11 @@ export async function requestCategoryList(criteria: Schemas["Criteria"]): Promis
   } & Schemas["EntitySearchResult"]
 > {
   try {
-    const response = await getApiClient().invoke("readCategoryList post /category", {
-      body: { ...criteria },
-    });
+    const response = await withRetry(() =>
+      getApiClient().invoke("readCategoryList post /category", {
+        body: { ...criteria },
+      }),
+    );
     return response.data;
   } catch (error) {
     if (error instanceof ApiClientError) {
@@ -97,9 +124,11 @@ export async function requestProductsCollection(criteria: Schemas["Criteria"]): 
   | undefined
 > {
   try {
-    const result = await getApiClient().invoke("readProduct post /product", {
-      body: { ...criteria },
-    });
+    const result = await withRetry(() =>
+      getApiClient().invoke("readProduct post /product", {
+        body: { ...criteria },
+      }),
+    );
     return result.data;
   } catch (error) {
     if (error instanceof ApiClientError) {
@@ -116,16 +145,15 @@ export async function requestCategoryProductsCollection(
   criteria: Schemas["Criteria"],
 ): Promise<Schemas["ProductListingResult"] | undefined> {
   try {
-    const response = await getApiClient().invoke(
-      "readProductListing post /product-listing/{categoryId}",
-      {
+    const response = await withRetry(() =>
+      getApiClient().invoke("readProductListing post /product-listing/{categoryId}", {
         pathParams: {
           categoryId: categoryId,
         },
         body: {
           ...criteria,
         },
-      },
+      }),
     );
 
     return response.data;
@@ -143,12 +171,14 @@ export async function requestSearchCollectionProducts(
   criteria?: Schemas["Criteria"],
 ): Promise<Schemas["ProductListingResult"] | undefined> {
   try {
-    const response = await getApiClient().invoke("searchPage post /search", {
-      body: {
-        ...criteria,
-        search: encodeURIComponent(criteria?.term || ""),
-      },
-    });
+    const response = await withRetry(() =>
+      getApiClient().invoke("searchPage post /search", {
+        body: {
+          ...criteria,
+          search: encodeURIComponent(criteria?.term || ""),
+        },
+      }),
+    );
     return response.data;
   } catch (error) {
     if (error instanceof ApiClientError) {
@@ -162,19 +192,21 @@ export async function requestSearchCollectionProducts(
 
 export async function requestSeoUrls(routeName: RouteNames, page: number = 1, limit: number = 100) {
   try {
-    const response = await getApiClient().invoke("readSeoUrl post /seo-url", {
-      body: {
-        page: page,
-        limit: limit,
-        filter: [
-          {
-            type: "equals",
-            field: "routeName",
-            value: routeName,
-          },
-        ],
-      },
-    });
+    const response = await withRetry(() =>
+      getApiClient().invoke("readSeoUrl post /seo-url", {
+        body: {
+          page: page,
+          limit: limit,
+          filter: [
+            {
+              type: "equals",
+              field: "routeName",
+              value: routeName,
+            },
+          ],
+        },
+      }),
+    );
     return response.data;
   } catch (error) {
     if (error instanceof ApiClientError) {
@@ -193,7 +225,9 @@ export async function requestSeoUrl(criteria: Schemas["Criteria"]): Promise<
   | undefined
 > {
   try {
-    const response = await getApiClient().invoke("readSeoUrl post /seo-url", { body: criteria });
+    const response = await withRetry(() =>
+      getApiClient().invoke("readSeoUrl post /seo-url", { body: criteria }),
+    );
     return response.data;
   } catch (error) {
     if (error instanceof ApiClientError) {
@@ -210,16 +244,15 @@ export async function requestCrossSell(
   criteria?: Schemas["Criteria"],
 ): Promise<Schemas["CrossSellingElementCollection"] | undefined> {
   try {
-    const response = await getApiClient().invoke(
-      "readProductCrossSellings post /product/{productId}/cross-selling",
-      {
+    const response = await withRetry(() =>
+      getApiClient().invoke("readProductCrossSellings post /product/{productId}/cross-selling", {
         pathParams: {
           productId: productId,
         },
         body: {
           ...criteria,
         },
-      },
+      }),
     );
     return response.data;
   } catch (error) {
@@ -234,7 +267,7 @@ export async function requestCrossSell(
 
 export async function requestContext(cartId?: string) {
   try {
-    return getApiClient(cartId).invoke("readContext get /context", {});
+    return withRetry(() => getApiClient(cartId).invoke("readContext get /context", {}));
   } catch (error) {
     if (error instanceof ApiClientError) {
       console.error(error);

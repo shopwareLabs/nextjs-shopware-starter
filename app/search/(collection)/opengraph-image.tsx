@@ -1,7 +1,7 @@
 import OpengraphImage from "components/opengraph-image";
 import { getCollection } from "lib/shopware";
 
-export const runtime = "edge";
+export const dynamic = "force-dynamic";
 
 export default async function Image({ params }: { params: { collection: string[] } }) {
   const collectionPath = params.collection

@@ -6,12 +6,7 @@ export type Props = {
 };
 
 export default async function OpengraphImage(props?: Props): Promise<ImageResponse> {
-  const { title } = {
-    ...{
-      title: process.env.SITE_NAME,
-    },
-    ...props,
-  };
+  const { title = process.env.SITE_NAME } = props ?? {};
 
   return new ImageResponse(
     <div tw="flex h-full w-full flex-col items-center justify-center bg-black">
