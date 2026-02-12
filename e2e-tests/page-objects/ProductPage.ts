@@ -16,7 +16,7 @@ export class ProductPage {
   async addToCart() {
     await expect(async () => {
       await this.page.getByLabel("Add to cart").waitFor();
-      await this.page.getByLabel("Add to cart").dispatchEvent("click");
+      await this.page.getByLabel("Add to cart").click();
       await expect(this.page.locator("div").filter({ hasText: /^My Cart$/ })).toBeVisible();
     }).toPass({
       // Probe, wait 1s, probe, wait 2s, probe, wait 10s, probe, wait 10s, probe, .... Defaults to [100, 250, 500, 1000].

@@ -22,8 +22,13 @@ test.describe.only("add product to cart", () => {
   });
 
   test("Add to cart variant product", async ({ page }) => {
-    await homePage.visitMainPage();
-    await homePage.openVariantsCartPage();
+    await expect(async () => {
+      await homePage.openVariantsCartPage();
+      await page.waitForSelector(productPage.sizeSlocator, { timeout: 10_000 });
+    }).toPass({
+      intervals: [2_000, 5_000],
+      timeout: 30_000,
+    });
     await productPage.selectVariant();
     await productPage.addToCart();
     await expect(page.getByText("LAVENDA Product Variants").first()).toBeVisible();
