@@ -1,6 +1,6 @@
-import Grid from 'components/grid';
-import FilterList from 'components/layout/search/filter';
-import { sorting } from 'lib/constants';
+import Grid from "components/grid";
+import FilterList from "components/layout/search/filter";
+import { sorting } from "lib/constants";
 
 export default function Loading() {
   return (

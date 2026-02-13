@@ -1,14 +1,14 @@
-import CartModal from 'components/cart/modal';
-import LogoSquare from 'components/logo-square';
-import { getMenu } from 'lib/shopware';
-import { Menu } from 'lib/shopware/types';
-import Link from 'next/link';
-import { Suspense } from 'react';
-import MobileMenu from './mobile-menu';
-import Search, { SearchSkeleton } from './search';
+import CartModal from "components/cart/modal";
+import LogoSquare from "components/logo-square";
+import { getMenu } from "lib/shopware";
+import { Menu } from "lib/shopware/types";
+import Link from "next/link";
+import { Suspense } from "react";
+import MobileMenu from "./mobile-menu";
+import Search, { SearchSkeleton } from "./search";
 
 export default async function Navbar() {
-  const menu = await getMenu({ type: 'main-navigation' });
+  const menu = await getMenu({ type: "main-navigation" });
 
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">

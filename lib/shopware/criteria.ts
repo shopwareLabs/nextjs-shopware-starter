@@ -1,9 +1,6 @@
 import type { Schemas } from "#shopware";
 
-export function getDefaultProductsCriteria(
-  page = 1,
-  limit = 15,
-): Schemas["Criteria"] {
+export function getDefaultProductsCriteria(page = 1, limit = 15): Schemas["Criteria"] {
   return {
     p: page,
     limit: limit,
@@ -42,12 +39,20 @@ export function getDefaultSearchProductsCriteria(
     term: query,
     associations: {
       options: {},
-      media: {},
+      media: {
+        associations: {
+          media: {},
+        },
+      },
       seoUrls: {},
       children: {
         associations: {
           options: {},
-          media: {},
+          media: {
+            associations: {
+              media: {},
+            },
+          },
           seoUrls: {},
         },
       },
@@ -62,7 +67,11 @@ function getDefaultProductAssociations(): Schemas["Criteria"]["associations"] {
         group: {},
       },
     },
-    media: {},
+    media: {
+      associations: {
+        media: {},
+      },
+    },
     seoUrls: {},
     children: {
       associations: {
@@ -71,17 +80,18 @@ function getDefaultProductAssociations(): Schemas["Criteria"]["associations"] {
             group: {},
           },
         },
-        media: {},
+        media: {
+          associations: {
+            media: {},
+          },
+        },
         seoUrls: {},
       },
     },
   };
 }
 
-export function getDefaultCategoryCriteria(
-  page = 1,
-  limit = 1,
-): Schemas["Criteria"] {
+export function getDefaultCategoryCriteria(page = 1, limit = 1): Schemas["Criteria"] {
   return {
     page: page,
     limit: limit,
@@ -203,16 +213,17 @@ export function getDefaultSubCategoriesCriteria(
   };
 }
 
-export function getDefaultCrossSellingCriteria(
-  page = 1,
-  limit = 1,
-): Schemas["Criteria"] {
+export function getDefaultCrossSellingCriteria(page = 1, limit = 1): Schemas["Criteria"] {
   return {
     page: page,
     limit: limit,
     associations: {
       options: {},
-      media: {},
+      media: {
+        associations: {
+          media: {},
+        },
+      },
       seoUrls: {},
     },
     filter: [
@@ -225,11 +236,7 @@ export function getDefaultCrossSellingCriteria(
   };
 }
 
-export function getSeoUrlCriteria(
-  handle: string,
-  page = 1,
-  limit = 1,
-): Schemas["Criteria"] {
+export function getSeoUrlCriteria(handle: string, page = 1, limit = 1): Schemas["Criteria"] {
   return {
     page: page,
     limit: limit,
@@ -254,10 +261,7 @@ export function getSeoUrlCriteria(
   };
 }
 
-export function getSortingCriteria(
-  sortKey?: string,
-  reverse?: boolean,
-): Schemas["Criteria"] {
+export function getSortingCriteria(sortKey?: string, reverse?: boolean): Schemas["Criteria"] {
   switch (true) {
     case sortKey === "CREATED_AT" && reverse === true:
       return {

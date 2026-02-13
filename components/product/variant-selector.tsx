@@ -1,8 +1,9 @@
 "use client";
 
 import clsx from "clsx";
-import { useProduct, useUpdateURL } from "components/product/product-context";
 import type { ProductOption, ProductVariant } from "lib/shopware/types";
+import { useRouter, useSearchParams } from "next/navigation";
+import { startTransition, useOptimistic } from "react";
 
 type Combination = {
   id: string;
@@ -17,11 +18,27 @@ export function VariantSelector({
   options: ProductOption[];
   variants: ProductVariant[];
 }) {
-  const { state, updateOption } = useProduct();
-  const updateURL = useUpdateURL();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const getStateFromSearchParams = () => {
+    const params: Record<string, string> = {};
+    for (const [key, value] of searchParams.entries()) {
+      params[key] = value;
+    }
+    return params;
+  };
+
+  const [optimisticState, setOptimisticState] = useOptimistic(
+    getStateFromSearchParams(),
+    (prevState: Record<string, string>, update: Record<string, string>) => ({
+      ...prevState,
+      ...update,
+    }),
+  );
+
   const hasNoOptionsOrJustOneOption =
-    !options.length ||
-    (options.length === 1 && options[0]?.values.length === 1);
+    !options.length || (options.length === 1 && options[0]?.values.length === 1);
 
   if (hasNoOptionsOrJustOneOption) {
     return null;
@@ -37,6 +54,17 @@ export function VariantSelector({
     }, {}),
   }));
 
+  const updateOption = (name: string, value: string) => {
+    const newState = { ...optimisticState, [name]: value };
+    const newParams = new URLSearchParams(window.location.search);
+    newParams.set(name, value);
+    startTransition(() => {
+      setOptimisticState({ [name]: value });
+      router.push(`?${newParams.toString()}`, { scroll: false });
+    });
+    return newState;
+  };
+
   return options.map((option) => (
     <form key={option.id}>
       <dl className="mb-8">
@@ -46,33 +74,31 @@ export function VariantSelector({
             const optionNameLowerCase = option.name.toLowerCase();
 
             // Base option params on current selectedOptions so we can preserve any other param state.
-            const optionParams = { ...state, [optionNameLowerCase]: value };
+            const optionParams = {
+              ...optimisticState,
+              [optionNameLowerCase]: value,
+            };
 
             // Filter out invalid options and check if the option combination is available for sale.
-            const filtered = Object.entries(optionParams).filter(
-              ([key, value]) =>
-                options.find(
-                  (option) =>
-                    option.name.toLowerCase() === key &&
-                    option.values.includes(value),
-                ),
+            const filtered = Object.entries(optionParams).filter(([key, value]) =>
+              options.find(
+                (option) => option.name.toLowerCase() === key && option.values.includes(value),
+              ),
             );
             const isAvailableForSale = combinations.find((combination) =>
               filtered.every(
-                ([key, value]) =>
-                  combination[key] === value && combination.availableForSale,
+                ([key, value]) => combination[key] === value && combination.availableForSale,
               ),
             );
 
             // The option is active if it's in the selected options.
-            const isActive = state[optionNameLowerCase] === value;
+            const isActive = optimisticState[optionNameLowerCase] === value;
 
             return (
               <button
                 type="submit"
                 formAction={() => {
-                  const newState = updateOption(optionNameLowerCase, value);
-                  updateURL(newState);
+                  updateOption(optionNameLowerCase, value);
                 }}
                 key={value}
                 aria-disabled={!isAvailableForSale}

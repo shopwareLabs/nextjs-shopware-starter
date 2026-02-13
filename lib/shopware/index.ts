@@ -1,5 +1,6 @@
-import { isSeoUrls } from 'lib/shopware/helpers';
-import { NextResponse } from 'next/server';
+import { TAGS } from "lib/constants";
+import { isSeoUrls } from "lib/shopware/helpers";
+import { NextResponse } from "next/server";
 import {
   getApiClient,
   requestCategory,
@@ -10,8 +11,8 @@ import {
   requestProductsCollection,
   requestSearchCollectionProducts,
   requestSeoUrl,
-  requestSeoUrls
-} from './api';
+  requestSeoUrls,
+} from "./api";
 import {
   getDefaultCategoryCriteria,
   getDefaultCategoryWithCmsCriteria,
@@ -21,8 +22,8 @@ import {
   getDefaultSearchProductsCriteria,
   getDefaultSubCategoriesCriteria,
   getSeoUrlCriteria,
-  getSortingCriteria
-} from './criteria';
+  getSortingCriteria,
+} from "./criteria";
 import {
   transformCollection,
   transformHandle,
@@ -30,18 +31,23 @@ import {
   transformPage,
   transformProduct,
   transformProducts,
-  transformSubCollection
-} from './transform';
+  transformSubCollection,
+} from "./transform";
 
-import { Schemas } from '#shopware';
-import { ApiClientError } from '@shopware/api-client';
-import type { Menu, Page, Product } from './types';
+import { Schemas } from "#shopware";
+import { ApiClientError } from "@shopware/api-client";
+import { cacheLife, cacheTag } from "next/cache";
+import type { Menu, Page, Product } from "./types";
 
 export async function getMenu(params?: {
-  type?: Schemas['NavigationType'];
+  type?: Schemas["NavigationType"];
   depth?: number;
 }): Promise<Menu[]> {
-  const type = params?.type || 'main-navigation';
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
+  const type = params?.type || "main-navigation";
   const depth = params?.depth || 1;
   const res = await requestNavigation(type, depth);
 
@@ -49,9 +55,13 @@ export async function getMenu(params?: {
 }
 
 export async function getPage(handle: string | []): Promise<Page | undefined> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
   let seoUrlElement;
-  let pageIdOrHandle = decodeURIComponent(transformHandle(handle)).replace('cms/', '');
-  if (pageIdOrHandle === '') {
+  let pageIdOrHandle = decodeURIComponent(transformHandle(handle)).replace("cms/", "");
+  if (pageIdOrHandle === "") {
     return undefined;
   }
 
@@ -62,21 +72,21 @@ export async function getPage(handle: string | []): Promise<Page | undefined> {
     }
 
     if (!seoUrlElement) {
-      console.log('[getPage] Did not found any seoUrl element with page handle:', pageIdOrHandle);
+      console.log("[getPage] Did not found any seoUrl element with page handle:", pageIdOrHandle);
     }
   }
 
   const category = await getCategory(pageIdOrHandle);
   if (!category) {
-    console.log('[getPage] Did not found any category with handle:', pageIdOrHandle);
+    console.log("[getPage] Did not found any category with handle:", pageIdOrHandle);
   }
 
   return category ? transformPage(category, seoUrlElement) : undefined;
 }
 
 export async function getFirstSeoUrlElement(
-  handle: string
-): Promise<Schemas['SeoUrl'] | undefined> {
+  handle: string,
+): Promise<Schemas["SeoUrl"] | undefined> {
   const seoURLCriteria = getSeoUrlCriteria(handle);
   const seoURL = await requestSeoUrl(seoURLCriteria);
   if (seoURL && seoURL.elements && seoURL.elements.length > 0 && seoURL.elements[0]) {
@@ -84,7 +94,7 @@ export async function getFirstSeoUrlElement(
   }
 }
 
-export async function getFirstProduct(productId: string): Promise<Schemas['Product'] | undefined> {
+export async function getFirstProduct(productId: string): Promise<Schemas["Product"] | undefined> {
   const productCriteria = getDefaultProductCriteria(productId);
   const listing = await requestProductsCollection(productCriteria);
   if (listing && listing?.elements && listing?.elements?.length > 0 && listing?.elements?.[0]) {
@@ -94,7 +104,11 @@ export async function getFirstProduct(productId: string): Promise<Schemas['Produ
 
 // ToDo: should be more dynamic (depending on handle), should work with server and not client see generateStaticParams from next.js
 export async function getSubCollections(collection: string) {
-  const collectionName = decodeURIComponent(transformHandle(collection ?? ''));
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
+  const collectionName = decodeURIComponent(transformHandle(collection ?? ""));
   let criteria = getDefaultSubCategoriesCriteria(collectionName);
 
   const parentCollectionName =
@@ -123,9 +137,13 @@ export async function getSearchCollectionProducts(params?: {
   reverse?: boolean;
   sortKey?: string;
   categoryId?: string;
-  defaultSearchCriteria?: Partial<Schemas['Criteria']>;
+  defaultSearchCriteria?: Partial<Schemas["Criteria"]>;
 }) {
-  const searchQuery = params?.query ?? '';
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.products);
+
+  const searchQuery = params?.query ?? "";
   const criteria = getDefaultSearchProductsCriteria(searchQuery);
   const sorting = getSortingCriteria(params?.sortKey, params?.reverse);
   const searchCriteria = { ...criteria, ...sorting };
@@ -144,9 +162,9 @@ export async function getSearchCollectionProducts(params?: {
 }
 
 export async function changeVariantUrlToParentUrl(
-  collection: Schemas['ProductListingResult']
-): Promise<Schemas['Product'][]> {
-  const newElements: Schemas['Product'][] = [];
+  collection: Schemas["ProductListingResult"],
+): Promise<Schemas["Product"][]> {
+  const newElements: Schemas["Product"][] = [];
   if (collection.elements && collection.elements.length > 0) {
     await Promise.all(
       collection.elements.map(async (item) => {
@@ -158,7 +176,7 @@ export async function changeVariantUrlToParentUrl(
         }
 
         newElements.push(item);
-      })
+      }),
     );
   }
 
@@ -171,22 +189,26 @@ export async function getCollectionProducts(params?: {
   reverse?: boolean;
   sortKey?: string;
   categoryId?: string;
-  defaultSearchCriteria?: Schemas['Criteria'];
+  defaultSearchCriteria?: Schemas["Criteria"];
 }): Promise<{ products: Product[]; total: number; limit: number }> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections, TAGS.products);
+
   let products;
   let category = params?.categoryId;
-  const collectionName = decodeURIComponent(transformHandle(params?.collection ?? ''));
+  const collectionName = decodeURIComponent(transformHandle(params?.collection ?? ""));
   const sorting = getSortingCriteria(params?.sortKey, params?.reverse);
 
-  if (isSeoUrls() && !category && collectionName !== '') {
+  if (isSeoUrls() && !category && collectionName !== "") {
     const seoUrlElement = await getFirstSeoUrlElement(collectionName);
     if (seoUrlElement) {
       category = seoUrlElement.foreignKey;
     }
     if (!category) {
       console.log(
-        '[useListing][search] Did not found any category with collection name:',
-        collectionName
+        "[useListing][search] Did not found any category with collection name:",
+        collectionName,
       );
     }
   }
@@ -210,21 +232,29 @@ export async function getCollectionProducts(params?: {
     ? {
         products: transformProducts(products),
         total: products.total ?? 0,
-        limit: products.limit ?? 0
+        limit: products.limit ?? 0,
       }
     : { products: [], total: 0, limit: 0 };
 }
 
 export async function getCategory(
   categoryId: string,
-  cms: boolean = false
-): Promise<Schemas['Category'] | undefined> {
+  cms: boolean = false,
+): Promise<Schemas["Category"] | undefined> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
   const criteria = cms ? getDefaultCategoryWithCmsCriteria() : getDefaultCategoryCriteria();
   return await requestCategory(categoryId, criteria);
 }
 
 // This function is only used for generateMetadata at app/search/(collection)/[...collection]/page.tsx
 export async function getCollection(handle: string | []) {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.collections);
+
   let path;
   let seoUrlElement;
   let categoryIdOrHandle = decodeURIComponent(transformHandle(handle));
@@ -233,29 +263,33 @@ export async function getCollection(handle: string | []) {
     seoUrlElement = await getFirstSeoUrlElement(categoryIdOrHandle);
     if (seoUrlElement) {
       categoryIdOrHandle = seoUrlElement.foreignKey;
-      path = seoUrlElement.seoPathInfo ?? '';
+      path = seoUrlElement.seoPathInfo ?? "";
     }
   }
 
   const category = await getCategory(categoryIdOrHandle);
   if (category) {
     const collection = transformCollection(category, seoUrlElement);
-    path = path ?? category.id ?? '';
+    path = path ?? category.id ?? "";
 
     return {
       ...collection,
-      path: `/search/${path}`
+      path: `/search/${path}`,
     };
   }
 }
 
 export async function getProductSeoUrls() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.products);
+
   const productSeoUrls: { path: string; updatedAt: string }[] = [];
-  const seoUrls = await requestSeoUrls('frontend.detail.page');
+  const seoUrls = await requestSeoUrls("frontend.detail.page");
 
   if (seoUrls && seoUrls.elements && seoUrls.elements.length > 0) {
     seoUrls.elements.map((item) =>
-      productSeoUrls.push({ path: item.seoPathInfo, updatedAt: item.updatedAt ?? item.createdAt })
+      productSeoUrls.push({ path: item.seoPathInfo, updatedAt: item.updatedAt ?? item.createdAt }),
     );
   }
 
@@ -263,20 +297,27 @@ export async function getProductSeoUrls() {
 }
 
 export async function getProduct(handle: string | []): Promise<Product | undefined> {
-  let productSW: Schemas['Product'] | undefined;
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.products);
+
+  let productSW: Schemas["Product"] | undefined;
   let productId: string | undefined;
   const productHandle = decodeURIComponent(transformHandle(handle));
-  productId = productHandle; // if we do not use seoUrls the handle should be the product id
 
   if (isSeoUrls()) {
     const seoUrlElement = await getFirstSeoUrlElement(productHandle);
     if (seoUrlElement) {
       productId = seoUrlElement.foreignKey;
+    } else {
+      productId = productHandle; // fallback: try using the handle as a direct ID
     }
+  } else {
+    productId = productHandle; // without seoUrls the handle is the product id
   }
 
   if (!productId) {
-    console.log('[getProduct][search] Did not found any product with handle:', handle);
+    console.log("[getProduct][search] Did not found any product with handle:", handle);
   }
 
   if (productId) {
@@ -290,7 +331,11 @@ export async function getProduct(handle: string | []): Promise<Product | undefin
 }
 
 export async function getProductRecommendations(productId: string): Promise<Product[]> {
-  const products = {} as unknown as Schemas['ProductListingResult'];
+  "use cache";
+  cacheLife("hours");
+  cacheTag(TAGS.products);
+
+  const products = {} as unknown as Schemas["ProductListingResult"];
 
   const res = await requestCrossSell(productId, getDefaultCrossSellingCriteria());
   // @ToDo: Make this more dynamic to merge multiple Cross-Sellings, at the moment we only get the first one
@@ -305,23 +350,23 @@ export async function getProductRecommendations(productId: string): Promise<Prod
 export async function revalidate(): Promise<NextResponse> {
   return NextResponse.json({
     status: 200,
-    message: 'This is currently not working and was never tested.',
-    now: Date.now()
+    message: "This is currently not working and was never tested.",
+    now: Date.now(),
   });
 }
 
-export async function getCart(cartId?: string): Promise<Schemas['Cart'] | undefined> {
+export async function getCart(cartId?: string): Promise<Schemas["Cart"] | undefined> {
   try {
     const apiClient = getApiClient(cartId);
-    const cart = await apiClient.invoke('readCart get /checkout/cart', {});
+    const cart = await apiClient.invoke("readCart get /checkout/cart", {});
 
     return cart.data;
   } catch (error) {
     if (error instanceof ApiClientError) {
       console.error(error);
-      console.error('Details:', error.details);
+      console.error("Details:", error.details);
     } else {
-      console.error('==>', error);
+      console.error("==>", error);
     }
   }
 }

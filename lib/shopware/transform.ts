@@ -23,10 +23,7 @@ export function transformMenu(res: Schemas["Category"][], type: string) {
 
 function transformMenuItem(item: Schemas["Category"], type: string): Menu {
   const path = isSeoUrls()
-    ? item.seoUrls &&
-      item.seoUrls.length > 0 &&
-      item.seoUrls[0] &&
-      item.seoUrls[0].seoPathInfo
+    ? item.seoUrls && item.seoUrls.length > 0 && item.seoUrls[0] && item.seoUrls[0].seoPathInfo
       ? type === "footer-navigation"
         ? `/cms/${item.seoUrls[0].seoPathInfo}`
         : `/search/${item.seoUrls[0].seoPathInfo}`
@@ -57,12 +54,10 @@ export function transformPage(
     title: category.translated?.metaTitle ?? category.name ?? "",
     handle: seoUrlElement?.seoPathInfo ?? category.id ?? "",
     body: plainHtmlContent ?? category.description ?? "",
-    bodySummary:
-      category.translated?.metaDescription ?? category.description ?? "",
+    bodySummary: category.translated?.metaDescription ?? category.description ?? "",
     seo: {
       title: category.translated?.metaTitle ?? category.name ?? "",
-      description:
-        category.translated?.metaDescription ?? category.description ?? "",
+      description: category.translated?.metaDescription ?? category.description ?? "",
     },
     createdAt: seoUrlElement?.createdAt ?? category.createdAt ?? "",
     updatedAt: seoUrlElement?.updatedAt ?? category.updatedAt ?? "",
@@ -72,18 +67,13 @@ export function transformPage(
   };
 }
 
-export function transformToPlainHtmlContent(
-  cmsPage: Schemas["CmsPage"],
-): string {
+export function transformToPlainHtmlContent(cmsPage: Schemas["CmsPage"]): string {
   let plainHtmlContent = "";
 
   cmsPage.sections?.map((section) => {
     section.blocks?.map((block) => {
       block.slots?.map((slot) => {
-        if (
-          slot.slot === "content" &&
-          (slot.fieldConfig as { content: string })?.content
-        ) {
+        if (slot.slot === "content" && (slot.fieldConfig as { content: string })?.content) {
           const currentContent = `${(slot?.fieldConfig as { content: string })?.content}`;
           // we do not add content with h1, because will be added via template already
           if (!currentContent.match(/(<\/?h)([1])/)) {
@@ -108,10 +98,7 @@ export function transformCollection(
     featuredImage: resCategory?.media?.url ?? "",
     seo: {
       title: resCategory.translated?.metaTitle ?? resCategory.name ?? "",
-      description:
-        resCategory.translated?.metaDescription ??
-        resCategory.description ??
-        "",
+      description: resCategory.translated?.metaDescription ?? resCategory.description ?? "",
     },
     updatedAt:
       seoUrlElement?.updatedAt ??
@@ -122,9 +109,7 @@ export function transformCollection(
 }
 
 export function transformSubCollection(
-  category?:
-    | (Schemas["EntitySearchResult"] & { elements?: Schemas["Category"][] })
-    | undefined,
+  category?: (Schemas["EntitySearchResult"] & { elements?: Schemas["Category"][] }) | undefined,
   parentCollectionName?: string,
 ): Collection[] {
   const collection: Collection[] = [];
@@ -136,9 +121,7 @@ export function transformSubCollection(
       .filter((item) => item.type !== "link")
       .map((item) => {
         const handle =
-          isSeoUrls() && item.seoUrls
-            ? findHandle(item.seoUrls, parentCollectionName)
-            : item.id;
+          isSeoUrls() && item.seoUrls ? findHandle(item.seoUrls, parentCollectionName) : item.id;
         if (handle) {
           collection.push({
             handle: handle,
@@ -146,8 +129,7 @@ export function transformSubCollection(
             description: item.description ?? "",
             seo: {
               title: item.translated?.metaTitle ?? item.name ?? "",
-              description:
-                item.translated?.metaDescription ?? item.description ?? "",
+              description: item.translated?.metaDescription ?? item.description ?? "",
             },
             childCount: item.childCount ?? 0,
             updatedAt: item.updatedAt ?? item.createdAt ?? "",
@@ -160,10 +142,7 @@ export function transformSubCollection(
 }
 
 // small function to find longest handle and to make sure parent collection name is in the path
-function findHandle(
-  seoUrls: Schemas["SeoUrl"][],
-  parentCollectionName?: string,
-): string {
+function findHandle(seoUrls: Schemas["SeoUrl"][], parentCollectionName?: string): string {
   let handle = "";
   seoUrls.map((item) => {
     if (
@@ -180,19 +159,14 @@ function findHandle(
   return handle;
 }
 
-export function transformCollectionToList(
-  collection: Collection[],
-): ListItem[] {
+export function transformCollectionToList(collection: Collection[]): ListItem[] {
   const listItem: ListItem[] = [];
 
   if (collection && collection.length > 0) {
     collection.map((item) => {
       // we asume that when there is not product child count it must be a cms page
       const pagePrefix = item.childCount === 0 ? "/cms" : "/search";
-      const newHandle = item.handle.replace(
-        "Welcome-to-Shopware-Frontends/",
-        "",
-      );
+      const newHandle = item.handle.replace("Welcome-to-Shopware-Frontends/", "");
       listItem.push({
         title: item.title,
         path: `${pagePrefix}/${newHandle}`,
@@ -203,9 +177,7 @@ export function transformCollectionToList(
   return listItem;
 }
 
-export function transformProducts(
-  res: Schemas["ProductListingResult"],
-): Product[] {
+export function transformProducts(res: Schemas["ProductListingResult"]): Product[] {
   const products: Product[] = [];
 
   if (res.elements && res.elements.length > 0) {
@@ -222,10 +194,7 @@ export function transformProduct(item: Schemas["Product"]): Product {
   let path = item.parentId ?? item.id ?? "";
   if (isSeoUrls()) {
     path =
-      item.seoUrls &&
-      item.seoUrls.length > 0 &&
-      item.seoUrls[0] &&
-      item.seoUrls[0].seoPathInfo
+      item.seoUrls && item.seoUrls.length > 0 && item.seoUrls[0] && item.seoUrls[0].seoPathInfo
         ? item.seoUrls[0].seoPathInfo
         : "";
   }
@@ -245,9 +214,7 @@ export function transformProduct(item: Schemas["Product"]): Product {
     options: productOptions,
     priceRange: {
       maxVariantPrice: {
-        amount: item.calculatedPrice?.totalPrice
-          ? String(item.calculatedPrice?.totalPrice)
-          : "0",
+        amount: item.calculatedPrice?.totalPrice ? String(item.calculatedPrice?.totalPrice) : "0",
         currencyCode: "EUR",
       },
       minVariantPrice: {
@@ -264,28 +231,19 @@ export function transformProduct(item: Schemas["Product"]): Product {
     featuredImage: {
       url: item.cover?.media?.url ?? "",
       altText: item.cover?.media?.translated?.alt ?? "",
-      width: item.cover?.media?.metaData?.width
-        ? Number(item.cover?.media?.metaData?.width)
-        : 0,
-      height: item.cover?.media?.metaData?.width
-        ? Number(item.cover?.media?.metaData?.height)
-        : 0,
+      width: item.cover?.media?.metaData?.width ? Number(item.cover?.media?.metaData?.width) : 0,
+      height: item.cover?.media?.metaData?.width ? Number(item.cover?.media?.metaData?.height) : 0,
     },
     images: item.media
       ? item.media.map((img) => ({
           url: img.media?.url ?? "",
           altText: img.media?.translated?.alt ?? "",
-          width: img.media?.metaData?.width
-            ? Number(img.media?.metaData?.width)
-            : 0,
-          height: img.media?.metaData?.width
-            ? Number(img.media?.metaData?.height)
-            : 0,
+          width: img.media?.metaData?.width ? Number(img.media?.metaData?.width) : 0,
+          height: img.media?.metaData?.width ? Number(img.media?.metaData?.height) : 0,
         }))
       : [],
     seo: {
-      title:
-        item.translated?.metaTitle ?? item.translated?.name ?? item.name ?? "",
+      title: item.translated?.metaTitle ?? item.translated?.name ?? item.name ?? "",
       description: item.translated?.metaDescription ?? "",
     },
     tags: [""], // @ToDo: Add keywords or do we have tags?
@@ -296,11 +254,7 @@ export function transformProduct(item: Schemas["Product"]): Product {
 function transformOptions(parent: Schemas["Product"]): ProductOption[] {
   // we only transform options for parents with children, ignore child products with options
   const productOptions: ProductOption[] = [];
-  if (
-    parent.children &&
-    parent.parentId === null &&
-    parent.children.length > 0
-  ) {
+  if (parent.children && parent.parentId === null && parent.children.length > 0) {
     const group: { [key: string]: string[] } = {};
     const groupId: { [key: string]: string } = {};
     parent.children.map((child) => {
@@ -308,21 +262,14 @@ function transformOptions(parent: Schemas["Product"]): ProductOption[] {
         if (option?.group) {
           groupId[option.group.name] = option.groupId;
           group[option.group.name] = group[option.group.name]
-            ? [
-                ...new Set([
-                  ...(group[option.group.name] as []),
-                  ...[option.name],
-                ]),
-              ]
+            ? [...new Set([...(group[option.group.name] as []), option.name])]
             : [option.name];
         }
       });
     });
 
     for (const [key, value] of Object.entries(group)) {
-      for (const [currentGroupName, currentGroupId] of Object.entries(
-        groupId,
-      )) {
+      for (const [currentGroupName, currentGroupId] of Object.entries(groupId)) {
         if (key === currentGroupName) {
           productOptions.push({
             id: currentGroupId,
@@ -339,11 +286,7 @@ function transformOptions(parent: Schemas["Product"]): ProductOption[] {
 
 function transformVariants(parent: Schemas["Product"]): ProductVariant[] {
   const productVariants: ProductVariant[] = [];
-  if (
-    parent.children &&
-    parent.parentId === null &&
-    parent.children.length > 0
-  ) {
+  if (parent.children && parent.parentId === null && parent.children.length > 0) {
     parent.children.map((child) => {
       if (child.id) {
         const selectedOptions: { name: string; value: string }[] = [];
@@ -405,12 +348,9 @@ export function transformCart(resCart?: Schemas["Cart"]): Promise<Cart> {
       },
       id: resCart?.token ?? "",
       lines:
-        resCart?.lineItems?.map((lineItem: Schemas["LineItem"]) =>
-          transformLineItem(lineItem),
-        ) || [],
-      totalQuantity: resCart?.lineItems
-        ? calculateTotalCartQuantity(resCart.lineItems)
-        : 0,
+        resCart?.lineItems?.map((lineItem: Schemas["LineItem"]) => transformLineItem(lineItem)) ||
+        [],
+      totalQuantity: resCart?.lineItems ? calculateTotalCartQuantity(resCart.lineItems) : 0,
     };
     resolve(cart);
   });
@@ -457,12 +397,9 @@ function transformLineItem(resLineItem: Schemas["LineItem"]): CartItem {
         availableForSale: true,
         featuredImage: {
           url: resLineItem.cover?.url ?? "",
-          altText:
-            resLineItem.cover?.media?.translated?.alt ??
-            resLineItem.cover?.media?.alt ??
-            "",
-          width: Number(resLineItem.cover?.metaData?.width) ?? 0,
-          height: Number(resLineItem.cover?.metaData?.height) ?? 0,
+          altText: resLineItem.cover?.media?.translated?.alt ?? resLineItem.cover?.media?.alt ?? "",
+          width: Number(resLineItem.cover?.metaData?.width) || 0,
+          height: Number(resLineItem.cover?.metaData?.height) || 0,
         },
         options: [],
         variants: [],
@@ -481,10 +418,7 @@ function transformLineItem(resLineItem: Schemas["LineItem"]): CartItem {
         },
         tags: [],
         title: resLineItem.label ?? "",
-        updatedAt:
-          resLineItem.payload?.updatedAt ??
-          resLineItem.payload?.createdAt ??
-          "",
+        updatedAt: resLineItem.payload?.updatedAt ?? resLineItem.payload?.createdAt ?? "",
       },
     },
   };

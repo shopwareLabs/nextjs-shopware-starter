@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import clsx from 'clsx';
-import { Menu } from 'lib/shopware/types';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import clsx from "clsx";
+import { Menu } from "lib/shopware/types";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function FooterMenuItem({ item }: { item: Menu }) {
   const pathname = usePathname();
@@ -19,10 +19,10 @@ export function FooterMenuItem({ item }: { item: Menu }) {
       <Link
         href={item.path}
         className={clsx(
-          'block p-2 text-lg underline-offset-4 hover:text-black hover:underline md:inline-block md:text-sm dark:hover:text-neutral-300',
+          "block p-2 text-lg underline-offset-4 hover:text-black hover:underline md:inline-block md:text-sm dark:hover:text-neutral-300",
           {
-            'text-black dark:text-neutral-300': active
-          }
+            "text-black dark:text-neutral-300": active,
+          },
         )}
       >
         {item.title}
@@ -36,7 +36,7 @@ export default function FooterMenu({ menu }: { menu: Menu[] }) {
 
   return menu.map((item: Menu) => (
     <nav className="col-span-1 lg:col-span-3" key={item.title + item.type}>
-      {item.type === 'headline' ? <span className="font-bold">{item.title}</span> : null}
+      {item.type === "headline" ? <span className="font-bold">{item.title}</span> : null}
       {item.children.length > 0 ? (
         <ul className="py-3 md:py-0 md:pt-4" key={item.title}>
           {item.children.map((item: Menu) => (

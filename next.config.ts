@@ -1,12 +1,7 @@
 export default {
+  cacheComponents: true,
   experimental: {
-    ppr: true,
     inlineCss: true,
-    useCache: true,
-  },
-  eslint: {
-    // Disabling on production builds because we're running checks on PRs via GitHub Actions.
-    ignoreDuringBuilds: true,
   },
   reactStrictMode: false,
   images: {
